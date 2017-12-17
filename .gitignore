@@ -82,7 +82,6 @@ Groestlcoin-Qt.app
 # Unit-tests
 Makefile.test
 groestlcoin-qt_test
-src/test/buildenv.py
 
 # Resources cpp
 qrc_*.cpp
@@ -103,8 +102,8 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-qa/pull-tester/tests_config.py
-qa/cache/*
+test/config.ini
+test/cache/*
 
 !src/leveldb*/Makefile
 

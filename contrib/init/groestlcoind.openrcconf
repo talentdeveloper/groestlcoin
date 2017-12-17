@@ -23,7 +23,7 @@
 #GROESTLCOIND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
-GROESTLCOIND_OPTS="-disablewallet"
+#GROESTLCOIND_OPTS="-disablewallet"
 
 # The timeout in seconds OpenRC will wait for groestlcoind to terminate
 # after a SIGTERM has been raised.

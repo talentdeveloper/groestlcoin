@@ -41,10 +41,78 @@
         <source>&amp;Delete</source>
         <translation>&amp;Διαγραφή</translation>
     </message>
-    </context>
+    <message>
+        <source>Choose the address to send coins to</source>
+        <translation>Επιλέξτε διεύθυνση αποστολής των νομισμάτων σας</translation>
+    </message>
+    <message>
+        <source>Choose the address to receive coins with</source>
+        <translation>Επιλέξτε διεύθυνση παραλαβής νομισμάτων</translation>
+    </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>Ε&amp;πιλογή</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>Διευθύνσεις αποστολής</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>Διευθύνσεις λήψης</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Αυτές είναι οι Bitcoin διευθύνσεις σας για να στέλνετε πληρωμές. Να ελέγχετε πάντα το ποσό, καθώς και τη διεύθυνση παραλήπτη πριν στείλετε νομίσματα.</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Αυτές είναι οι Bitcoin διευθύνσεις σας για να λαμβάνετε πληρωμές. Προτείνετε να χρησιμοποιείτε μια νέα διεύθυνση παραλήπτη για κάθε συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Αντιγραφή Διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy &amp;Label</source>
+        <translation>Αντιγραφή&amp;Ετικέτα</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Διόρθωση</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Εξαγωγή Λίστας Διεύθυνσεων</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Αποτυχία Εξαγωγής</translation>
+    </message>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Σφάλμα κατά την προσπάθεια αποθήκευσης της λίστας διευθύνσεων στο %1. Παρακαλώ δοκιμάστε ξανά.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -62,6 +130,26 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>Επανέλαβε τον νέο κωδικό πρόσβασης</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Εισάγετε το νέο κωδικό πρόσβασης στο πορτοφόλι. &lt;br/&gt;Παρακαλώ χρησιμοποιείστε έναν κωδικό με &lt;b&gt;δέκα ή περισσότερους τυχαίους χαρακτήρες &lt;/b&gt;, ή &lt;b&gt;οχτώ ή παραπάνω λέξεις &lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>Κρυπτογράφηση πορτοφολιού</translation>
+    </message>
+    <message>
+        <source>Unlock wallet</source>
+        <translation>Ξεκλειδωσε το πορτοφολι</translation>
+    </message>
+    <message>
+        <source>Change passphrase</source>
+        <translation>Αλλάξτε Φράση Πρόσβασης</translation>
+    </message>
+    <message>
+        <source>Wallet unlock failed</source>
+        <translation>Το Ξεκλείδωμα του Πορτοφολιού Απέτυχε</translation>
     </message>
     </context>
 <context>
@@ -150,8 +238,8 @@
         <translation>Φόρτωση ευρετηρίου μπλοκ στον σκληρο δισκο...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>Στείλε νομίσματα σε μια διεύθυνση groestlcoin</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Στείλε νομίσματα σε μια διεύθυνση bitcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -174,8 +262,8 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -202,12 +290,12 @@
         <translation>Κρυπτογραφήστε τα ιδιωτικά κλειδιά που ανήκουν στο πορτοφόλι σας </translation>
     </message>
     <message>
-        <source>Sign messages with your Groestlcoin addresses to prove you own them</source>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
         <translation>Υπογράψτε ένα μήνυμα για να βεβαιώσετε πως είστε ο κάτοχος αυτής της διεύθυνσης</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Groestlcoin addresses</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση Groestlcoin</translation>
+        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση Bitcoin</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -226,8 +314,8 @@
         <translation>Εργαλειοθήκη καρτελών</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and groestlcoin: URIs)</source>
-        <translation>Αίτηση πληρωμών (δημιουργεί QR codes και διευθύνσεις groestlcoin: )</translation>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation>Αίτηση πληρωμών (δημιουργεί QR codes και διευθύνσεις bitcoin: )</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -238,20 +326,12 @@
         <translation>Προβολή της λίστας των χρησιμοποιημένων διευθύνσεων και ετικετών λήψεως</translation>
     </message>
     <message>
-        <source>Open a groestlcoin: URI or payment request</source>
-        <translation>Άνοιγμα groestlcoin: URI αίτησης πληρωμής</translation>
+        <source>Open a bitcoin: URI or payment request</source>
+        <translation>Άνοιγμα bitcoin: URI αίτησης πληρωμής</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Επιλογές γραμμής εντολών</translation>
-    </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>Η πηγή του μπλοκ δεν ειναι διαθέσιμη... </translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 και %2</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -331,7 +411,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Το πορτοφόλι είναι &lt;b&gt;κρυπτογραφημένο&lt;/b&gt; και &lt;b&gt;κλειδωμένο&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -349,10 +429,6 @@
     <message>
         <source>Amount:</source>
         <translation>Ποσό:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Προτεραιότητα:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -407,8 +483,24 @@
         <translation>Επικυρωμένες</translation>
     </message>
     <message>
-        <source>Priority</source>
-        <translation>Προτεραιότητα</translation>
+        <source>Copy address</source>
+        <translation>Αντιγραφή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Αντιγραφή ταυτότητας συναλλαγής</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
     </message>
     </context>
 <context>
@@ -432,6 +524,18 @@
     <message>
         <source>&amp;Address</source>
         <translation>&amp;Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>New receiving address</source>
+        <translation>Νέα Διεύθυνση Λήψης</translation>
+    </message>
+    <message>
+        <source>New sending address</source>
+        <translation>Νέα Διεύθυνση Αποστολής</translation>
+    </message>
+    <message>
+        <source>Edit receiving address</source>
+        <translation>Διόρθωση Διεύθυνσης Λήψης</translation>
     </message>
     </context>
 <context>
@@ -511,6 +615,21 @@
         <translation><numerusform>(από το %n GB που απαιτείται)</numerusform><numerusform>(από τα %n GB που απαιτούνται)</numerusform></translation>
     </message>
 </context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Φόρμα</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Χρόνος τελευταίου μπλοκ</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Απόκρυψη</translation>
+    </message>
+    </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -617,16 +736,16 @@
         <translation>&amp;Ξόδεμα μη επικυρωμένων ρέστων</translation>
     </message>
     <message>
-        <source>Automatically open the Groestlcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Αυτόματο άνοιγμα των θυρών Groestlcoin στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Αυτόματο άνοιγμα των θυρών Bitcoin στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Απόδοση θυρών με χρήστη &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Groestlcoin network through a SOCKS5 proxy.</source>
-        <translation>Σύνδεση στο Groestlcoin δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
+        <source>Connect to the Bitcoin network through a SOCKS5 proxy.</source>
+        <translation>Σύνδεση στο Bitcoin δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -721,8 +840,8 @@
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Groestlcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Οι πληροφορίες που εμφανίζονται μπορεί να είναι ξεπερασμένες. Το πορτοφόλι σας συγχρονίζεται αυτόματα με το δίκτυο Groestlcoin μετά από μια σύνδεση, αλλά αυτή η διαδικασία δεν έχει ακόμη ολοκληρωθεί. </translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Οι πληροφορίες που εμφανίζονται μπορεί να είναι ξεπερασμένες. Το πορτοφόλι σας συγχρονίζεται αυτόματα με το δίκτυο Bitcoin μετά από μια σύνδεση, αλλά αυτή η διαδικασία δεν έχει ακόμη ολοκληρωθεί. </translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -794,11 +913,7 @@
     </context>
 <context>
     <name>PeerTableModel</name>
-    <message>
-        <source>Ping Time</source>
-        <translation>Χρόνος καθυστέρησης</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>QObject</name>
     <message>
@@ -806,8 +921,8 @@
         <translation>Ποσό</translation>
     </message>
     <message>
-        <source>Enter a Groestlcoin address (e.g. %1)</source>
-        <translation>Εισάγετε μια διεύθυνση Groestlcoin (π.χ. %1)</translation>
+        <source>Enter a Bitcoin address (e.g. %1)</source>
+        <translation>Εισάγετε μια διεύθυνση Bitcoin (π.χ. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -837,7 +952,14 @@
         <source>%1 ms</source>
         <translation>%1 ms</translation>
     </message>
-</context>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 και %2</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
+    </context>
 <context>
     <name>QRImageWidget</name>
     </context>
@@ -1062,7 +1184,15 @@
         <source>Remove</source>
         <translation>Αφαίρεση</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -1081,9 +1211,29 @@
         <source>&amp;Save Image...</source>
         <translation>&amp;Αποθήκευση εικόνας...</translation>
     </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -1118,10 +1268,6 @@
     <message>
         <source>Amount:</source>
         <translation>Ποσό:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Προτεραιότητα:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -1172,10 +1318,6 @@
         <translation>Προσαρμογή:</translation>
     </message>
     <message>
-        <source>Confirmation time:</source>
-        <translation>Χρόνος επικύρωσης:</translation>
-    </message>
-    <message>
         <source>normal</source>
         <translation>κανονικό</translation>
     </message>
@@ -1215,7 +1357,15 @@
         <source>S&amp;end</source>
         <translation>Αποστολη</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -1239,8 +1389,8 @@
         <translation>Αυτή είναι μια απλή πληρωμή.</translation>
     </message>
     <message>
-        <source>The Groestlcoin address to send the payment to</source>
-        <translation>Η διεύθυνση Groestlcoin που θα σταλεί η πληρωμή</translation>
+        <source>The Bitcoin address to send the payment to</source>
+        <translation>Η διεύθυνση Bitcoin που θα σταλεί η πληρωμή</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1296,8 +1446,8 @@
         <translation>&amp;Υπογραφή Μηνύματος</translation>
     </message>
     <message>
-        <source>The Groestlcoin address to sign the message with</source>
-        <translation>Διεύθυνση Groestlcoin που θα σταλεί το μήνυμα</translation>
+        <source>The Bitcoin address to sign the message with</source>
+        <translation>Διεύθυνση Bitcoin που θα σταλεί το μήνυμα</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1328,8 +1478,8 @@
         <translation>Αντέγραφη της επιλεγμενης διεύθυνσης στο πρόχειρο του συστηματος</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Groestlcoin address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση Groestlcoin</translation>
+        <source>Sign the message to prove you own this Bitcoin address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση Bitcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1348,12 +1498,12 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>The Groestlcoin address the message was signed with</source>
-        <translation>Διεύθυνση Groestlcoin η οποία το μήνυμα έχει υπογραφεί</translation>
+        <source>The Bitcoin address the message was signed with</source>
+        <translation>Διεύθυνση Bitcoin η οποία το μήνυμα έχει υπογραφεί</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Groestlcoin address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση Groestlcoin</translation>
+        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση Bitcoin</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1380,6 +1530,70 @@
 </context>
 <context>
     <name>TransactionDesc</name>
+    <message>
+        <source>Open until %1</source>
+        <translation>Ανοιχτό μέχρι %1</translation>
+    </message>
+    <message>
+        <source>%1/offline</source>
+        <translation>%1/αποσυνδεδεμένο</translation>
+    </message>
+    <message>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/ανεπιβεβαίωτο, %1</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομηνία</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Πηγή</translation>
+    </message>
+    <message>
+        <source>Generated</source>
+        <translation>Παράχθηκε</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Από</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>Άγνωστο</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Προς</translation>
+    </message>
+    <message>
+        <source>own address</source>
+        <translation>δική σας διεύθυνση</translation>
+    </message>
+    <message>
+        <source>watch-only</source>
+        <translation>παρακολούθηση-μόνο</translation>
+    </message>
+    <message>
+        <source>label</source>
+        <translation>ετικέτα</translation>
+    </message>
+    <message>
+        <source>Credit</source>
+        <translation>Πίστωση</translation>
+    </message>
+    <message>
+        <source>not accepted</source>
+        <translation>μη έγκυρο</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Συνολική πίστωση</translation>
+    </message>
+    <message>
+        <source>Transaction fee</source>
+        <translation>Κόστος συναλλαγής</translation>
+    </message>
     </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -1390,9 +1604,73 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Open until %1</source>
+        <translation>Ανοιχτό μέχρι %1</translation>
+    </message>
+    <message>
+        <source>watch-only</source>
+        <translation>παρακολούθηση-μόνο</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Copy address</source>
+        <translation>Αντιγραφή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Αντιγραφή ταυτότητας συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Copy raw transaction</source>
+        <translation>Αντιγραφή ανεπεξέργαστης συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Edit label</source>
+        <translation>Επεξεργασία ετικέτας</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Αποτυχία Εξαγωγής</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -1411,7 +1689,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Options:</source>
         <translation>Επιλογές:</translation>
@@ -1437,12 +1715,8 @@
         <translation>Εκτέλεση στο παρασκήνιο κι αποδοχή εντολών</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Να δέχεσαι συνδέσεις από έξω(προεπιλογή:1)</translation>
-    </message>
-    <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin Core</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -1453,16 +1727,8 @@
         <translation>Εκτέλεσε την εντολή όταν το καλύτερο μπλοκ αλλάξει(%s στην εντολή αντικαθίσταται από το hash του μπλοκ)</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Αυτό είναι ένα προ-τεστ κυκλοφορίας - χρησιμοποιήστε το με δική σας ευθύνη - δεν χρησιμοποιείτε για εξόρυξη ή για αλλες εφαρμογές</translation>
-    </message>
-    <message>
         <source>Block creation options:</source>
         <translation>Αποκλεισμός επιλογων δημιουργίας: </translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Σύνδεση μόνο με ορισμένους κόμβους</translation>
     </message>
     <message>
         <source>Connection options:</source>
@@ -1583,10 +1849,6 @@
     <message>
         <source>Transaction amount too small</source>
         <translation>Το ποσό της συναλλαγής είναι πολύ μικρο </translation>
-    </message>
-    <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>Τα ποσά των συναλλαγών πρέπει να είναι θετικα</translation>
     </message>
     <message>
         <source>Transaction too large</source>

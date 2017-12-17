@@ -126,8 +126,8 @@
         <translation>Abrir &amp;URL...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>Enviando monedas a una dirección de Groestlcoin</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Enviando monedas a una dirección de Bitcoin</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -146,8 +146,8 @@
         <translation>&amp;Verificar Mensaje...</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -210,6 +210,9 @@
     </message>
     </context>
 <context>
+    <name>ModalOverlay</name>
+    </context>
+<context>
     <name>OpenURIDialog</name>
     </context>
 <context>
@@ -226,6 +229,9 @@
     </context>
 <context>
     <name>QObject</name>
+    </context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -288,10 +294,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin Core</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Core</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

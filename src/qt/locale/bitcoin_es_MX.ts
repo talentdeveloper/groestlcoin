@@ -3,7 +3,7 @@
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>Click derecho para editar tu dirección o etiqueta</translation>
+        <translation>Click derecho para editar dirección o etiqueta</translation>
     </message>
     <message>
         <source>Create a new address</source>
@@ -31,7 +31,7 @@
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Exportar la información en la tabla actual a un archivo</translation>
+        <translation>Exportar la información en la pestaña actual a un archivo</translation>
     </message>
     <message>
         <source>&amp;Export</source>
@@ -150,8 +150,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>Enviar monedas a una dirección Groestlcoin</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Enviar monedas a una dirección Bitcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -174,8 +174,8 @@
         <translation>&amp;Verificar mensaje...</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -249,7 +249,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>La cartera esta &lt;b&gt;encriptada&lt;/b&gt; y &lt;b&gt;bloqueada&lt;/b&gt; actualmente </translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -263,10 +263,6 @@
     <message>
         <source>Amount:</source>
         <translation>Monto:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridad:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -291,10 +287,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Confirmado </translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Prioridad</translation>
     </message>
     </context>
 <context>
@@ -350,6 +342,13 @@
     </message>
     </context>
 <context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulario</translation>
+    </message>
+    </context>
+<context>
     <name>OpenURIDialog</name>
     </context>
 <context>
@@ -392,6 +391,9 @@
     </message>
     </context>
 <context>
+    <name>QObject::QObject</name>
+    </context>
+<context>
     <name>QRImageWidget</name>
     </context>
 <context>
@@ -416,8 +418,8 @@
         <translation>Mensaje:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Groestlcoin network.</source>
-        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de Groestlcoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitcoin network.</source>
+        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de Bitcoin.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -455,10 +457,6 @@
     <message>
         <source>Amount:</source>
         <translation>Monto:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridad:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -591,19 +589,27 @@
     </context>
 <context>
     <name>WalletModel</name>
-    </context>
+    <message>
+        <source>Send Coins</source>
+        <translation>Enviar monedas</translation>
+    </message>
+</context>
 <context>
     <name>WalletView</name>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exportar la información en la pestaña actual a un archivo</translation>
+    </message>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciones:</translation>
     </message>
     <message>
-        <source>Groestlcoin Core</source>
-        <translation>nucleo Groestlcoin</translation>
+        <source>Bitcoin Core</source>
+        <translation>nucleo Bitcoin</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

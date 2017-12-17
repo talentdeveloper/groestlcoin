@@ -13,10 +13,11 @@ try: # Python 3
 except ImportError: # Python 2
     import httplib
 import json
-import struct
 import re
 import base64
 import sys
+import os
+import os.path
 
 settings = {}
 
@@ -94,44 +95,63 @@ def get_block_hashes(settings, max_blocks_per_call=10000):
 
         height += num_blocks
 
+def get_rpc_cookie():
+	# Open the cookie file
+	with open(os.path.join(os.path.expanduser(settings['datadir']), '.cookie'), 'r') as f:
+		combined = f.readline()
+		combined_split = combined.split(":")
+		settings['rpcuser'] = combined_split[0]
+		settings['rpcpassword'] = combined_split[1]
+
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: linearize-hashes.py CONFIG-FILE")
-        sys.exit(1)
+	if len(sys.argv) != 2:
+		print("Usage: linearize-hashes.py CONFIG-FILE")
+		sys.exit(1)
 
-    f = open(sys.argv[1])
-    for line in f:
-        # skip comment lines
-        m = re.search('^\s*#', line)
-        if m:
-            continue
+	f = open(sys.argv[1])
+	for line in f:
+		# skip comment lines
+		m = re.search('^\s*#', line)
+		if m:
+			continue
 
-        # parse key=value lines
-        m = re.search('^(\w+)\s*=\s*(\S.*)$', line)
-        if m is None:
-            continue
-        settings[m.group(1)] = m.group(2)
-    f.close()
+		# parse key=value lines
+		m = re.search('^(\w+)\s*=\s*(\S.*)$', line)
+		if m is None:
+			continue
+		settings[m.group(1)] = m.group(2)
+	f.close()
 
-    if 'host' not in settings:
-        settings['host'] = '127.0.0.1'
-    if 'port' not in settings:
-        settings['port'] = 1441
-    if 'min_height' not in settings:
-        settings['min_height'] = 0
-    if 'max_height' not in settings:
-        settings['max_height'] = 313000
-    if 'rev_hash_bytes' not in settings:
-        settings['rev_hash_bytes'] = 'false'
-    if 'rpcuser' not in settings or 'rpcpassword' not in settings:
-        print("Missing username and/or password in cfg file", file=stderr)
-        sys.exit(1)
+	if 'host' not in settings:
+		settings['host'] = '127.0.0.1'
+	if 'port' not in settings:
+		settings['port'] = 8332
+	if 'min_height' not in settings:
+		settings['min_height'] = 0
+	if 'max_height' not in settings:
+		settings['max_height'] = 313000
+	if 'rev_hash_bytes' not in settings:
+		settings['rev_hash_bytes'] = 'false'
 
-    settings['port'] = int(settings['port'])
-    settings['min_height'] = int(settings['min_height'])
-    settings['max_height'] = int(settings['max_height'])
+	use_userpass = True
+	use_datadir = False
+	if 'rpcuser' not in settings or 'rpcpassword' not in settings:
+		use_userpass = False
+	if 'datadir' in settings and not use_userpass:
+		use_datadir = True
+	if not use_userpass and not use_datadir:
+		print("Missing datadir or username and/or password in cfg file", file=stderr)
+		sys.exit(1)
 
-    # Force hash byte format setting to be lowercase to make comparisons easier.
-    settings['rev_hash_bytes'] = settings['rev_hash_bytes'].lower()
+	settings['port'] = int(settings['port'])
+	settings['min_height'] = int(settings['min_height'])
+	settings['max_height'] = int(settings['max_height'])
 
-    get_block_hashes(settings)
+	# Force hash byte format setting to be lowercase to make comparisons easier.
+	settings['rev_hash_bytes'] = settings['rev_hash_bytes'].lower()
+
+	# Get the rpc user and pass from the cookie if the datadir is set
+	if use_datadir:
+		get_rpc_cookie()
+
+	get_block_hashes(settings)

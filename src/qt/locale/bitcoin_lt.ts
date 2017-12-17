@@ -44,6 +44,10 @@
     </context>
 <context>
     <name>AddressTableModel</name>
+    <message>
+        <source>Address</source>
+        <translation>Adresas</translation>
+    </message>
     </context>
 <context>
     <name>AskPassphraseDialog</name>
@@ -114,6 +118,10 @@
         <translation>&amp;Apie %1</translation>
     </message>
     <message>
+        <source>Show information about %1</source>
+        <translation>Rodyti informaciją apie %1</translation>
+    </message>
+    <message>
         <source>About &amp;Qt</source>
         <translation>Apie &amp;Qt</translation>
     </message>
@@ -154,8 +162,8 @@
         <translation>Blokai iš naujo indeksuojami...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>Siųsti monetas Groestlcoin adresui</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Siųsti monetas Bitcoin adresui</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -178,8 +186,8 @@
         <translation>&amp;Tikrinti žinutę...</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -246,6 +254,12 @@
         <translation>Vejamasi...</translation>
     </message>
     <message>
+        <source>Date: %1
+</source>
+        <translation>Data: %1
+</translation>
+    </message>
+    <message>
         <source>Sent transaction</source>
         <translation>Sandoris nusiųstas</translation>
     </message>
@@ -261,7 +275,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Piniginė &lt;b&gt;užšifruota&lt;/b&gt; ir šiuo metu &lt;b&gt;užrakinta&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -279,10 +293,6 @@
     <message>
         <source>Amount:</source>
         <translation>Suma:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Pirmumas:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -323,10 +333,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Patvirtintas</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Pirmumas</translation>
     </message>
     </context>
 <context>
@@ -382,6 +388,17 @@
     </message>
     </context>
 <context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>Forma</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Paskutinio bloko laikas</translation>
+    </message>
+    </context>
+<context>
     <name>OpenURIDialog</name>
     </context>
 <context>
@@ -415,8 +432,8 @@
         <translation>Piniginė</translation>
     </message>
     <message>
-        <source>Automatically open the Groestlcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatiškai atidaryti Groestlcoin kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatiškai atidaryti Bitcoin kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -568,6 +585,9 @@
     </message>
     </context>
 <context>
+    <name>QObject::QObject</name>
+    </context>
+<context>
     <name>QRImageWidget</name>
     </context>
 <context>
@@ -710,6 +730,10 @@
         <source>Copy &amp;Address</source>
         <translation>&amp;Kopijuoti adresą</translation>
     </message>
+    <message>
+        <source>Address</source>
+        <translation>Adresas</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -735,10 +759,6 @@
     <message>
         <source>Amount:</source>
         <translation>Suma:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Pirmumas:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -845,7 +865,7 @@
         <translation>Įveskite pranešimą, kurį norite pasirašyti čia</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Groestlcoin address</source>
+        <source>Sign the message to prove you own this Bitcoin address</source>
         <translation>Registruotis žinute įrodymuii, kad turite šį adresą</translation>
     </message>
     <message>
@@ -861,8 +881,8 @@
         <translation>&amp;Patikrinti žinutę</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Groestlcoin address</source>
-        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Groestlcoin adresas</translation>
+        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
+        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Bitcoin adresas</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -898,6 +918,10 @@
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Address</source>
+        <translation>Adresas</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -912,7 +936,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Options:</source>
         <translation>Parinktys:</translation>
@@ -934,12 +958,8 @@
         <translation>Dirbti fone kaip šešėlyje ir priimti komandas</translation>
     </message>
     <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin branduolys</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Prisijungti tik prie nurodyto mazgo</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin branduolys</translation>
     </message>
     <message>
         <source>Error opening block database</source>

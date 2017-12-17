@@ -142,8 +142,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>Trimite monedele către o adresă Groestlcoin</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>Trimite monedele către o adresă Bitcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your Groestlcoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de Groestlcoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de Bitcoin pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Groestlcoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Groestlcoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Bitcoin specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -214,16 +214,12 @@
         <translation>&amp;Ajutor</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and groestlcoin: URIs)</source>
-        <translation>Cerere plată (generează coduri QR și groestlcoin: URIs)</translation>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation>Cerere plată (generează coduri QR și bitcoin: URIs)</translation>
     </message>
     <message>
-        <source>Open a groestlcoin: URI or payment request</source>
-        <translation>Deschide un groestlcoin: URI sau cerere de plată</translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 și %2</translation>
+        <source>Open a bitcoin: URI or payment request</source>
+        <translation>Deschide un bitcoin: URI sau cerere de plată</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -289,7 +285,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Portofelul este &lt;b&gt;criptat&lt;/b&gt; și în prezent &lt;b&gt;blocat&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -307,10 +303,6 @@
     <message>
         <source>Amount:</source>
         <translation>Cantitate:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioritate:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -351,10 +343,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Confirmat</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Prioritate</translation>
     </message>
     </context>
 <context>
@@ -412,6 +400,9 @@
         <source>%n GB of free space available</source>
         <translation><numerusform>%n GB de spațiu liber disponibil</numerusform><numerusform>%n GB de spațiu liber disponibil</numerusform><numerusform>%n GB de spațiu liber disponibil</numerusform></translation>
     </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -483,6 +474,10 @@
         <translation>Tor</translation>
     </message>
     <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Fereastra</translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
@@ -542,6 +537,13 @@
         <source>Amount</source>
         <translation>Cantitate</translation>
     </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 și %2</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -652,6 +654,10 @@
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
+        <source>&amp;Message:</source>
+        <translation>&amp;Mesaj:</translation>
+    </message>
+    <message>
         <source>Show</source>
         <translation>Arată</translation>
     </message>
@@ -683,10 +689,6 @@
     <message>
         <source>Amount:</source>
         <translation>Cantitate:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioritate:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -744,10 +746,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin Core</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

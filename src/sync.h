@@ -9,7 +9,6 @@
 #include "threadsafety.h"
 
 #include <boost/thread/condition_variable.hpp>
-#include <boost/thread/locks.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/recursive_mutex.hpp>
 
@@ -97,7 +96,6 @@ public:
     }
 };
 
-typedef CCriticalSection CDynamicCriticalSection;
 /** Wrapped boost mutex: supports waiting but not recursive locking */
 typedef AnnotatedMixin<boost::mutex> CWaitableCriticalSection;
 
@@ -264,11 +262,10 @@ public:
         grant.Release();
         grant.sem = sem;
         grant.fHaveGrant = fHaveGrant;
-        sem = NULL;
         fHaveGrant = false;
     }
 
-    CSemaphoreGrant() : sem(NULL), fHaveGrant(false) {}
+    CSemaphoreGrant() : sem(nullptr), fHaveGrant(false) {}
 
     CSemaphoreGrant(CSemaphore& sema, bool fTry = false) : sem(&sema), fHaveGrant(false)
     {

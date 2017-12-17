@@ -2,6 +2,10 @@
 <context>
     <name>AddressBookPage</name>
     <message>
+        <source>Right-click to edit address or label</source>
+        <translation>დააჭირეთ მარჯვენა ღილაკს მისამართის ან იარლიყის ჩასასწორებლად</translation>
+    </message>
+    <message>
         <source>Create a new address</source>
         <translation>ახალი მისამართის შექმნა</translation>
     </message>
@@ -37,9 +41,29 @@
         <source>&amp;Delete</source>
         <translation>&amp;წაშლა</translation>
     </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>&amp;არჩევა</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>გამმგზავნი მისამართ</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>მიმღები მისამართი</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;რედაქტირება</translation>
+    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
+    <message>
+        <source>Address</source>
+        <translation>მისამართი</translation>
+    </message>
     </context>
 <context>
     <name>AskPassphraseDialog</name>
@@ -58,6 +82,22 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>გაიმეორეთ ახალი ფრაზა-პაროლი</translation>
+    </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>საფულის დაშიფრვა</translation>
+    </message>
+    <message>
+        <source>Unlock wallet</source>
+        <translation>საფულის განბლოკვა</translation>
+    </message>
+    <message>
+        <source>Decrypt wallet</source>
+        <translation>საფულის განბლოკვა</translation>
+    </message>
+    <message>
+        <source>Change passphrase</source>
+        <translation>პაროლის შეცვლა</translation>
     </message>
     </context>
 <context>
@@ -102,6 +142,14 @@
         <translation>გასვლა</translation>
     </message>
     <message>
+        <source>&amp;About %1</source>
+        <translation>%1-ის &amp;შესახებ</translation>
+    </message>
+    <message>
+        <source>Show information about %1</source>
+        <translation>%1-ის შესახებ ინფორმაციის ჩვენება</translation>
+    </message>
+    <message>
         <source>About &amp;Qt</source>
         <translation>&amp;Qt-ს შესახებ</translation>
     </message>
@@ -142,8 +190,8 @@
         <translation>დისკზე ბლოკების რეინდექსაცია...</translation>
     </message>
     <message>
-        <source>Send coins to a Groestlcoin address</source>
-        <translation>მონეტების გაგზავნა Groestlcoin-მისამართზე</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>მონეტების გაგზავნა Bitcoin-მისამართზე</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +214,8 @@
         <translation>&amp;ვერიფიკაცია</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +242,12 @@
         <translation>თქვენი საფულის პირადი გასაღებების დაშიფრვა</translation>
     </message>
     <message>
-        <source>Sign messages with your Groestlcoin addresses to prove you own them</source>
-        <translation>მესიჯებზე ხელმოწერა თქვენი Groestlcoin-მისამართებით იმის დასტურად, რომ ის თქვენია</translation>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
+        <translation>მესიჯებზე ხელმოწერა თქვენი Bitcoin-მისამართებით იმის დასტურად, რომ ის თქვენია</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Groestlcoin addresses</source>
-        <translation>შეამოწმეთ, რომ მესიჯები ხელმოწერილია მითითებული Groestlcoin-მისამართით</translation>
+        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
+        <translation>შეამოწმეთ, რომ მესიჯები ხელმოწერილია მითითებული Bitcoin-მისამართით</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -218,8 +266,8 @@
         <translation>ბარათების პანელი</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and groestlcoin: URIs)</source>
-        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და groestlcoin: ბმულები)</translation>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და bitcoin: ბმულები)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -230,20 +278,12 @@
         <translation>გამოყენებული მიღების მისამართებისა და ნიშნულების სიის ჩვენება</translation>
     </message>
     <message>
-        <source>Open a groestlcoin: URI or payment request</source>
-        <translation>groestlcoin: URI-ის ან გადახდის მოთხოვნის გახსნა</translation>
+        <source>Open a bitcoin: URI or payment request</source>
+        <translation>bitcoin: URI-ის ან გადახდის მოთხოვნის გახსნა</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>საკომანდო სტრიქონის ოპ&amp;ციები</translation>
-    </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>ბლოკების წყარო მიუწვდომელია...</translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 და %2</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -274,8 +314,36 @@
         <translation>განახლებულია</translation>
     </message>
     <message>
+        <source>%1 client</source>
+        <translation>%1 კლიენტი</translation>
+    </message>
+    <message>
         <source>Catching up...</source>
-        <translation>ჩართვა...</translation>
+        <translation>მიმდინარეობს განახლება...</translation>
+    </message>
+    <message>
+        <source>Date: %1
+</source>
+        <translation>თარიღი: %1
+</translation>
+    </message>
+    <message>
+        <source>Amount: %1
+</source>
+        <translation>რაოდენობა: %1
+</translation>
+    </message>
+    <message>
+        <source>Type: %1
+</source>
+        <translation>ტიპი: %1
+</translation>
+    </message>
+    <message>
+        <source>Address: %1
+</source>
+        <translation>მისამართი: %1
+</translation>
     </message>
     <message>
         <source>Sent transaction</source>
@@ -293,7 +361,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>საფულე &lt;b&gt;დაშიფრულია&lt;/b&gt; და ამჟამად &lt;b&gt;დაბლოკილია&lt;/b&gt;</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -309,12 +377,12 @@
         <translation>თანხა:</translation>
     </message>
     <message>
-        <source>Priority:</source>
-        <translation>პრიორიტეტი:</translation>
-    </message>
-    <message>
         <source>Fee:</source>
         <translation>საკომისიო:</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>მტვერი:</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -353,10 +421,18 @@
         <translation>დადასტურებულია</translation>
     </message>
     <message>
-        <source>Priority</source>
-        <translation>პრიორიტეტი</translation>
+        <source>yes</source>
+        <translation>დიახ</translation>
     </message>
-    </context>
+    <message>
+        <source>no</source>
+        <translation>არა</translation>
+    </message>
+    <message>
+        <source>(change)</source>
+        <translation>(ხურდა)</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -410,6 +486,14 @@
         <translation>ვერსია</translation>
     </message>
     <message>
+        <source>(%1-bit)</source>
+        <translation>(%1-ბიტი)</translation>
+    </message>
+    <message>
+        <source>About %1</source>
+        <translation>%1-ის შესახებ</translation>
+    </message>
+    <message>
         <source>Command-line options</source>
         <translation>კომანდების ზოლის ოპციები</translation>
     </message>
@@ -421,12 +505,20 @@
         <source>command-line options</source>
         <translation>კომანდების ზოლის ოპციები</translation>
     </message>
+    <message>
+        <source>UI Options:</source>
+        <translation>მომხმარებლის ინტერფეისის ოპციები:</translation>
+    </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
         <source>Welcome</source>
         <translation>მოგესალმებით</translation>
+    </message>
+    <message>
+        <source>Welcome to %1.</source>
+        <translation>კეთილი იყოს თქვენი მობრძანება %1-ში.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -439,6 +531,41 @@
     <message>
         <source>Error</source>
         <translation>შეცდომა</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n GB of free space available</source>
+        <translation><numerusform>ხელმისაწვდომია თავისუფალი სივრცის %n გბ</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation><numerusform>(საჭირო %n გბ-დან)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ModalOverlay</name>
+    <message>
+        <source>Form</source>
+        <translation>ფორმა</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>უცნობი...</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>ბოლო ბლოკის დრო</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>პროგრესი</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>მიმდინარეობს გამოთვლა...</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>დამალვა</translation>
     </message>
     </context>
 <context>
@@ -507,12 +634,16 @@
         <translation>ს&amp;აფულე</translation>
     </message>
     <message>
+        <source>Expert</source>
+        <translation>ექსპერტი</translation>
+    </message>
+    <message>
         <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
         <translation>დაუდასტურებელი ხურდის გამოყენების აკრძალვის შემდეგ მათი გამოყენება შეუძლებელი იქნება, სანამ ტრანსაქციას არ ექნება ერთი დასტური მაინც. ეს აისახება თქვენი ნაშთის დათვლაზეც.</translation>
     </message>
     <message>
-        <source>Automatically open the Groestlcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>როუტერში Groestlcoin-კლიენტის პორტის ავტომატური გახსნა. მუშაობს, თუ თქვენს როუტერს ჩართული აქვს UPnP.</translation>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>როუტერში Bitcoin-კლიენტის პორტის ავტომატური გახსნა. მუშაობს, თუ თქვენს როუტერს ჩართული აქვს UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -529,6 +660,18 @@
     <message>
         <source>Port of the proxy (e.g. 9050)</source>
         <translation>პროქსის პორტი (მაგ.: 9050)</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation>Tor</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -606,8 +749,8 @@
         <translation>ფორმა</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Groestlcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>ნაჩვენები ინფორმაცია შეიძლება მოძველებული იყოს. თქვენი საფულე ავტომატურად სინქრონიზდება Groestlcoin-ის ქსელთან კავშირის დამყარების შემდეგ, ეს პროცესი ჯერ არ არის დასრულებული.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>ნაჩვენები ინფორმაცია შეიძლება მოძველებული იყოს. თქვენი საფულე ავტომატურად სინქრონიზდება Bitcoin-ის ქსელთან კავშირის დამყარების შემდეგ, ეს პროცესი ჯერ არ არის დასრულებული.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -666,6 +809,13 @@
         <source>N/A</source>
         <translation>მიუწვდ.</translation>
     </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 და %2</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -804,7 +954,7 @@
         <translation>ად&amp;რე გამოყენებული მიღების მისამართის გამოყენება (არ არის რეკომენდებული)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Groestlcoin network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitcoin network.</source>
         <translation>არააუცილებელი მესიჯი, რომელიც ერთვის გადახდის მოთხოვნას და ნაჩვენები იქნება მოთხოვნის გახსნისას. შენიშვნა: მესიჯი არ გაყვება გადახდას ბითქოინის ქსელში.</translation>
     </message>
     <message>
@@ -870,6 +1020,10 @@
         <source>&amp;Save Image...</source>
         <translation>გამო&amp;სახულების შენახვა...</translation>
     </message>
+    <message>
+        <source>Address</source>
+        <translation>მისამართი</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -909,10 +1063,6 @@
         <translation>თანხა:</translation>
     </message>
     <message>
-        <source>Priority:</source>
-        <translation>პრიორიტეტი:</translation>
-    </message>
-    <message>
         <source>Fee:</source>
         <translation>საკომისიო:</translation>
     </message>
@@ -937,6 +1087,10 @@
         <translation>ტრანსაქციის საფასური - საკომისიო:</translation>
     </message>
     <message>
+        <source>Hide</source>
+        <translation>დამალვა</translation>
+    </message>
+    <message>
         <source>Send to multiple recipients at once</source>
         <translation>გაგზავნა რამდენიმე რეციპიენტთან ერთდროულად</translation>
     </message>
@@ -947,6 +1101,10 @@
     <message>
         <source>Clear all fields of the form.</source>
         <translation>ფორმის ყველა ველის წაშლა</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>მტვერი:</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -1012,7 +1170,7 @@
         <translation>შეიყვანეთ ამ მისამართის ნიშნული გამოყენებული მისამართების სიაში დასამატებლად</translation>
     </message>
     <message>
-        <source>A message that was attached to the groestlcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Groestlcoin network.</source>
+        <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitcoin network.</source>
         <translation>მესიჯი, რომელიც თან ერთვის მონეტებს:  URI, რომელიც შეინახება ტრანსაქციასთან ერთად თქვენთვის. შენიშვნა: მესიჯი არ გაყვება გადახდას ბითქოინის ქსელში.</translation>
     </message>
     <message>
@@ -1073,7 +1231,7 @@
         <translation>მიმდინარე ხელმოწერის კოპირება კლიპბორდში</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Groestlcoin address</source>
+        <source>Sign the message to prove you own this Bitcoin address</source>
         <translation>მოაწერეთ ხელი იმის დასადასტურებლად, რომ ეს მისამართი თქვენია</translation>
     </message>
     <message>
@@ -1093,8 +1251,8 @@
         <translation>მესიჯის &amp;ვერიფიკაცია</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Groestlcoin address</source>
-        <translation>შეამოწმეთ, რომ მესიჯი ხელმოწერილია მითითებული Groestlcoin-მისამართით</translation>
+        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
+        <translation>შეამოწმეთ, რომ მესიჯი ხელმოწერილია მითითებული Bitcoin-მისამართით</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1134,6 +1292,10 @@
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Address</source>
+        <translation>მისამართი</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -1148,7 +1310,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Options:</source>
         <translation>ოპციები:</translation>
@@ -1174,12 +1336,8 @@
         <translation>რეზიდენტულად გაშვება და კომანდების მიღება</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>გარედან შეერთებების დაშვება (ნაგულისხმევი: 1 თუ არ გამოიყენება -proxy ან -connect)</translation>
-    </message>
-    <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin Core</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -1190,28 +1348,12 @@
         <translation>კომანდის შესრულება საფულის ტრანსაქციის ცვლილებისას (%s კომანდაში ჩანაცვლდება TxID-ით)</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>ეს არის წინასწარი სატესტო ვერსია - გამოიყენეთ საკუთარი რისკით - არ გამოიყენოთ მოპოვებისა ან კომერციული მიზნებისათვის</translation>
-    </message>
-    <message>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>ყურადღება: ქსელში შეუთანხმებლობაა. შესაძლოა ცალკეულ მომპოვებლებს პრობლემები ექმნებათ!</translation>
-    </message>
-    <message>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>ყურადღება: ჩვენ არ ვეთანხმებით ყველა პირს. შესაძლოა თქვენ ან სხვა კვანძებს განახლება გჭირდებათ.</translation>
-    </message>
-    <message>
         <source>&lt;category&gt; can be:</source>
         <translation>&lt;category&gt; შეიძლება იყოს:</translation>
     </message>
     <message>
         <source>Block creation options:</source>
         <translation>ბლოკის შექმნის ოპციები:</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>შეერთება მხოლოდ მითითებულ კვანძ(ებ)თან</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -1312,10 +1454,6 @@
     <message>
         <source>Transaction amount too small</source>
         <translation>ტრანსაქციების რაოდენობა ძალიან ცოტაა</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>ტრანსაქციების რაოდენობა დადებითი რიცხვი უნდა იყოს</translation>
     </message>
     <message>
         <source>Transaction too large</source>
