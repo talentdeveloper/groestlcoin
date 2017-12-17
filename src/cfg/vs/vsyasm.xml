@@ -5,15 +5,15 @@
     PageTemplate="tool"
     DisplayName="Yasm Assembler"
     Order="200">
-      
+
     <Rule.DataSource>
       <DataSource
         Persistence="ProjectFile"
         ItemType="YASM" />
     </Rule.DataSource>
-      
+
     <Rule.Categories>
-        
+
       <Category
         Name="General">
         <Category.DisplayName>
@@ -34,7 +34,7 @@
               <sys:String>Files</sys:String>
           </Category.DisplayName>
       </Category>
-        
+
       <Category
         Name="Command Line"
         Subtype="CommandLine">
@@ -42,7 +42,7 @@
           <sys:String>Command Line</sys:String>
         </Category.DisplayName>
       </Category>
-        
+
     </Rule.Categories>
 
     <StringListProperty
@@ -57,7 +57,7 @@
           SourceType="Item" />
       </StringListProperty.DataSource>
     </StringListProperty>
-    
+
     <BoolProperty
       Name="Debug"
       Subcategory="Configuration"
@@ -82,7 +82,7 @@
       DisplayName="Defined Symbols"
       Description="Specify pre-defined symbols ('symbol' or 'symbol = value') "
       Switch="-d &quot;[value]&quot;" />
-    
+
     <StringListProperty
       Name="UnDefines"
       Category="Symbols"
@@ -91,7 +91,7 @@
       DisplayName="Remove Symbols"
       Description="Remove pre-defined symbols "
       Switch="-u &quot;[value]&quot;" />
-    
+
     <StringProperty
       Name="ObjectFile"
       Subcategory="Output"
@@ -99,60 +99,6 @@
       DisplayName="Object File Name"
       Description="Select the output file name"
       Switch="-o &quot;[value]&quot;" />
-    
-    <StringProperty
-      Name="ListFile"
-      Category="Files"
-      Subcategory="Output"
-      HelpContext="0"
-      DisplayName="List File Name"
-      Description="Select an output listing by setting its file name"
-      Switch="-l &quot;[value]&quot;" />
-    
-    <StringProperty
-      Name="PreIncludeFile"
-      Category="Files"
-      Subcategory="Configuration"
-      HelpContext="0"
-      DisplayName="Pre Include File"
-      Description="Select a pre-included file by setting its name"
-      Switch="-P &quot;[value]&quot;" />
-      
-    <StringProperty
-      Name="MapFile"
-      Category="Files"
-      Subcategory="Output"
-      HelpContext="0"
-      DisplayName="Map File Name"
-      Description="Select a map output by setting its file name"
-      Switch="--mapdir= &quot;[value]&quot;" />
-
-    <StringProperty
-      Name="ErrorFile"
-      Category="Files"
-      Subcategory="Output"
-      HelpContext="0"
-      DisplayName="Error File Name"
-      Description="Send error/warning messages to a file by setting its name"
-      Switch="-E &quot;[value]&quot;" />
-
-    <StringProperty
-      Name="SymbolPrefix"
-      Category="Symbols"
-      Subcategory="Symbols"
-      HelpContext="0"
-      DisplayName="External Symbol Prefix"
-      Description="Prepend symbol to all external symbols"
-      Switch="--prefix &quot;[value]&quot;" />
-
-    <StringProperty
-      Name="SymbolSuffix"
-      Category="Symbols"
-      Subcategory="Symbols"
-      HelpContext="0"
-      DisplayName="External Symbol Suffix"
-      Description="Append symbol to all external symbols"
-      Switch="--suffix &quot;[value]&quot;" />
 
     <EnumProperty
       Name="PreProc"
@@ -169,7 +115,7 @@
         DisplayName="Raw"
         Switch="-rraw" />
     </EnumProperty>
-    
+
     <EnumProperty
       Name="Parser"
       Subcategory="Configuration"
@@ -185,13 +131,13 @@
         DisplayName="Gas"
         Switch="-pgas" />
     </EnumProperty>
-    
+
     <StringProperty
       Name="CommandLineTemplate"
       DisplayName="Command Line"
       Visible="False"
       IncludeInCommandLine="False" />
-    
+
     <DynamicEnumProperty
       Name="YASMBeforeTargets"
       Category="General"
@@ -214,7 +160,7 @@
           HasConfigurationCondition="true" />
       </DynamicEnumProperty.DataSource>
     </DynamicEnumProperty>
-    
+
     <DynamicEnumProperty
       Name="YASMAfterTargets"
       Category="General"
@@ -238,25 +184,25 @@
           HasConfigurationCondition="true" />
       </DynamicEnumProperty.DataSource>
     </DynamicEnumProperty>
-    
+
     <StringListProperty
       Name="Outputs"
       DisplayName="Outputs"
       Visible="False"
       IncludeInCommandLine="False" />
-    
+
     <StringProperty
       Name="ExecutionDescription"
       DisplayName="Execution Description"
       Visible="False"
       IncludeInCommandLine="False" />
-    
+
     <StringListProperty
       Name="AdditionalDependencies"
       DisplayName="Additional Dependencies"
       IncludeInCommandLine="False"
       Visible="true" />
-    
+
     <StringProperty
       Subtype="AdditionalOptions"
       Name="AdditionalOptions"
@@ -269,7 +215,7 @@
       </StringProperty.Description>
     </StringProperty>
   </Rule>
-  
+
   <ItemType
     Name="YASM"
     DisplayName="Yasm Assembler" />
