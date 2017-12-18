@@ -32,14 +32,16 @@ Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
 #	pragma comment(lib, "Qt5Core")
 #	pragma comment(lib, "Qt5Network")
 #	pragma comment(lib, "Qt5Gui")
-#	pragma comment(lib, "qtpng")
+#	pragma comment(lib, "qtlibpng")
 #	pragma comment(lib, "Qt5Widgets")
-#	pragma comment(lib, "qtharfbuzzng")
+#	pragma comment(lib, "qtharfbuzz")
 #	pragma comment(lib, "qtmain")
-#	pragma comment(lib, "qtpcre")
+#	pragma comment(lib, "qtpcre2")
 #	pragma comment(lib, "qwindows")
-#	pragma comment(lib, "Qt5PlatformSupport")
-
+#	pragma comment(lib, "Qt5EventDispatcherSupport")
+#	pragma comment(lib, "Qt5ThemeSupport.lib")
+#	pragma comment(lib, "Qt5FontDatabaseSupport")
+#	pragma comment(lib, "Qt5AccessibilitySupport")
 
 
 #include <windows.h>

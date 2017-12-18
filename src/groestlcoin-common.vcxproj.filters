@@ -368,6 +368,15 @@
     <ClCompile Include="rpc\mining.cpp">
       <Filter>Source Files\rpc</Filter>
     </ClCompile>
+    <ClCompile Include="policy\feerate.cpp">
+      <Filter>Source Files\policy</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet\feebumper.cpp">
+      <Filter>Source Files\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="crypto\chacha20.cpp">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
