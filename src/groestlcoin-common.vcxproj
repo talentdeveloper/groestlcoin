@@ -238,7 +238,6 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">.;..\inc;..\foreign\bdb\dbinc;secp256k1</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="addrman.cpp" />
-    <ClCompile Include="amount.cpp" />
     <ClCompile Include="arith_uint256.cpp" />
     <ClCompile Include="base58.cpp" />
     <ClCompile Include="bloom.cpp" />

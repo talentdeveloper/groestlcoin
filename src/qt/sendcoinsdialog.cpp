@@ -617,29 +617,6 @@ void SendCoinsDialog::updateFeeSectionControls()
     ui->customFee               ->setEnabled(ui->radioCustomFee->isChecked() && !ui->checkBoxMinimumFee->isChecked());
 }
 
-void SendCoinsDialog::updateGlobalFeeVariables()
-{
-    if (ui->radioSmartFee->isChecked())
-    {
-        int nConfirmTarget = ui->sliderSmartFee->maximum() - ui->sliderSmartFee->value() + 2;
-        payTxFee = CFeeRate(0);
-
-        // set nMinimumTotalFee to 0 to not accidentally pay a custom fee
-        CoinControlDialog::coinControl->nMinimumTotalFee = 0;
-
-        // show the estimated reuquired time for confirmation
-        ui->confirmationTargetLabel->setText(GUIUtil::formatDurationStr(nConfirmTarget*60)+" / "+tr("%n block(s)", "", nConfirmTarget));
-    }
-    else
-    {
-        payTxFee = CFeeRate(ui->customFee->value());
-
-        // if user has selected to set a minimum absolute fee, pass the value to coincontrol
-        // set nMinimumTotalFee to 0 in case of user has selected that the fee is per KB
-        CoinControlDialog::coinControl->nMinimumTotalFee = ui->radioCustomAtLeast->isChecked() ? ui->customFee->value() : 0;
-    }
-}
-
 void SendCoinsDialog::updateFeeMinimizedLabel()
 {
     if(!model || !model->getOptionsModel())

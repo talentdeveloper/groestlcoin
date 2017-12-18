@@ -411,21 +411,26 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+//!!!?        fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
 
 #ifdef _MSC_VER //!!!
-		checkpointData = CCheckpointData {
+		checkpointData = CCheckpointData{
 #else
-		checkpointData = (CCheckpointData){
+		checkpointData = (CCheckpointData) {
 #endif
-			boost::assign::map_list_of
-			(28888, uint256S("0x00000000000228ce19f55cf0c45e04c7aa5a6a873ed23902b3654c3c49884502"))
-			(58888, uint256S("0x0000000000dd85f4d5471febeb174a3f3f1598ab0af6616e9f266b56272274ef"))
-			(111111, uint256S("0x00000000013de206275ee83f93bee57622335e422acbf126a37020484c6e113c"))
-			(669286, uint256S("0x000000001727e1d13ca7272dee43996efdfc6b3b57a6d2b0c48257ef52f40bcb")),
+			{
+				{28888, uint256S("0x00000000000228ce19f55cf0c45e04c7aa5a6a873ed23902b3654c3c49884502")},
+				{58888, uint256S("0x0000000000dd85f4d5471febeb174a3f3f1598ab0af6616e9f266b56272274ef")},
+				{111111, uint256S("0x00000000013de206275ee83f93bee57622335e422acbf126a37020484c6e113c")},
+				{669286, uint256S("0x000000001727e1d13ca7272dee43996efdfc6b3b57a6d2b0c48257ef52f40bcb")},
+				{1883820, uint256S("0x00000000001a779d54edddf189f100df48b55f1c7d0d086cc86bdd67630ec2f0")},
+			}
+		};
+
+		chainTxData = ChainTxData{
 			1436539093, // * UNIX timestamp of last checkpoint block
 			0,   // * total number of transactions between genesis and last checkpoint
 						//   (the tx=... number in the SetBestChain debug.log lines)
@@ -500,7 +505,7 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
-        fMiningRequiresPeers = false;			//GRS  Testnet can have single node
+//!!!?        fMiningRequiresPeers = false;			//GRS  Testnet can have single node
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
@@ -509,15 +514,18 @@ public:
 #ifdef _MSC_VER
 		checkpointData = CCheckpointData{
 #else
-		checkpointData = (CCheckpointData){
+		checkpointData = (CCheckpointData) {
 #endif
-			boost::assign::map_list_of
-			(0, uint256S("000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")),
+			{
+				{0, uint256S("000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")},
+			}
+		};
+
+		chainTxData = ChainTxData{
 			1440000002,
 			0,
 			10
 		};
-
     }
 };
 static CTestNetParams testNetParams;
@@ -558,7 +566,7 @@ public:
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
 
-        fMiningRequiresPeers = false;
+						 //!!!?        fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
