@@ -11,6 +11,10 @@
 #define CLIENT_VERSION_REVISION 0
 #define CLIENT_VERSION_BUILD 0
 
+#define CLIENT_VERSION_IS_RELEASE true
+
+#define COPYRIGHT_YEAR 2018
+
 #define BUILD_DESC "v2.16.0"
 
 #define COPYRIGHT_HOLDERS "The %s developers"

@@ -377,6 +377,12 @@
     <ClCompile Include="crypto\chacha20.cpp">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
+    <ClCompile Include="consensus\tx_verify.cpp">
+      <Filter>Source Files\consesnsus</Filter>
+    </ClCompile>
+    <ClCompile Include="fs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

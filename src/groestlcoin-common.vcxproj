@@ -195,10 +195,12 @@
     <ClCompile Include="addrdb.cpp" />
     <ClCompile Include="blockencodings.cpp" />
     <ClCompile Include="consensus\merkle.cpp" />
+    <ClCompile Include="consensus\tx_verify.cpp" />
     <ClCompile Include="crypto\aes.cpp" />
     <ClCompile Include="crypto\chacha20.cpp" />
     <ClCompile Include="crypto\hmac_sha256.cpp" />
     <ClCompile Include="dbwrapper.cpp" />
+    <ClCompile Include="fs.cpp" />
     <ClCompile Include="groestlcoin-hash.cpp" />
     <ClCompile Include="httprpc.cpp" />
     <ClCompile Include="httpserver.cpp" />
