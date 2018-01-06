@@ -315,8 +315,8 @@ libgroestlcoin_consensus_a_SOURCES = \
 
 # common: shared between bitcoind, and bitcoin-qt and non-server tools
 libgroestlcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libgroestlbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libgroestlbitcoin_common_a_SOURCES = \
+libgroestlcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libgroestlcoin_common_a_SOURCES = \
   base58.cpp \
   groestlcoin.cpp \
   coins.cpp \
