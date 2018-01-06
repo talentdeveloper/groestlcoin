@@ -8,7 +8,7 @@
 
 #include "amount.h"
 #include "uint256.h"
-
+#include "serialize.h"
 
 namespace XCoin {
 
@@ -96,4 +96,3 @@ public:
 
 
 } // XCoin::
-
