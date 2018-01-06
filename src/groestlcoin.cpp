@@ -20,6 +20,10 @@
 
 #include "chainparamsseeds.h"
 
+#ifdef _MSC_VER
+#	include <intrin.h>
+#endif
+
 extern "C" {
 
 #if !defined(UCFG_LIBEXT) && (defined(_M_IX86) || defined(_M_X64))
