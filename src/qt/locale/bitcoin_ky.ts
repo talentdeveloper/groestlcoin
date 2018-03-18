@@ -28,7 +28,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>GroestlcoinGUI</name>
+    <name>BitcoinGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>&amp;Транзакциялар</translation>
@@ -38,8 +38,8 @@
         <translation>Билдирүүнү &amp;текшерүү...</translation>
     </message>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -101,6 +101,10 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Ката</translation>
     </message>
@@ -148,6 +152,10 @@
     <message>
         <source>none</source>
         <translation>жок</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ката</translation>
     </message>
     </context>
 <context>
@@ -334,7 +342,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Information</source>
         <translation>Маалымат</translation>

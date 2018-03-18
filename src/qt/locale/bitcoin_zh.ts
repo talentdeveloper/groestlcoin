@@ -12,7 +12,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>GroestlcoinGUI</name>
+    <name>BitcoinGUI</name>
     <message>
         <source>Error</source>
         <translation>错误</translation>
@@ -53,6 +53,10 @@
     </context>
 <context>
     <name>OptionsDialog</name>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -107,7 +111,7 @@
         <translation>仅支付全额的%1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Groestlcoin address</source>
+        <source>Warning: Invalid Bitcoin address</source>
         <translation>警告：比特币地址无效</translation>
     </message>
     </context>
@@ -166,7 +170,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Transaction too large for fee policy</source>
         <translation>根据费率标准，本次转账超额</translation>
@@ -178,10 +182,6 @@
     <message>
         <source>Warning</source>
         <translation>警告</translation>
-    </message>
-    <message>
-        <source>Loading addresses...</source>
-        <translation>正在载入地址...</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

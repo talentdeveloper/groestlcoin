@@ -3,19 +3,19 @@ Unauthenticated REST Interface
 
 The REST API can be enabled with the `-rest` option.
 
-The interface runs on the same port as the JSON-RPC interface, by default port 1441 for mainnet and port 17766 for testnet.
+The interface runs on the same port as the JSON-RPC interface, by default port 8332 for mainnet, port 17766 for testnet,
 
 Supported API
 -------------
 
-####Transactions
+#### Transactions
 `GET /rest/tx/<TX-HASH>.<bin|hex|json>`
 
 Given a transaction hash: returns a transaction in binary, hex-encoded binary, or JSON formats.
 
 For full TX query capability, one must enable the transaction index via "txindex=1" command line / configuration option.
 
-####Blocks
+#### Blocks
 `GET /rest/block/<BLOCK-HASH>.<bin|hex|json>`
 `GET /rest/block/notxdetails/<BLOCK-HASH>.<bin|hex|json>`
 
@@ -25,12 +25,12 @@ The HTTP request and response are both handled entirely in-memory, thus making m
 
 With the /notxdetails/ option JSON response will only contain the transaction hash instead of the complete transaction details. The option only affects the JSON response.
 
-####Blockheaders
+#### Blockheaders
 `GET /rest/headers/<COUNT>/<BLOCK-HASH>.<bin|hex|json>`
 
 Given a block hash: returns <COUNT> amount of blockheaders in upward direction.
 
-####Chaininfos
+#### Chaininfos
 `GET /rest/chaininfo.json`
 
 Returns various state info regarding block chain processing.
@@ -48,7 +48,7 @@ Only supports JSON as output format.
 * softforks : (array) status of softforks in progress
 * bip9_softforks : (object) status of BIP9 softforks in progress
 
-####Query UTXO set
+#### Query UTXO set
 `GET /rest/getutxos/<checkmempool>/<txid>-<n>/<txid>-<n>/.../<txid>-<n>.<bin|hex|json>`
 
 The getutxo command allows querying of the UTXO set given a set of outpoints.
@@ -66,7 +66,7 @@ $ curl localhost:17766/rest/getutxos/checkmempool/b2cdfd7b89def827ff8af7cd9bff76
       {
          "txvers" : 1
          "height" : 2147483647,
-         "value" : 8.8687,		 
+         "value" : 8.8687,
          "scriptPubKey" : {
             "asm" : "OP_DUP OP_HASH160 1c7cebb529b86a04c683dfa87be49de35bcf589e OP_EQUALVERIFY OP_CHECKSIG",
             "hex" : "76a9141c7cebb529b86a04c683dfa87be49de35bcf589e88ac",
@@ -81,7 +81,7 @@ $ curl localhost:17766/rest/getutxos/checkmempool/b2cdfd7b89def827ff8af7cd9bff76
 }
 ```
 
-####Memory pool
+#### Memory pool
 `GET /rest/mempool/info.json`
 
 Returns various information about the TX mempool.

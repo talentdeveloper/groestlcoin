@@ -12,10 +12,10 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>GroestlcoinGUI</name>
+    <name>BitcoinGUI</name>
     <message>
-        <source>Groestlcoin</source>
-        <translation>Groestlcoin</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     </context>
 <context>
@@ -32,6 +32,10 @@
     </context>
 <context>
     <name>Intro</name>
+    <message>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
+    </message>
     </context>
 <context>
     <name>ModalOverlay</name>
@@ -154,10 +158,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>groestlcoin-core</name>
+    <name>bitcoin-core</name>
     <message>
-        <source>Groestlcoin Core</source>
-        <translation>Groestlcoin Jezrga</translation>
+        <source>Bitcoin Core</source>
+        <translation>Bitcoin Jezrga</translation>
     </message>
     </context>
 </TS>

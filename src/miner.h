@@ -1,18 +1,18 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITCOIN_MINER_H
 #define BITCOIN_MINER_H
 
-#include "primitives/block.h"
-#include "txmempool.h"
+#include <primitives/block.h>
+#include <txmempool.h>
 
 #include <stdint.h>
 #include <memory>
-#include "boost/multi_index_container.hpp"
-#include "boost/multi_index/ordered_index.hpp"
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/ordered_index.hpp>
 
 class CBlockIndex;
 class CChainParams;
@@ -33,13 +33,19 @@ struct CBlockTemplate
 // Container for tracking updates to ancestor feerate as we include (parent)
 // transactions in a block
 struct CTxMemPoolModifiedEntry {
-    CTxMemPoolModifiedEntry(CTxMemPool::txiter entry)
+    explicit CTxMemPoolModifiedEntry(CTxMemPool::txiter entry)
     {
         iter = entry;
         nSizeWithAncestors = entry->GetSizeWithAncestors();
         nModFeesWithAncestors = entry->GetModFeesWithAncestors();
         nSigOpCostWithAncestors = entry->GetSigOpCostWithAncestors();
     }
+
+    int64_t GetModifiedFee() const { return iter->GetModifiedFee(); }
+    uint64_t GetSizeWithAncestors() const { return nSizeWithAncestors; }
+    CAmount GetModFeesWithAncestors() const { return nModFeesWithAncestors; }
+    size_t GetTxSize() const { return iter->GetTxSize(); }
+    const CTransaction& GetTx() const { return iter->GetTx(); }
 
     CTxMemPool::txiter iter;
     uint64_t nSizeWithAncestors;
@@ -86,7 +92,7 @@ struct CompareModifiedEntry {
 // This is sufficient to sort an ancestor package in an order that is valid
 // to appear in a block.
 struct CompareTxIterByAncestorCount {
-    bool operator()(const CTxMemPool::txiter &a, const CTxMemPool::txiter &b)
+    bool operator()(const CTxMemPool::txiter &a, const CTxMemPool::txiter &b) const
     {
         if (a->GetCountWithAncestors() != b->GetCountWithAncestors())
             return a->GetCountWithAncestors() < b->GetCountWithAncestors();
@@ -106,7 +112,7 @@ typedef boost::multi_index_container<
             // Reuse same tag from CTxMemPool's similar index
             boost::multi_index::tag<ancestor_score>,
             boost::multi_index::identity<CTxMemPoolModifiedEntry>,
-            CompareModifiedEntry
+            CompareTxMemPoolEntryByAncestorFee
         >
     >
 > indexed_modified_transaction_set;
@@ -116,7 +122,7 @@ typedef indexed_modified_transaction_set::index<ancestor_score>::type::iterator 
 
 struct update_for_parent_inclusion
 {
-    update_for_parent_inclusion(CTxMemPool::txiter it) : iter(it) {}
+    explicit update_for_parent_inclusion(CTxMemPool::txiter it) : iter(it) {}
 
     void operator() (CTxMemPoolModifiedEntry &e)
     {
@@ -158,11 +164,10 @@ public:
     struct Options {
         Options();
         size_t nBlockMaxWeight;
-        size_t nBlockMaxSize;
         CFeeRate blockMinFeeRate;
     };
 
-    BlockAssembler(const CChainParams& params);
+    explicit BlockAssembler(const CChainParams& params);
     BlockAssembler(const CChainParams& params, const Options& options);
 
     /** Construct a new block template with coinbase to scriptPubKeyIn */
@@ -185,7 +190,7 @@ private:
     /** Remove confirmed (inBlock) entries from given set */
     void onlyUnconfirmed(CTxMemPool::setEntries& testSet);
     /** Test if a new package would "fit" in the block */
-    bool TestPackage(uint64_t packageSize, int64_t packageSigOpsCost);
+    bool TestPackage(uint64_t packageSize, int64_t packageSigOpsCost) const;
     /** Perform checks on each transaction in a package:
       * locktime, premature-witness, serialized size (if necessary)
       * These checks should always succeed, and they're here

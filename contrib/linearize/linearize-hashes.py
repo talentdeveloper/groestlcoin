@@ -2,7 +2,7 @@
 #
 # linearize-hashes.py:  List blocks in a linear, no-fork version of the chain.
 #
-# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Copyright (c) 2013-2017 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -69,31 +69,31 @@ class BitcoinRPC:
         return 'error' in resp_obj and resp_obj['error'] is not None
 
 def get_block_hashes(settings, max_blocks_per_call=10000):
-    rpc = BitcoinRPC(settings['host'], settings['port'],
-             settings['rpcuser'], settings['rpcpassword'])
+	rpc = BitcoinRPC(settings['host'], settings['port'],
+			 settings['rpcuser'], settings['rpcpassword'])
 
-    height = settings['min_height']
-    while height < settings['max_height']+1:
-        num_blocks = min(settings['max_height']+1-height, max_blocks_per_call)
-        batch = []
-        for x in range(num_blocks):
-            batch.append(rpc.build_request(x, 'getblockhash', [height + x]))
+	height = settings['min_height']
+	while height < settings['max_height']+1:
+		num_blocks = min(settings['max_height']+1-height, max_blocks_per_call)
+		batch = []
+		for x in range(num_blocks):
+			batch.append(rpc.build_request(x, 'getblockhash', [height + x]))
 
-        reply = rpc.execute(batch)
-        if reply is None:
-            print('Cannot continue. Program will halt.')
-            return None
+		reply = rpc.execute(batch)
+		if reply is None:
+			print('Cannot continue. Program will halt.')
+			return None
 
-        for x,resp_obj in enumerate(reply):
-            if rpc.response_is_error(resp_obj):
-                print('JSON-RPC: error at height', height+x, ': ', resp_obj['error'], file=sys.stderr)
-                exit(1)
-            assert(resp_obj['id'] == x) # assume replies are in-sequence
-            if settings['rev_hash_bytes'] == 'true':
-                resp_obj['result'] = hex_switchEndian(resp_obj['result'])
-            print(resp_obj['result'])
+		for x,resp_obj in enumerate(reply):
+			if rpc.response_is_error(resp_obj):
+				print('JSON-RPC: error at height', height+x, ': ', resp_obj['error'], file=sys.stderr)
+				sys.exit(1)
+			assert(resp_obj['id'] == x) # assume replies are in-sequence
+			if settings['rev_hash_bytes'] == 'true':
+				resp_obj['result'] = hex_switchEndian(resp_obj['result'])
+			print(resp_obj['result'])
 
-        height += num_blocks
+		height += num_blocks
 
 def get_rpc_cookie():
 	# Open the cookie file
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 	if 'datadir' in settings and not use_userpass:
 		use_datadir = True
 	if not use_userpass and not use_datadir:
-		print("Missing datadir or username and/or password in cfg file", file=stderr)
+		print("Missing datadir or username and/or password in cfg file", file=sys.stderr)
 		sys.exit(1)
 
 	settings['port'] = int(settings['port'])
