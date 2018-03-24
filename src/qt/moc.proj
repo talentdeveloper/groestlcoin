@@ -77,11 +77,13 @@
     <Ts Include="locale/bitcoin_ach.ts"         />
     <Ts Include="locale/bitcoin_af.ts"          />
     <Ts Include="locale/bitcoin_af_ZA.ts"       />
+    <Ts Include="locale/bitcoin_am.ts"          />
     <Ts Include="locale/bitcoin_ar.ts"          />
     <Ts Include="locale/bitcoin_be_BY.ts"       />
     <Ts Include="locale/bitcoin_bg.ts"          />
     <Ts Include="locale/bitcoin_bg_BG.ts"       />
     <Ts Include="locale/bitcoin_bn.ts"          />
+    <Ts Include="locale/bitcoin_bs.ts"          />
     <Ts Include="locale/bitcoin_ca.ts"          />
     <Ts Include="locale/bitcoin_ca@valencia.ts" />
     <Ts Include="locale/bitcoin_ca_ES.ts"       />
@@ -125,14 +127,18 @@
     <Ts Include="locale/bitcoin_hi_IN.ts"       />
     <Ts Include="locale/bitcoin_hr.ts"          />
     <Ts Include="locale/bitcoin_hu.ts"          />
+    <Ts Include="locale/bitcoin_hu_HU.ts"          />
     <Ts Include="locale/bitcoin_id.ts"          />
     <Ts Include="locale/bitcoin_id_ID.ts"       />
+    <Ts Include="locale/bitcoin_is.ts"          />
     <Ts Include="locale/bitcoin_it.ts"          />
     <Ts Include="locale/bitcoin_it_IT.ts"       />
     <Ts Include="locale/bitcoin_ja.ts"          />
     <Ts Include="locale/bitcoin_ja_JP.ts"       />
     <Ts Include="locale/bitcoin_ka.ts"          />
     <Ts Include="locale/bitcoin_kk_KZ.ts"       />
+    <Ts Include="locale/bitcoin_km_KH.ts"       />
+    <Ts Include="locale/bitcoin_ko.ts"       />
     <Ts Include="locale/bitcoin_ko_KR.ts"       />
     <Ts Include="locale/bitcoin_ku_IQ.ts"       />
     <Ts Include="locale/bitcoin_ky.ts"          />
@@ -140,7 +146,10 @@
     <Ts Include="locale/bitcoin_lt.ts"          />
     <Ts Include="locale/bitcoin_lv_LV.ts"       />
     <Ts Include="locale/bitcoin_mk_MK.ts"       />
+    <Ts Include="locale/bitcoin_ml.ts"          />
     <Ts Include="locale/bitcoin_mn.ts"          />
+    <Ts Include="locale/bitcoin_mr_IN.ts"       />
+    <Ts Include="locale/bitcoin_ms.ts"       />
     <Ts Include="locale/bitcoin_ms_MY.ts"       />
     <Ts Include="locale/bitcoin_my.ts"          />
     <Ts Include="locale/bitcoin_nb.ts"          />
@@ -150,6 +159,8 @@
     <Ts Include="locale/bitcoin_nl_NL.ts"       />
     <Ts Include="locale/bitcoin_pam.ts"         />
     <Ts Include="locale/bitcoin_pl.ts"          />
+    <Ts Include="locale/bitcoin_pl_PL.ts"          />
+    <Ts Include="locale/bitcoin_pt.ts"       />
     <Ts Include="locale/bitcoin_pt_BR.ts"       />
     <Ts Include="locale/bitcoin_pt_PT.ts"       />
     <Ts Include="locale/bitcoin_ro.ts"          />
@@ -160,11 +171,13 @@
     <Ts Include="locale/bitcoin_si.ts"          />
     <Ts Include="locale/bitcoin_sk.ts"          />
     <Ts Include="locale/bitcoin_sl_SI.ts"       />
+    <Ts Include="locale/bitcoin_sn.ts"          />
     <Ts Include="locale/bitcoin_sq.ts"          />
     <Ts Include="locale/bitcoin_sr.ts"          />
     <Ts Include="locale/bitcoin_sr@latin.ts"    />
     <Ts Include="locale/bitcoin_sv.ts"          />
     <Ts Include="locale/bitcoin_ta.ts"          />
+    <Ts Include="locale/bitcoin_ta_IN.ts"          />
     <Ts Include="locale/bitcoin_te.ts"          />
     <Ts Include="locale/bitcoin_th.ts"          />
     <Ts Include="locale/bitcoin_th_TH.ts"       />
@@ -177,6 +190,7 @@
     <Ts Include="locale/bitcoin_vi_VN.ts"       />
     <Ts Include="locale/bitcoin_zh.ts"          />
     <Ts Include="locale/bitcoin_zh_CN.ts"       />
+    <Ts Include="locale/bitcoin_zh-Hans.ts"       />
     <Ts Include="locale/bitcoin_zh_HK.ts"       />
     <Ts Include="locale/bitcoin_zh_TW.ts"       />
 
