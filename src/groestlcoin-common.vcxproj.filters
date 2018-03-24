@@ -383,6 +383,24 @@
     <ClCompile Include="fs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="univalue\lib\univalue_get.cpp">
+      <Filter>Source Files\univalue</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet\init.cpp">
+      <Filter>Source Files\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc\util.cpp">
+      <Filter>Source Files\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc\safemode.cpp">
+      <Filter>Source Files\rpc</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet\walletutil.cpp">
+      <Filter>Source Files\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet\fees.cpp">
+      <Filter>Source Files\wallet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
