@@ -192,6 +192,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="addrdb.cpp" />
+    <ClCompile Include="bech32.cpp" />
     <ClCompile Include="blockencodings.cpp" />
     <ClCompile Include="consensus\merkle.cpp" />
     <ClCompile Include="consensus\tx_verify.cpp" />

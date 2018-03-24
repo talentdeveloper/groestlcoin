@@ -401,6 +401,9 @@
     <ClCompile Include="wallet\fees.cpp">
       <Filter>Source Files\wallet</Filter>
     </ClCompile>
+    <ClCompile Include="bech32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
