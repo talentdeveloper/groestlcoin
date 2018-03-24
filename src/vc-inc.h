@@ -73,6 +73,7 @@
 #pragma warning(disable: 4710) // function not inlined
 #pragma warning(disable: 4711) // function selected for inline expansion
 #pragma warning(disable: 4714) // function <id> marked as __forceinline not inlined
+#pragma warning(disable: 4715) // not all control paths return a value
 #pragma warning(disable: 4738) // storing 32-bit float result in memory, possible loss of performance
 #pragma warning(disable: 4793) // causes native code generation for function
 #pragma warning(disable: 4800) // forcing value to bool 'true' or 'false' of class (performance warning)
