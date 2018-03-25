@@ -329,7 +329,6 @@ libgroestlcoin_common_a_SOURCES = \
   base58.cpp \
   groestlcoin.cpp \
   bech32.cpp \
-  chainparams.cpp \
   coins.cpp \
   compressor.cpp \
   core_read.cpp \
