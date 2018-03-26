@@ -211,6 +211,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\mask.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -221,6 +225,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\mmask.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -231,6 +239,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\mqrspec.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -241,6 +253,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\qrencode.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -259,6 +275,10 @@
       </PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">
       </PreprocessorDefinitions>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\qrinput.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -269,6 +289,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\qrspec.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -279,6 +303,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\rscode.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -289,6 +317,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\foreign\qrencode\split.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">NotUsing</PrecompiledHeader>
@@ -299,6 +331,10 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">qrcode-config.h</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">qrcode-config.h</ForcedIncludeFiles>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="qt\addressbookpage.cpp" />
     <ClCompile Include="qt\addresstablemodel.cpp" />

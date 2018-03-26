@@ -140,6 +140,7 @@ static void RandAddSeedPerfmon()
     RandAddSeed();
 
 #ifdef WIN32
+	return; //!!!P Crashes
     // Don't need this on Linux, OpenSSL automatically uses /dev/urandom
     // Seed with the entire set of perfmon data
 

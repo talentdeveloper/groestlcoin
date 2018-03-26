@@ -22,7 +22,6 @@
     <ProjectGuid>{1630C0CD-099D-4FB6-A57B-1D164DEC0FB1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>grs</RootNamespace>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
   </PropertyGroup>
   <Import Project="cfg\vs\vs-ver.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'" Label="Configuration">
@@ -193,6 +192,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="addrdb.cpp" />
+    <ClCompile Include="bech32.cpp" />
     <ClCompile Include="blockencodings.cpp" />
     <ClCompile Include="consensus\merkle.cpp" />
     <ClCompile Include="consensus\tx_verify.cpp" />
@@ -225,7 +225,9 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="rpc\rawtransaction.cpp" />
+    <ClCompile Include="rpc\safemode.cpp" />
     <ClCompile Include="rpc\server.cpp" />
+    <ClCompile Include="rpc\util.cpp" />
     <ClCompile Include="script\ismine.cpp" />
     <ClCompile Include="secp256k1\src\secp256k1.c">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">libsecp256k1-cfg.h</ForcedIncludeFiles>
@@ -328,7 +330,12 @@
     </ClCompile>
     <ClCompile Include="groestlcoin.cpp" />
     <ClCompile Include="hash.cpp" />
-    <ClCompile Include="init.cpp" />
+    <ClCompile Include="init.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="key.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">..\inc;secp256k1\include</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">..\inc;secp256k1\include</AdditionalIncludeDirectories>
@@ -409,6 +416,7 @@
     <ClCompile Include="uint256.cpp" />
     <ClCompile Include="ui_interface.cpp" />
     <ClCompile Include="univalue\lib\univalue.cpp" />
+    <ClCompile Include="univalue\lib\univalue_get.cpp" />
     <ClCompile Include="univalue\lib\univalue_read.cpp" />
     <ClCompile Include="univalue\lib\univalue_write.cpp" />
     <ClCompile Include="util.cpp" />
@@ -421,10 +429,18 @@
     <ClCompile Include="wallet\crypter.cpp" />
     <ClCompile Include="wallet\db.cpp" />
     <ClCompile Include="wallet\feebumper.cpp" />
+    <ClCompile Include="wallet\fees.cpp" />
+    <ClCompile Include="wallet\init.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|Win32'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|Win32'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='D_St|x64'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='R_St|x64'">$(IntDir)\%(RelativeDir)</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="wallet\rpcdump.cpp" />
     <ClCompile Include="wallet\rpcwallet.cpp" />
     <ClCompile Include="wallet\wallet.cpp" />
     <ClCompile Include="wallet\walletdb.cpp" />
+    <ClCompile Include="wallet\walletutil.cpp" />
     <ClCompile Include="warnings.cpp" />
   </ItemGroup>
   <ItemGroup>

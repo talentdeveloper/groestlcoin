@@ -336,6 +336,7 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
+		consensus.BIP16Height = 1900000;
 		consensus.BIP34Height = 800000;
 		consensus.BIP34Hash = uint256S("0x0000000007f3f37410d5f7e71a07bf09bb802d5af6726fc891f0248ad857708c");
 		consensus.BIP66Height = 800000;
@@ -406,11 +407,11 @@ public:
 		assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
 		assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
 
-        vSeeds.push_back(CDNSSeedData("groestlcoin.org", "groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("electrum1.groestlcoin.org", "electrum1.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("electrum2.groestlcoin.org", "electrum2.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("jswallet.groestlcoin.org", "jswallet.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("groestlsight.groestlcoin.org", "groestlsight.groestlcoin.org"));
+        vSeeds.push_back("groestlcoin.org");
+		vSeeds.push_back("electrum1.groestlcoin.org");
+		vSeeds.push_back("electrum2.groestlcoin.org");
+		vSeeds.push_back("jswallet.groestlcoin.org");
+		vSeeds.push_back("groestlsight.groestlcoin.org");
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -503,8 +504,8 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-		vSeeds.push_back(CDNSSeedData("testnet1.groestlcoin.org", "testnet1.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("testnet2.groestlcoin.org", "testnet2.groestlcoin.org"));
+		vSeeds.push_back("testnet1.groestlcoin.org");
+		vSeeds.push_back("testnet2.groestlcoin.org");
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);

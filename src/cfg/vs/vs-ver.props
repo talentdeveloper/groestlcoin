@@ -10,7 +10,7 @@
         <PlatformToolset Condition="'$(PlatformToolset)' == '' AND Exists('$(VCTargetsPath)\..\V110') ">v110</PlatformToolset>
 
         <WindowsTargetPlatformVersion Condition="'$(PlatformToolset)' == 'v140'">10.0.10240.0</WindowsTargetPlatformVersion>
-        <WindowsTargetPlatformVersion Condition="'$(PlatformToolset)' == 'v141'">10.0.10240.0</WindowsTargetPlatformVersion>
+        <WindowsTargetPlatformVersion Condition="'$(PlatformToolset)' == 'v141'">10.0.16299.0</WindowsTargetPlatformVersion>
 
         <YasmPath>$(MSBuildThisFileDirectory)..\..\..\tools\</YasmPath>
   </PropertyGroup>
@@ -22,6 +22,7 @@
   <ItemDefinitionGroup>
         <ClCompile>
             <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+            <ObjectFileName>$(IntDir)\%(RelativeDir)</ObjectFileName>
         </ClCompile>
         <Link>
             <LargeAddressAware Condition="'$(Platform)'=='Win32'">true</LargeAddressAware>
