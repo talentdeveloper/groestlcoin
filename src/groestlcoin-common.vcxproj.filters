@@ -78,6 +78,9 @@
     <Filter Include="Header Files\consensus">
       <UniqueIdentifier>{12e57f3a-1b84-47a0-be0a-572c087a99eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\zmq">
+      <UniqueIdentifier>{ca638040-b807-486d-aac5-c50cf3680c9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arith_uint256.cpp">
@@ -403,6 +406,15 @@
     </ClCompile>
     <ClCompile Include="bech32.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="zmq\zmqnotificationinterface.cpp">
+      <Filter>Source Files\zmq</Filter>
+    </ClCompile>
+    <ClCompile Include="zmq\zmqabstractnotifier.cpp">
+      <Filter>Source Files\zmq</Filter>
+    </ClCompile>
+    <ClCompile Include="zmq\zmqpublishnotifier.cpp">
+      <Filter>Source Files\zmq</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

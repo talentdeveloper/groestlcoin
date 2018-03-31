@@ -442,6 +442,9 @@
     <ClCompile Include="wallet\walletdb.cpp" />
     <ClCompile Include="wallet\walletutil.cpp" />
     <ClCompile Include="warnings.cpp" />
+    <ClCompile Include="zmq\zmqabstractnotifier.cpp" />
+    <ClCompile Include="zmq\zmqnotificationinterface.cpp" />
+    <ClCompile Include="zmq\zmqpublishnotifier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="addrman.h" />

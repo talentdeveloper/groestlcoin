@@ -55,3 +55,6 @@
 #define ENABLE_WALLET
 #define USE_QRCODE
 #define USE_UPNP 1
+
+#define ENABLE_ZMQ 1
+#define ZMQ_STATIC

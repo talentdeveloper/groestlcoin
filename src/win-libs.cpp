@@ -15,6 +15,10 @@
 #pragma comment(lib, "openssl")
 #pragma comment(lib, "libevent")
 
+#if ENABLE_ZMQ
+#	pragma comment(lib, "czmq")
+#endif
+
 #ifdef USE_UPNP
 #	pragma comment(lib, "miniupnpc")
 #endif
