@@ -543,7 +543,7 @@ static CTestNetParams testNetParams;
 /**
  * Regression test
  */
-class CRegTestParams : public CTestNetParams {
+class CRegTestParams : public CMainParams {
 public:
     CRegTestParams() {
         strNetworkID = "regtest";
@@ -554,16 +554,13 @@ public:
 		consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
 		consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
 		consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
-		consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
+		consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 		consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
 		consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 0;
-		consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
+		consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 0;
-		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 999999999999ULL;
-		consensus.vDeployments[Consensus::DEPLOYMENT_BIP65].bit = 1;
-		consensus.vDeployments[Consensus::DEPLOYMENT_BIP65].nStartTime = 0;
-		consensus.vDeployments[Consensus::DEPLOYMENT_BIP65].nTimeout = 999999999999ULL;
+		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
+		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
 		pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0xbf;
@@ -573,27 +570,40 @@ public:
 
         nPruneAfterHeight = 1000;
 
-        vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
-        vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
+		genesis = CreateGenesisBlock(1440000002, 6556309, 0x1e00ffff, 3, 0);
+		consensus.hashGenesisBlock = genesis.GetHash();
+		assert(consensus.hashGenesisBlock == uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36"));
 
-						 //!!!?        fMiningRequiresPeers = false;
+		vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
+		vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
+
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
 
-		/*!!!R
 #ifdef _MSC_VER
-		checkpointData = Checkpoints::CCheckpointData{
+		checkpointData = CCheckpointData{
 #else
-		checkpointData = (Checkpoints::CCheckpointData) {
+		checkpointData = (CCheckpointData) {
 #endif
-			boost::assign::map_list_of
-			(0, uint256S("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206")),
+			{
+				{0, uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")},
+			}
+		};
+
+		chainTxData = ChainTxData{
 			0,
 			0,
 			0
 		};
-		*/
+
+		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
+		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
+		base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
+		base58Prefixes[EXT_PUBLIC_KEY] = { 0x04, 0x35, 0x87, 0xCF };
+		base58Prefixes[EXT_SECRET_KEY] = { 0x04, 0x35, 0x83, 0x94 };
+
+		bech32_hrp = "grrt";
     }
 };
 
@@ -610,8 +620,8 @@ std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain)
 		return std::unique_ptr<CChainParams>(new CMainParams());
 	else if (chain == CBaseChainParams::TESTNET)
 		return std::unique_ptr<CChainParams>(new CTestNetParams());
-//!!!T		else if (chain == CBaseChainParams::REGTEST)
-//!!!T			return std::unique_ptr<CChainParams>(new CRegTestParams());
+	else if (chain == CBaseChainParams::REGTEST)
+		return std::unique_ptr<CChainParams>(new CRegTestParams());
 	throw std::runtime_error(strprintf("%s: Unknown chain %s.", __func__, chain));
 }
 
