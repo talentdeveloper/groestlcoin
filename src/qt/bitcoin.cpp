@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2017 The Bitcoin Core developers
+﻿// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -76,6 +76,61 @@ Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin);
 #if QT_VERSION < 0x050000
 #include <QTextCodec>
 #endif
+
+
+struct TranslationTable {
+	const wchar_t *From, *To;
+};
+
+static std::vector<TranslationTable> g_translationTable = {
+	{	 L"Bitcoin"		, L"Groestlcoin"
+	}, { L"bitcoin"		, L"groestlcoin"
+	}, { L"BITCOIN"		, L"GROESTLCOIN"
+	}, { L"БИТКОИНЫ"	, L"ГРЁСТЛКОИНЫ"		// ru
+	}, { L"биткоины"	, L"грёстлкоины"		// ru
+	}, { L"біткойни"	, L"гростлкойни"		// ua
+	}, { L"БІТКОІНИ"	, L"ГРОСТЛКОІНИ"		// ua
+	}, { L"Биткоин"		, L"Грoстлкоин"			// bg
+	}, { L"Биткойн"		, L"Грoстлкоин"			// bg
+	}, { L"биткойн"		, L"грoстлкоин"			// bg
+	}, { L"ビット"		, L"グルシュル"			// jp
+	}, { L"비트"			, L"그로에셀"			// ko
+	}, { L"复述"			, L"闪电"				// cn
+	}, { L"غرسلكوي"		, L"غرسلكوين"			// ar
+	}
+};
+
+static class GroestlcoinTranslatorInit {
+public:
+	struct QTranslationTable {
+		QString From, To;
+	};
+
+	std::vector<QTranslationTable> m_translationTable;
+
+	GroestlcoinTranslatorInit()
+	{
+		for (const auto& t : g_translationTable) {
+			QTranslationTable x = { QString::fromWCharArray(t.From), QString::fromWCharArray(t.To) };
+			m_translationTable.push_back(x);
+		}
+	}
+} g_GroestlcoinTranslatorInit;
+
+class GroestlcoinTranslator : public QTranslator
+{
+public:
+	QString translate(const char *context, const char *sourceText, const char *disambiguation = Q_NULLPTR, int n = -1) const override
+	{
+		auto s = QTranslator::translate(context, sourceText, disambiguation, n);
+		if (s.isNull())
+			s = QString::fromUtf8(sourceText);
+		for (const auto& t : g_GroestlcoinTranslatorInit.m_translationTable)
+			s.replace(t.From, t.To);
+		return s;
+	}
+};
+
 
 // Declare meta types used for QMetaObject::invokeMethod
 Q_DECLARE_METATYPE(bool*)
@@ -597,7 +652,7 @@ int main(int argc, char *argv[])
 
     /// 4. Initialization of translations, so that intro dialog is in user's language
     // Now that QSettings are accessible, initialize translations
-    QTranslator qtTranslatorBase, qtTranslator, translatorBase, translator;
+    GroestlcoinTranslator qtTranslatorBase, qtTranslator, translatorBase, translator;
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
     translationInterface.Translate.connect(Translate);
 
