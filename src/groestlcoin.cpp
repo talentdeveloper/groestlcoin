@@ -367,6 +367,12 @@ public:
 		consensus.vDeployments[Consensus::DEPLOYMENT_BIP65].nStartTime = 1484956800; // Jan 21, 2017
 		consensus.vDeployments[Consensus::DEPLOYMENT_BIP65].nTimeout = 1498003200; // Jun 21, 2017
 
+        // The best chain should have at least this much work.
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000ffffffffffff");
+
+        // By default assume that the signatures in ancestors of this block are valid.
+        consensus.defaultAssumeValid = uint256S("0x0000000000002cb0ac72cf044034b93d43244501e496e55576aa5c5111bdc362"); //2035383
+
 		/**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
@@ -483,6 +489,13 @@ public:
 		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1498003200; // Jun 21, 2017
 
 		consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+
+        // The best chain should have at least this much work.
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000000000ffff");
+
+        // By default assume that the signatures in ancestors of this block are valid.
+        consensus.defaultAssumeValid = uint256S("0x000000d6c9c013173e2313f24edc791a9134d379522901f7e40d9fc4f0e25bb0"); //525313
+
         pchMessageStart[0] = 0x0b;
         pchMessageStart[1] = 0x11;
         pchMessageStart[2] = 0x09;
@@ -566,6 +579,12 @@ public:
 		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
 		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
 		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
+
+        // The best chain should have at least this much work.
+        consensus.nMinimumChainWork = uint256S("0x00");
+
+        // By default assume that the signatures in ancestors of this block are valid.
+        consensus.defaultAssumeValid = uint256S("0x00");
 
 		pchMessageStart[0] = 0xfa;
         pchMessageStart[1] = 0xbf;
