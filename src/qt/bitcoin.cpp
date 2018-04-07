@@ -85,6 +85,8 @@ struct TranslationTable {
 static std::vector<TranslationTable> g_translationTable = {
 	{    L"Bitcoin"		, L"Groestlcoin"
 	}, { L"bitcoin"		, L"groestlcoin"
+	}, { L"satoshi"		, L"gro"
+	}, { L"sat "		, L"gro "
 	}, { L"BITCOIN"		, L"GROESTLCOIN"
 	}, { L"БИТКОИНЫ"	, L"ГРЁСТЛКОИНЫ"		// ru
 	}, { L"биткоины"	, L"грёстлкоины"		// ru
