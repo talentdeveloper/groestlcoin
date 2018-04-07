@@ -408,6 +408,10 @@ BitcoinApplication::BitcoinApplication(int &argc, char **argv):
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
     assert(platformStyle);
+
+    auto pal = palette();
+    pal.setColor(QPalette::Window, Qt::white);
+    setPalette(pal);
 }
 
 BitcoinApplication::~BitcoinApplication()
