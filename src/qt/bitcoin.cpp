@@ -125,10 +125,15 @@ public:
 	QString translate(const char *context, const char *sourceText, const char *disambiguation = Q_NULLPTR, int n = -1) const override
 	{
 		auto s = QTranslator::translate(context, sourceText, disambiguation, n);
-		if (s.isNull())
-			s = QString::fromUtf8(sourceText);
-		for (const auto& t : g_GroestlcoinTranslatorInit.m_translationTable)
-			s.replace(t.From, t.To);
+        if (strstr(sourceText, "coin")
+            || strstr(sourceText, "COIN")
+            || strstr(sourceText, "sat"))
+        {
+            if (s.isNull())
+                s = QString::fromUtf8(sourceText);
+            for (const auto& t : g_GroestlcoinTranslatorInit.m_translationTable)
+                s.replace(t.From, t.To);
+        }
 		return s;
 	}
 };
