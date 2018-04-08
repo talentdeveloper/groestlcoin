@@ -3063,7 +3063,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                             "1. \"hexstring\"           (string, required) The hex string of the raw transaction\n"
                             "2. options                 (object, optional)\n"
                             "   {\n"
-                            "     \"changeAddress\"          (string, optional, default pool address) The bitcoin address to receive the change\n"
+                            "     \"changeAddress\"          (string, optional, default pool address) The groestlcoin address to receive the change\n"
                             "     \"changePosition\"         (numeric, optional, default random) The index of the change output\n"
                             "     \"change_type\"            (string, optional) The output type to use. Only valid if changeAddress is not specified. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -changetype.\n"
                             "     \"includeWatching\"        (boolean, optional, default false) Also select inputs which are watch only\n"
