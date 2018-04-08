@@ -471,10 +471,10 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
             "\nResult:\n"
             "\"txid\"                  (string) The transaction id.\n"
             "\nExamples:\n"
-            + HelpExampleCli("sendtoaddress", "\"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 0.1")
-            + HelpExampleCli("sendtoaddress", "\"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 0.1 \"donation\" \"seans outpost\"")
-            + HelpExampleCli("sendtoaddress", "\"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 0.1 \"\" \"\" true")
-            + HelpExampleRpc("sendtoaddress", "\"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\", 0.1, \"donation\", \"seans outpost\"")
+            + HelpExampleCli("sendtoaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 0.1")
+            + HelpExampleCli("sendtoaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 0.1 \"donation\" \"seans outpost\"")
+            + HelpExampleCli("sendtoaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 0.1 \"\" \"\" true")
+            + HelpExampleRpc("sendtoaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\", 0.1, \"donation\", \"seans outpost\"")
         );
 
     ObserveSafeMode();
@@ -966,11 +966,11 @@ UniValue sendfrom(const JSONRPCRequest& request)
             "\"txid\"                 (string) The transaction id.\n"
             "\nExamples:\n"
             "\nSend 0.01 " + CURRENCY_UNIT + " from the default account to the address, must have at least 1 confirmation\n"
-            + HelpExampleCli("sendfrom", "\"\" \"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 0.01") +
+            + HelpExampleCli("sendfrom", "\"\" \"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 0.01") +
             "\nSend 0.01 from the tabby account to the given address, funds must have at least 6 confirmations\n"
-            + HelpExampleCli("sendfrom", "\"tabby\" \"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 0.01 6 \"donation\" \"seans outpost\"") +
+            + HelpExampleCli("sendfrom", "\"tabby\" \"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 0.01 6 \"donation\" \"seans outpost\"") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("sendfrom", "\"tabby\", \"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\", 0.01, 6, \"donation\", \"seans outpost\"")
+            + HelpExampleRpc("sendfrom", "\"tabby\", \"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\", 0.01, 6, \"donation\", \"seans outpost\"")
         );
 
     ObserveSafeMode();
@@ -1054,13 +1054,13 @@ UniValue sendmany(const JSONRPCRequest& request)
             "                                    the number of addresses.\n"
             "\nExamples:\n"
             "\nSend two amounts to two different addresses:\n"
-            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"1353tsE8YMTA4EuV7dgUXGjNFf9KpVvKHz\\\":0.02}\"") +
+            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"FdR1zXywoLbPrpi65ifZuBKG99ST37Hwkp\\\":0.02}\"") +
             "\nSend two amounts to two different addresses setting the confirmation and comment:\n"
-            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"1353tsE8YMTA4EuV7dgUXGjNFf9KpVvKHz\\\":0.02}\" 6 \"testing\"") +
+            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"FdR1zXywoLbPrpi65ifZuBKG99ST37Hwkp\\\":0.02}\" 6 \"testing\"") +
             "\nSend two amounts to two different addresses, subtract fee from amount:\n"
-            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"1353tsE8YMTA4EuV7dgUXGjNFf9KpVvKHz\\\":0.02}\" 1 \"\" \"[\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\",\\\"1353tsE8YMTA4EuV7dgUXGjNFf9KpVvKHz\\\"]\"") +
+            + HelpExampleCli("sendmany", "\"\" \"{\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\":0.01,\\\"FdR1zXywoLbPrpi65ifZuBKG99ST37Hwkp\\\":0.02}\" 1 \"\" \"[\\\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\\\",\\\"FdR1zXywoLbPrpi65ifZuBKG99ST37Hwkp\\\"]\"") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("sendmany", "\"\", {\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\":0.01,\"1353tsE8YMTA4EuV7dgUXGjNFf9KpVvKHz\":0.02}, 6, \"testing\"")
+            + HelpExampleRpc("sendmany", "\"\", {\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\":0.01,\"FdR1zXywoLbPrpi65ifZuBKG99ST37Hwkp\":0.02}, 6, \"testing\"")
         );
 
     ObserveSafeMode();
@@ -2451,7 +2451,7 @@ UniValue walletlock(const JSONRPCRequest& request)
             "\nSet the passphrase for 2 minutes to perform a transaction\n"
             + HelpExampleCli("walletpassphrase", "\"my pass phrase\" 120") +
             "\nPerform a send (requires passphrase set)\n"
-            + HelpExampleCli("sendtoaddress", "\"1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd\" 1.0") +
+            + HelpExampleCli("sendtoaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" 1.0") +
             "\nClear the passphrase since we are done before 2 minutes is up\n"
             + HelpExampleCli("walletlock", "") +
             "\nAs json rpc call\n"
