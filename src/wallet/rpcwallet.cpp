@@ -453,7 +453,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
             "\nSend an amount to a given address.\n"
             + HelpRequiringPassphrase(pwallet) +
             "\nArguments:\n"
-            "1. \"address\"            (string, required) The bitcoin address to send to.\n"
+            "1. \"address\"            (string, required) The groestlcoin address to send to.\n"
             "2. \"amount\"             (numeric or string, required) The amount in " + CURRENCY_UNIT + " to send. eg 0.1\n"
             "3. \"comment\"            (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -461,7 +461,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
             "5. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-            "                             The recipient will receive less bitcoins than you enter in the amount field.\n"
+            "                             The recipient will receive less groestlcoins than you enter in the amount field.\n"
             "6. replaceable            (boolean, optional) Allow this transaction to be replaced by a transaction with higher fees via BIP 125\n"
             "7. conf_target            (numeric, optional) Confirmation target (in blocks)\n"
             "8. \"estimate_mode\"      (string, optional, default=UNSET) The fee estimate mode, must be one of:\n"
@@ -602,7 +602,7 @@ UniValue signmessage(const JSONRPCRequest& request)
             "\nSign a message with the private key of an address"
             + HelpRequiringPassphrase(pwallet) + "\n"
             "\nArguments:\n"
-            "1. \"address\"         (string, required) The GroestlCoin address to use for the private key.\n"
+            "1. \"address\"         (string, required) The groestlcoin address to use for the private key.\n"
             "2. \"message\"         (string, required) The message to create a signature of.\n"
             "\nResult:\n"
             "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -688,7 +688,7 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
     // GroestlCoin address
     CTxDestination dest = DecodeDestination(request.params[0].get_str());
     if (!IsValidDestination(dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitcoin address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Groestlcoin address");
     }
     CScript scriptPubKey = GetScriptForDestination(dest);
     if (!IsMine(*pwallet, scriptPubKey)) {
@@ -954,7 +954,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
             "                       Specifying an account does not influence coin selection, but it does associate the newly created\n"
             "                       transaction with the account, so the account's balance computation and transaction history can reflect\n"
             "                       the spend.\n"
-            "2. \"toaddress\"         (string, required) The bitcoin address to send funds to.\n"
+            "2. \"toaddress\"         (string, required) The groestlcoin address to send funds to.\n"
             "3. amount                (numeric or string, required) The amount in " + CURRENCY_UNIT + " (transaction fee is added on top).\n"
             "4. minconf               (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
             "5. \"comment\"           (string, optional) A comment used to store what the transaction is for. \n"
@@ -1037,7 +1037,7 @@ UniValue sendmany(const JSONRPCRequest& request)
             "4. \"comment\"             (string, optional) A comment\n"
             "5. subtractfeefrom         (array, optional) A json array with addresses.\n"
             "                           The fee will be equally deducted from the amount of each selected address.\n"
-            "                           Those recipients will receive less bitcoins than you enter in their corresponding amount field.\n"
+            "                           Those recipients will receive less groestlcoins than you enter in their corresponding amount field.\n"
             "                           If no addresses are specified here, the sender pays the fee.\n"
             "    [\n"
             "      \"address\"          (string) Subtract fee from this address\n"
@@ -1181,7 +1181,7 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
             "1. nrequired                      (numeric, required) The number of required signatures out of the n keys or addresses.\n"
             "2. \"keys\"                         (string, required) A json array of GroestlCoin addresses or hex-encoded public keys\n"
             "     [\n"
-            "       \"address\"                  (string) bitcoin address or hex-encoded public key\n"
+            "       \"address\"                  (string) groestlcoin address or hex-encoded public key\n"
             "       ...,\n"
             "     ]\n"
             "3. \"account\"                      (string, optional) DEPRECATED. An account to assign the addresses to.\n"
@@ -1192,7 +1192,7 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
             "  \"address\":\"multisigaddress\",    (string) The value of the new multisig address.\n"
             "  \"redeemScript\":\"script\"         (string) The string value of the hex-encoded redemption script.\n"
             "}\n"
-            "\nResult (DEPRECATED. To see this result in v0.16 instead, please start bitcoind with -deprecatedrpc=addmultisigaddress).\n"
+            "\nResult (DEPRECATED. To see this result in v0.16 instead, please start groestlcoind with -deprecatedrpc=addmultisigaddress).\n"
             "        clients should transition to the new output api before upgrading to v2.17.\n"
             "\"address\"                         (string) A groestlcoin address associated with the keys.\n"
 
@@ -1347,7 +1347,7 @@ UniValue addwitnessaddress(const JSONRPCRequest& request)
 
     CTxDestination dest = DecodeDestination(request.params[0].get_str());
     if (!IsValidDestination(dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitcoin address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Groestlcoin address");
     }
 
     bool p2sh = true;
@@ -2319,7 +2319,7 @@ UniValue walletpassphrase(const JSONRPCRequest& request)
         throw std::runtime_error(
             "walletpassphrase \"passphrase\" timeout\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending bitcoins\n"
+            "This is needed prior to performing transactions related to private keys such as sending groestlcoins\n"
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
             "2. timeout            (numeric, required) The time to keep the decryption key in seconds. Limited to at most 1073741824 (2^30) seconds.\n"
@@ -2495,7 +2495,7 @@ UniValue encryptwallet(const JSONRPCRequest& request)
             "\nExamples:\n"
             "\nEncrypt your wallet\n"
             + HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending bitcoin\n"
+            "\nNow set the passphrase to use the wallet, such as for signing or sending groestlcoin\n"
             + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
             "\nNow we can do something like sign\n"
             + HelpExampleCli("signmessage", "\"address\" \"test message\"") +
@@ -2549,7 +2549,7 @@ UniValue lockunspent(const JSONRPCRequest& request)
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
             "If no transaction outputs are specified when unlocking then all current locked transaction outputs are unlocked.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending bitcoins.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending groestlcoins.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -2910,7 +2910,7 @@ UniValue listunspent(const JSONRPCRequest& request)
             "  {\n"
             "    \"txid\" : \"txid\",          (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",    (string) the bitcoin address\n"
+            "    \"address\" : \"address\",    (string) the groestlcoin address\n"
             "    \"account\" : \"account\",    (string) DEPRECATED. The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " + CURRENCY_UNIT + "\n"
@@ -3072,7 +3072,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
                             "     \"subtractFeeFromOutputs\" (array, optional) A json array of integers.\n"
                             "                              The fee will be equally deducted from the amount of each specified output.\n"
                             "                              The outputs are specified by their zero-based index, before any change output is added.\n"
-                            "                              Those recipients will receive less bitcoins than you enter in their corresponding amount field.\n"
+                            "                              Those recipients will receive less groestlcoins than you enter in their corresponding amount field.\n"
                             "                              If no outputs are specified here, the sender pays the fee.\n"
                             "                                  [vout_index,...]\n"
                             "     \"replaceable\"            (boolean, optional) Marks this transaction as BIP125 replaceable.\n"
@@ -3147,7 +3147,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
             CTxDestination dest = DecodeDestination(options["changeAddress"].get_str());
 
             if (!IsValidDestination(dest)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid bitcoin address");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid groestlcoin address");
             }
 
             coinControl.destChange = dest;
