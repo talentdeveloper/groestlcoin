@@ -487,7 +487,7 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc\"   (string) Groestlcoin address\n"
+            "           \"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\"   (string) Groestlcoin address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"
