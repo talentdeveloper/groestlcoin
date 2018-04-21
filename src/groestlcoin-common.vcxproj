@@ -515,6 +515,7 @@
     <ClInclude Include="utilmoneystr.h" />
     <ClInclude Include="utilstrencodings.h" />
     <ClInclude Include="utiltime.h" />
+    <ClInclude Include="validation.h" />
     <ClInclude Include="validationinterface.h" />
     <ClInclude Include="wallet\crypter.h" />
     <ClInclude Include="wallet\db.h" />

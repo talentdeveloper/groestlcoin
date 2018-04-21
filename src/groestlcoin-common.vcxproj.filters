@@ -640,6 +640,9 @@
     <ClInclude Include="consensus\validation.h">
       <Filter>Header Files\consensus</Filter>
     </ClInclude>
+    <ClInclude Include="validation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="el\bignum\x86x64\bignum-x86x64.asm">
