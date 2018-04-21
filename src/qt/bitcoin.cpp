@@ -121,6 +121,7 @@ public:
 
 class GroestlcoinTranslator : public QTranslator
 {
+    bool m_isBase;
 public:
 	QString translate(const char *context, const char *sourceText, const char *disambiguation = Q_NULLPTR, int n = -1) const override
 	{
@@ -129,13 +130,18 @@ public:
             || strstr(sourceText, "COIN")
             || strstr(sourceText, "sat"))
         {
-            if (s.isNull())
+            if (m_isBase && s.isNull())
                 s = QString::fromUtf8(sourceText);
             for (const auto& t : g_GroestlcoinTranslatorInit.m_translationTable)
                 s.replace(t.From, t.To);
         }
 		return s;
 	}
+
+    GroestlcoinTranslator(bool isBase)
+        : m_isBase(isBase)
+    {
+    }
 };
 
 
@@ -663,7 +669,7 @@ int main(int argc, char *argv[])
 
     /// 4. Initialization of translations, so that intro dialog is in user's language
     // Now that QSettings are accessible, initialize translations
-    GroestlcoinTranslator qtTranslatorBase, qtTranslator, translatorBase, translator;
+    GroestlcoinTranslator qtTranslatorBase(true), qtTranslator(false), translatorBase(true), translator(false);
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
     translationInterface.Translate.connect(Translate);
 
