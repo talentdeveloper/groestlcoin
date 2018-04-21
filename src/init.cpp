@@ -531,10 +531,10 @@ std::string LicenseInfo()
            "\n" +
            "\n" +
            _("This is experimental software.") + "\n" +
-		   _("Distributed under the MIT software license, see the accompanying file COPYING or <http://www.opensource.org/licenses/mit-license.php>.") + "\n" +
-		   "\n" +
-		   _("This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.") +
-		   "\n";
+           strprintf(_("Distributed under the MIT software license, see the accompanying file %s or %s"), "COPYING", "<https://opensource.org/licenses/MIT>") + "\n" +
+           "\n" +
+           strprintf(_("This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard."), "<https://www.openssl.org>") +
+           "\n";
 }
 
 static void BlockNotifyCallback(bool initialSync, const CBlockIndex *pBlockIndex)
