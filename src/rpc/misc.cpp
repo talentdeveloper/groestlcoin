@@ -340,7 +340,7 @@ UniValue verifymessage(const JSONRPCRequest& request)
             "\nVerify the signature\n"
             + HelpExampleCli("verifymessage", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\" \"signature\" \"my message\"") +
             "\nAs json rpc\n"
-            + HelpExampleRpc("verifymessage", "\"1D1ZrZNe3JFdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCYUo7ZycKEYQQiQAWd9y54F4XX\", \"signature\", \"my message\"")
+            + HelpExampleRpc("verifymessage", "\"IBt2IhtZBgc1fFPA+9JX2wGixPiW7byHzJshWtKgz1RyX0fj+YVXl7Sa35USVYziDG/5pIbTSQEi/FCqeC1Sn5M=\", \"signature\", \"my message\"")
         );
 
     LOCK(cs_main);
