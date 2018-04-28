@@ -190,8 +190,8 @@ UniValue validateaddress(const JSONRPCRequest& request)
             "  \"hdmasterkeyid\" : \"<hash160>\" (string, optional) The Hash160 of the HD master pubkey\n"
             "}\n"
             "\nExamples:\n"
-            + HelpExampleCli("validateaddress", "\"1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc\"")
-            + HelpExampleRpc("validateaddress", "\"1PSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc\"")
+            + HelpExampleCli("validateaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\"")
+            + HelpExampleRpc("validateaddress", "\"FdeDnzHyMSroQWo2uz7GzHQhHEvtZRojCY\"")
         );
 
 #ifdef ENABLE_WALLET
@@ -264,7 +264,7 @@ UniValue createmultisig(const JSONRPCRequest& request)
             "It returns a json object with the address and redeemScript.\n"
             "DEPRECATION WARNING: Using addresses with createmultisig is deprecated. Clients must\n"
             "transition to using addmultisigaddress to create multisig addresses with addresses known\n"
-            "to the wallet before upgrading to v0.17. To use the deprecated functionality, start bitcoind with -deprecatedrpc=createmultisig\n"
+            "to the wallet before upgrading to v2.17. To use the deprecated functionality, start groestlcoind with -deprecatedrpc=createmultisig\n"
             "\nArguments:\n"
             "1. nrequired                    (numeric, required) The number of required signatures out of the n keys or addresses.\n"
             "2. \"keys\"                       (string, required) A json array of hex-encoded public keys\n"
