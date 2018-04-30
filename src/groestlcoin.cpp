@@ -18,6 +18,8 @@
 
 #include "bignum.h"
 
+#include "chainparamsseeds.h"
+
 extern "C" {
 
 #if !defined(UCFG_LIBEXT) && (defined(_M_IX86) || defined(_M_X64))
@@ -407,7 +409,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        //GRS vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
+        vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
         fMiningRequiresPeers = true;
         fDefaultConsistencyChecks = false;
@@ -440,9 +442,9 @@ class CTestNetParams : public CMainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-		consensus.BIP34Height = 742000;	//!!!?
-		consensus.BIP34Hash = uint256S("0x000000000110e86e2f91a9fbbff44b3fa906e4ff6a7bad3a1eafc66e1b2b6f10");	//!!!?
-		consensus.BIP66Height = 742000;	//!!!?
+		consensus.BIP34Height = 286;
+		consensus.BIP34Hash = uint256S("0x0000004b7778ba253a75b716c55b2c6609b5fb97691b3260978f9ce4a633106d");
+		consensus.BIP66Height = 286;
 		consensus.BIP65Height = INT_MAX;	//!!!?
 
         consensus.nPowTargetSpacing = 60;
@@ -496,7 +498,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        //GRS vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
+        vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
         fMiningRequiresPeers = false;			//GRS  Testnet can have single node
         fDefaultConsistencyChecks = false;
