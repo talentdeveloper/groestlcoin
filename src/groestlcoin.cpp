@@ -465,6 +465,7 @@ class CTestNetParams : public CMainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
+        consensus.BIP16Height = 1;
 		consensus.BIP34Height = 286;
 		consensus.BIP34Hash = uint256S("0x0000004b7778ba253a75b716c55b2c6609b5fb97691b3260978f9ce4a633106d");
 		consensus.BIP66Height = 286;
@@ -566,6 +567,7 @@ public:
     CRegTestParams() {
         strNetworkID = "regtest";
 
+        consensus.BIP16Height = 1;
         consensus.nPowTargetSpacing = 60;
 		consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
