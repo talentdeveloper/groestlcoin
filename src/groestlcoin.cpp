@@ -567,7 +567,7 @@ public:
     CRegTestParams() {
         strNetworkID = "regtest";
 
-        consensus.BIP16Height = 1;
+        consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
         consensus.nPowTargetSpacing = 60;
 		consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
