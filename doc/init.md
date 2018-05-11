@@ -15,7 +15,7 @@ Service User
 
 All three Linux startup configurations assume the existence of a "groestlcoin" user
 and group.  They must be created before attempting to use these scripts.
-The OS X configuration assumes bitcoind will be set up for the current user.
+The OS X configuration assumes groestlcoind will be set up for the current user.
 
 Configuration
 ---------------------------------
@@ -38,7 +38,7 @@ controls who can access it through RPC.
 By default the cookie is stored in the data directory, but it's location can be overridden
 with the option '-rpccookiefile'.
 
-This allows for running bitcoind without having to do any manual configuration.
+This allows for running groestlcoind without having to do any manual configuration.
 
 `conf`, `pid`, and `wallet` accept relative paths which are interpreted as
 relative to the data directory. `wallet` *only* supports relative paths.
@@ -67,10 +67,10 @@ can then be controlled by group membership.
 
 ### Mac OS X
 
-Binary:              `/usr/local/bin/bitcoind`  
-Configuration file:  `~/Library/Application Support/Bitcoin/bitcoin.conf`  
-Data directory:      `~/Library/Application Support/Bitcoin`  
-Lock file:           `~/Library/Application Support/Bitcoin/.lock`  
+Binary:              `/usr/local/bin/groestlcoind`  
+Configuration file:  `~/Library/Application Support/Groestlcoin/groestlcoin.conf`  
+Data directory:      `~/Library/Application Support/Groestlcoin`  
+Lock file:           `~/Library/Application Support/Groestlcoin/.lock`  
 
 Installing Service Configuration
 -----------------------------------
@@ -103,20 +103,20 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 
 Copy groestlcoind.init to /etc/init.d/groestlcoind. Test by running `service groestlcoind start`.
 
-Using this script, you can adjust the path and flags to the bitcoind program by
+Using this script, you can adjust the path and flags to the groestlcoind program by
 setting the GROESTLCOIND and FLAGS environment variables in the file
-/etc/sysconfig/bitcoind. You can also use the DAEMONOPTS environment variable here.
+/etc/sysconfig/groestlcoind. You can also use the DAEMONOPTS environment variable here.
 
 ### Mac OS X
 
-Copy org.bitcoin.bitcoind.plist into ~/Library/LaunchAgents. Load the launch agent by
-running `launchctl load ~/Library/LaunchAgents/org.bitcoin.bitcoind.plist`.
+Copy org.groestlcoin.groestlcoind.plist into ~/Library/LaunchAgents. Load the launch agent by
+running `launchctl load ~/Library/LaunchAgents/org.groestlcoin.groestlcoind.plist`.
 
-This Launch Agent will cause bitcoind to start whenever the user logs in.
+This Launch Agent will cause groestlcoind to start whenever the user logs in.
 
-NOTE: This approach is intended for those wanting to run bitcoind as the current user.
-You will need to modify org.bitcoin.bitcoind.plist if you intend to use it as a
-Launch Daemon with a dedicated bitcoin user.
+NOTE: This approach is intended for those wanting to run groestlcoind as the current user.
+You will need to modify org.groestlcoin.groestlcoind.plist if you intend to use it as a
+Launch Daemon with a dedicated groestlcoin user.
 
 Auto-respawn
 -----------------------------------
