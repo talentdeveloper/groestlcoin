@@ -6,6 +6,8 @@ Updated to Bitcoin reference wallet 0.11.0 on August 2015
 
 Updated to Bitcoin reference wallet 0.13.3 on January 2017
 
+Updated to Bitcoin reference wallet 0.16.0 on June 2018
+
 Groestlcoin Core Wallet
 
 http://www.groestlcoin.org
@@ -14,9 +16,9 @@ The algorithm was written as a candidate for sha3
 
 https://bitcointalk.org/index.php?topic=525926.0
 
-Copyright (c) 2009-2017 The Bitcoin Core Developers
+Copyright (c) 2009-2018 The Bitcoin Core Developers
 
-Copyright (c) 2014-2017 The Groestlcoin Core Developers
+Copyright (c) 2014-2018 The Groestlcoin Core Developers
 
 What is Groestlcoin?
 -----------------
@@ -50,38 +52,11 @@ submitter will be asked to start a discussion
 
 The patch will be accepted if there is broad consensus that it is a good thing.
 Developers should expect to rework and resubmit patches if the code doesn't
-match the project's coding conventions (see [doc/coding.md](doc/coding.md)) or are
-controversial.
+match the project's coding conventions or are controversial.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/groestlcoin/groestlcoin/tags) are created
 regularly to indicate new official, stable release versions of Groestlcoin.
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test. Please be patient and help out, and
-remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
-
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and OS X, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Large changes should have a test plan, and should be tested by somebody other
-than the developer who wrote the code.
 
 Development tips and tricks
 ---------------------------
