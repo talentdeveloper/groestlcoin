@@ -1,48 +1,41 @@
-Bitcoin Core version 0.16.x is now available from:
+Groestlcoin Core version 2.16.0 is now available from:
 
-  <https://bitcoincore.org/bin/bitcoin-core-0.16.x/>
-
-  <https://bitcoin.org/bin/bitcoin-core-0.15.x/>
+  <https://groestlcoin.org/downloads/>
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitcoin/bitcoin/issues>
-
-To receive security and update notifications, please subscribe to:
-
-  <https://bitcoincore.org/en/list/announcements/join/>
+  <https://github.com/groestlcoin/groestlcoin/issues>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over `/Applications/Bitcoin-Qt` (on Mac)
-or `bitcoind`/`bitcoin-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Groestlcoin-Qt` (on Mac)
+or `groestlcoind`/`groestlcoin-qt` (on Linux).
 
-The first time you run version 0.15.0 or newer, your chainstate database will be converted to a
+The first time you run version 2.16.0 or newer, your chainstate database will be converted to a
 new format, which will take anywhere from a few minutes to half an hour,
 depending on the speed of your machine.
 
-Note that the block database format also changed in version 0.8.0 and there is no
-automatic upgrade code from before version 0.8 to version 0.15.0 or higher. Upgrading
-directly from 0.7.x and earlier without re-downloading the blockchain is not supported.
+Note that the block database format also changed in version 2.1.0.6 and there is no
+automatic upgrade code from before version 2.1.0.6 to version 2.16.0 or higher.
 However, as usual, old wallet versions are still supported.
 
 Downgrading warning
 -------------------
 
-Wallets created in 0.16 and later are not compatible with versions prior to 0.16
+Wallets created in 2.16.0 and later are not compatible with versions prior to 2.16.0
 and will not work if you try to use newly created wallets in older versions. Existing
 wallets that were created with older versions are not affected by this.
 
 Compatibility
 ==============
 
-Bitcoin Core is extensively tested on multiple operating systems using
+Groestlcoin Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-Bitcoin Core should also work on most other Unix-like systems but is not
+Groestlcoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 
@@ -54,7 +47,7 @@ Example item
 
 Example item for a notable change.
 
-0.16.x change log
+2.16.0 change log
 ------------------
 
 (to be filled in at release time)
