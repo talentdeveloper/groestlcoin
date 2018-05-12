@@ -522,6 +522,8 @@ public:
         vSeeds.clear();
 		vSeeds.push_back("testnet1.groestlcoin.org");
 		vSeeds.push_back("testnet2.groestlcoin.org");
+		vSeeds.push_back("testp2pool.groestlcoin.org");
+		vSeeds.push_back("testp2pool2.groestlcoin.org");
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
