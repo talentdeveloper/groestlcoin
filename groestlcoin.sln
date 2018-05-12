@@ -33,6 +33,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "groestlcoin-common", "src\g
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "groestlcoind", "src\groestlcoind.vcxproj", "{1630C0CD-299D-4FB6-A59B-ED164DEC0FB1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1630C0CD-099D-4FB6-A57B-1D164DEC0FB1} = {1630C0CD-099D-4FB6-A57B-1D164DEC0FB1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "czmq", "foreign\zmq\czmq.vcxproj", "{1298C6EE-439E-48C4-9710-FD145353CEDC}"
 EndProject
