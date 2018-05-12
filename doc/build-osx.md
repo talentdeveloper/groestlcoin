@@ -69,7 +69,7 @@ Groestlcoin Core is now available at `./src/groestlcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=bitcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
+    echo -e "rpcuser=groestlcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
 
     chmod 600 "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
 
