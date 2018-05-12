@@ -39,8 +39,8 @@ from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see the section *Disable-Wallet mode* below).
 
-Build Bitcoin Core
->>>>>>> 0.16
+Build Groestlcoin Core
+>>>>>>> 2.16
 ------------------------
 
 1. Clone the groestlcoin source code and cd into `groestlcoin`
@@ -57,12 +57,8 @@ Build Bitcoin Core
         ./autogen.sh
         ./configure
         make
-
-3.  It is recommended to build and run the unit tests:
-
-        make check
-
-4.  You can also create a .dmg that contains the .app bundle (optional):
+        
+3.  You can also create a .dmg that contains the .app bundle (optional):
 
         make deploy
 

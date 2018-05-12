@@ -3,9 +3,9 @@ Groestlcoin Core
 
 Setup
 ---------------------
-Bitcoin Core is the original Bitcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bitcoin transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Groestlcoin Core is the original Groestlcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Groestlcoin transactions (which is currently more than 2 GB); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours.
 
-To download Bitcoin Core, visit [bitcoincore.org](https://bitcoincore.org/en/releases/).
+To download Groestlcoin Core, visit [groestlcoin.org](https://groestlcoin.org/downloads/).
 
 Running
 ---------------------
@@ -15,8 +15,8 @@ The following are some helpful notes on how to run Groestlcoin on your native pl
 
 Unpack the files into a directory and run:
 
-- `bin/bitcoin-qt` (GUI) or
-- `bin/bitcoind` (headless)
+- `bin/groestlcoin-qt` (GUI) or
+- `bin/groestlcoind` (headless)
 
 ### Windows
 
