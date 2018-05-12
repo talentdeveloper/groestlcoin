@@ -568,7 +568,8 @@ public:
         strNetworkID = "regtest";
 
         consensus.BIP16Height = 0; // always enforce P2SH BIP16 on regtest
-        consensus.nPowTargetSpacing = 60;
+        consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.nPowTargetSpacing = 1;
 		consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
 		consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
