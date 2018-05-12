@@ -41,6 +41,8 @@ const std::string CLIENT_NAME("Groestlcoin");
 #include <obj/build.h>
 #endif
 
+#define BUILD_DESC "v2.16.0"    //GRS
+
 //! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. $Format:%n#define GIT_ARCHIVE 1$
 #ifdef GIT_ARCHIVE
 #define GIT_COMMIT_ID "$Format:%h$"
@@ -81,8 +83,8 @@ std::string FormatFullVersion()
     return CLIENT_BUILD;
 }
 
-/** 
- * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki) 
+/**
+ * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki)
  */
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments)
 {
