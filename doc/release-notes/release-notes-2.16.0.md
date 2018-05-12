@@ -217,42 +217,6 @@ GUI Changes
    icon will be grayed out with an X on top of it if the wallet is not a
    HD wallet.
 
-Low-level RPC changes
-----------------------
-
- - `importprunedfunds` only accepts two required arguments. Some versions accept
-   an optional third arg, which was always ignored. Make sure to never pass more
-   than two arguments.
-
- - The first boolean argument to `getaddednodeinfo` has been removed. This is 
-   an incompatible change.
-
- - RPC command `getmininginfo` loses the "testnet" field in favor of the more
-   generic "chain" (which has been present for years).
-
- - A new RPC command `preciousblock` has been added which marks a block as
-   precious. A precious block will be treated as if it were received earlier
-   than a competing block.
-
- - A new RPC command `importmulti` has been added which receives an array of 
-   JSON objects representing the intention of importing a public key, a 
-   private key, an address and script/p2sh
-
- - Use of `getrawtransaction` for retrieving confirmed transactions with unspent
-   outputs has been deprecated. For now this will still work, but in the future
-   it may change to only be able to retrieve information about transactions in
-   the mempool or if `txindex` is enabled.
-
- - A new RPC command `getmemoryinfo` has been added which will return information
-   about the memory usage of groestlcoin Core. This was added in conjunction with
-   optimizations to memory management. See [Pull #8753](https://github.com/bitcoin/bitcoin/pull/8753)
-   for more information.
-
- - A new RPC command `bumpfee` has been added which allows replacing an
-   unconfirmed wallet transaction that signaled RBF (see the `-walletrbf`
-   startup option above) with a new transaction that pays a higher fee, and
-   should be more likely to get confirmed quickly.
-
 HTTP REST Changes
 -----------------
 
@@ -357,18 +321,6 @@ Unused mempool memory used by coincache
   when there is extra memory available. This may result in an increase in
   memory usage during IBD for those previously relying on only the `-dbcache`
   option to limit memory during that time.
-  
-RPC changes
------------
-
-- The first positional argument of `createrawtransaction` was renamed from
-  `transactions` to `inputs`.
-
-- The argument of `disconnectnode` was renamed from `node` to `address`.
-
-These interface changes break compatibility with 2.16.0, when the named
-arguments functionality, introduced in 2.16.0, is used. Client software
-using these calls with named arguments needs to be updated.
 
 Mining
 ------
@@ -527,12 +479,231 @@ Mempool Persistence Across Restarts
 
 Version 2.16 introduced mempool persistence across restarts (the mempool is saved to a `mempool.dat` file in the data directory prior to shutdown and restores the mempool when the node is restarted). Version 2.16 also allows this feature to be switched on or off using the `-persistmempool` command-line option (See [PR 9966](https://github.com/bitcoin/bitcoin/pull/9966)). By default, the option is set to true, and the mempool is saved on shutdown and reloaded on startup. If set to false, the `mempool.dat` file will not be loaded on startup or saved on shutdown.
 
-New RPC methods
+
+
+Network fork safety enhancements
+--------------------------------
+
+A number of changes to the way Groestlcoin Core deals with peer connections and invalid blocks
+have been made, as a safety precaution against blockchain forks and misbehaving peers.
+
+- Unrequested blocks with less work than the minimum-chain-work are now no longer processed even
+if they have more work than the tip (a potential issue during IBD where the tip may have low-work).
+This prevents peers wasting the resources of a node. 
+
+- Peers which provide a chain with less work than the minimum-chain-work during IBD will now be disconnected.
+
+- For a given outbound peer, we now check whether their best known block has at least as much work as our tip. If it
+doesn't, and if we still haven't heard about a block with sufficient work after a 20 minute timeout, then we send
+a single getheaders message, and wait 2 more minutes. If after two minutes their best known block has insufficient
+work, we disconnect that peer. We protect 4 of our outbound peers from being disconnected by this logic to prevent
+excessive network topology changes as a result of this algorithm, while still ensuring that we have a reasonable
+number of nodes not known to be on bogus chains.
+
+- Outbound (non-manual) peers that serve us block headers that are already known to be invalid (other than compact
+block announcements, because BIP 152 explicitly permits nodes to relay compact blocks before fully validating them)
+will now be disconnected.
+
+- If the chain tip has not been advanced for over 30 minutes, we now assume the tip may be stale and will try to connect
+to an additional outbound peer. A periodic check ensures that if this extra peer connection is in use, we will disconnect
+the peer that least recently announced a new block.
+
+- The set of all known invalid-themselves blocks (i.e. blocks which we attempted to connect but which were found to be
+invalid) are now tracked and used to check if new headers build on an invalid chain. This ensures that everything that
+descends from an invalid block is marked as such.
+
+
+Miner block size limiting deprecated
+------------------------------------
+
+Though blockmaxweight has been preferred for limiting the size of blocks returned by
+getblocktemplate since 2.13.3, blockmaxsize remained as an option for those who wished
+to limit their block size directly. Using this option resulted in a few UI issues as
+well as non-optimal fee selection and ever-so-slightly worse performance, and has thus
+now been deprecated. Further, the blockmaxsize option is now used only to calculate an
+implied blockmaxweight, instead of limiting block size directly. Any miners who wish
+to limit their blocks by size, instead of by weight, will have to do so manually by
+removing transactions from their block template directly.
+
+GUI settings backed up on reset
+-------------------------------
+
+The GUI settings will now be written to `guisettings.ini.bak` in the data directory before wiping them when
+the `-resetguisettings` argument is used. This can be used to retroactively troubleshoot issues due to the
+GUI settings.
+
+Debug `-minimumchainwork` argument added
+----------------------------------------
+
+A hidden debug argument `-minimumchainwork` has been added to allow a custom minimum work value to be used
+when validating a chain.
+
+
+Wallet changes
 ---------------
 
-Version 2.16 introduces several new RPC methods:
+### Segwit Wallet
 
-- `abortrescan` stops current wallet rescan, e.g. when triggered by an `importprivkey` call (See [PR 10208](https://github.com/bitcoin/bitcoin/pull/10208)).
+Groestlcoin Core 2.16.0 introduces full support for segwit in the wallet and user interfaces. A new `-addresstype` argument has been added, which supports `legacy`, `p2sh-segwit` (default), and `bech32` addresses. It controls what kind of addresses are produced by `getnewaddress`, `getaccountaddress`, and `createmultisigaddress`. A `-changetype` argument has also been added, with the same options, and by default equal to `-addresstype`, to control which kind of change is used.
+
+A new `address_type` parameter has been added to the `getnewaddress` and `addmultisigaddress` RPCs to specify which type of address to generate.
+A `change_type` argument has been added to the `fundrawtransaction` RPC to override the `-changetype` argument for specific transactions.
+
+- All segwit addresses created through `getnewaddress` or `*multisig` RPCs explicitly get their redeemscripts added to the wallet file. This means that downgrading after creating a segwit address will work, as long as the wallet file is up to date.
+- All segwit keys in the wallet get an implicit redeemscript added, without it being written to the file. This means recovery of an old backup will work, as long as you use new software.
+- All keypool keys that are seen used in transactions explicitly get their redeemscripts added to the wallet files. This means that downgrading after recovering from a backup that includes a segwit address will work
+
+Note that some RPCs do not yet support segwit addresses. Notably, `signmessage`/`verifymessage` doesn't support segwit addresses, nor does `importmulti` at this time. Support for segwit in those RPCs will continue to be added in future versions.
+
+P2WPKH change outputs are now used by default if any destination in the transaction is a P2WPKH or P2WSH output. This is done to ensure the change output is as indistinguishable from the other outputs as possible in either case.
+
+### BIP173 (Bech32) Address support ("grs1..." addresses)
+
+Full support for native segwit addresses (BIP173 / Bech32) has now been added.
+This includes the ability to send to BIP173 addresses (including non-v0 ones), and generating these
+addresses (including as default new addresses, see above).
+
+A checkbox has been added to the GUI to select whether a Bech32 address or P2SH-wrapped address should be generated when using segwit addresses. When launched with `-addresstype=bech32` it is checked by default. When launched with `-addresstype=legacy` it is unchecked and disabled.
+
+### HD-wallets by default
+
+Due to a backward-incompatible change in the wallet database, wallets created
+with version 2.16.0 will be rejected by previous versions. Also, version 2.16.0
+will only create hierarchical deterministic (HD) wallets. Note that this only applies
+to new wallets; wallets made with previous versions will not be upgraded to be HD.
+
+### Replace-By-Fee by default in GUI
+
+The send screen now uses BIP125 RBF by default, regardless of `-walletrbf`.
+There is a checkbox to mark the transaction as final.
+
+The RPC default remains unchanged: to use RBF, launch with `-walletrbf=1` or
+use the `replaceable` argument for individual transactions.
+
+### Wallets directory configuration (`-walletdir`)
+
+Groestlcoin Core now has more flexibility in where the wallets directory can be
+located. Previously wallet database files were stored at the top level of the
+groestlcoin data directory. The behavior is now:
+
+- For new installations (where the data directory doesn't already exist),
+  wallets will now be stored in a new `wallets/` subdirectory inside the data
+  directory by default.
+- For existing nodes (where the data directory already exists), wallets will be
+  stored in the data directory root by default. If a `wallets/` subdirectory
+  already exists in the data directory root, then wallets will be stored in the
+  `wallets/` subdirectory by default.
+- The location of the wallets directory can be overridden by specifying a
+  `-walletdir=<path>` option where `<path>` can be an absolute path to a
+  directory or directory symlink.
+
+Care should be taken when choosing the wallets directory location, as if it
+becomes unavailable during operation, funds may be lost.
+
+Build: Minimum GCC bumped to 4.8.x
+------------------------------------
+The minimum version of the GCC compiler required to compile Groestlcoin Core is now 4.8. No effort will be
+made to support older versions of GCC. See discussion in issue #11732 for more information.
+The minimum version for the Clang compiler is still 3.3. Other minimum dependency versions can be found in `doc/dependencies.md` in the repository.
+
+Support for signalling pruned nodes (BIP159)
+---------------------------------------------
+Pruned nodes can now signal BIP159's NODE_NETWORK_LIMITED using service bits, in preparation for
+full BIP159 support in later versions. This would allow pruned nodes to serve the most recent blocks. However, the current change does not yet include support for connecting to these pruned peers.
+
+Performance: SHA256 assembly enabled by default
+-------------------------------------------------
+The SHA256 hashing optimizations for architectures supporting SSE4, which lead to ~50% speedups in SHA256 on supported hardware (~5% faster synchronization and block validation), have now been enabled by default. In previous versions they were enabled using the `--enable-experimental-asm` flag when building, but are now the default and no longer deemed experimental.
+
+GUI changes
+-----------
+- Uses of "µGRS" in the GUI now also show the more colloquial term "groestls", specified in BIP176.
+- The option to reuse a previous address has now been removed. This was justified by the need to "resend" an invoice, but now that we have the request history, that need should be gone.
+- Support for searching by TXID has been added, rather than just address and label.
+- A "Use available balance" option has been added to the send coins dialog, to add the remaining available wallet balance to a transaction output.
+- A toggle for unblinding the password fields on the password dialog has been added.
+
+
+### Safe mode disabled by default
+
+Safe mode is now disabled by default and must be manually enabled (with `-disablesafemode=0`) if you wish to use it. Safe mode is a feature that disables a subset of RPC calls - mostly related to the wallet and sending - automatically in case certain problem conditions with the network are detected. However, developers have come to regard these checks as not reliable enough to act on automatically. Even with safe mode disabled, they will still cause warnings in the `warnings` field of the `getneworkinfo` RPC and launch the `-alertnotify` command.
+
+### Renamed script for creating JSON-RPC credentials
+
+The `share/rpcuser/rpcuser.py` script was renamed to `share/rpcauth/rpcauth.py`. This script can be
+used to create `rpcauth` credentials for a JSON-RPC user.
+
+### Validateaddress improvements
+
+The `validateaddress` RPC output has been extended with a few new fields, and support for segwit addresses (both P2SH and Bech32). Specifically:
+* A new field `iswitness` is True for P2WPKH and P2WSH addresses ("grs1..." addresses), but not for P2SH-wrapped segwit addresses (see below).
+* The existing field `isscript` will now also report True for P2WSH addresses.
+* A new field `embedded` is present for all script addresses where the script is known and matches something that can be interpreted as a known address. This is particularly true for P2SH-P2WPKH and P2SH-P2WSH addresses. The value for `embedded` includes much of the information `validateaddress` would report if invoked directly on the embedded address.
+* For multisig scripts a new `pubkeys` field was added that reports the full public keys involved in the script (if known). This is a replacement for the existing `addresses` field (which reports the same information but encoded as P2PKH addresses), represented in a more useful and less confusing way. The `addresses` field remains present for non-segwit addresses for backward compatibility.
+* For all single-key addresses with known key (even when wrapped in P2SH or P2WSH), the `pubkey` field will be present. In particular, this means that invoking `validateaddress` on the output of `getnewaddress` will always report the `pubkey`, even when the address type is P2SH-P2WPKH.
+
+Low-level RPC changes
+----------------------
+
+ - `importprunedfunds` only accepts two required arguments. Some versions accept
+   an optional third arg, which was always ignored. Make sure to never pass more
+   than two arguments.
+
+ - The first boolean argument to `getaddednodeinfo` has been removed. This is 
+   an incompatible change.
+
+ - RPC command `getmininginfo` loses the "testnet" field in favor of the more
+   generic "chain" (which has been present for years).
+
+ - A new RPC command `preciousblock` has been added which marks a block as
+   precious. A precious block will be treated as if it were received earlier
+   than a competing block.
+
+ - A new RPC command `importmulti` has been added which receives an array of 
+   JSON objects representing the intention of importing a public key, a 
+   private key, an address and script/p2sh
+
+ - Use of `getrawtransaction` for retrieving confirmed transactions with unspent
+   outputs has been deprecated. For now this will still work, but in the future
+   it may change to only be able to retrieve information about transactions in
+   the mempool or if `txindex` is enabled.
+
+ - A new RPC command `getmemoryinfo` has been added which will return information
+   about the memory usage of groestlcoin Core. This was added in conjunction with
+   optimizations to memory management. See [Pull #8753](https://github.com/bitcoin/bitcoin/pull/8753)
+   for more information.
+
+ - A new RPC command `bumpfee` has been added which allows replacing an
+   unconfirmed wallet transaction that signaled RBF (see the `-walletrbf`
+   startup option above) with a new transaction that pays a higher fee, and
+   should be more likely to get confirmed quickly.
+
+ - The "currentblocksize" value in getmininginfo has been removed.
+
+ - `dumpwallet` no longer allows overwriting files. This is a security measure
+   as well as prevents dangerous user mistakes.
+
+ - `backupwallet` will now fail when attempting to backup to source file, rather than
+   destroying the wallet.
+
+ - `listsinceblock` will now throw an error if an unknown `blockhash` argument
+   value is passed, instead of returning a list of all wallet transactions since
+   the genesis block. The behaviour is unchanged when an empty string is provided.
+
+ - A new RPC `rescanblockchain` has been added to manually invoke a blockchain rescan.
+   The RPC supports start and end-height arguments for the rescan, and can be used in a
+   multiwallet environment to rescan the blockchain at runtime.
+
+ - A new `savemempool` RPC has been added which allows the current mempool to be saved to
+   disk at any time to avoid it being lost due to crashes / power loss.
+   
+   
+ - The first positional argument of `createrawtransaction` was renamed from
+  `transactions` to `inputs`.
+
+ - The argument of `disconnectnode` was renamed from `node` to `address`.
+ 
+ - `abortrescan` stops current wallet rescan, e.g. when triggered by an `importprivkey` call (See [PR 10208](https://github.com/bitcoin/bitcoin/pull/10208)).
 - `combinerawtransaction` accepts a JSON array of raw transactions and combines them into a single raw transaction (See [PR 10571](https://github.com/bitcoin/bitcoin/pull/10571)).
 - `estimaterawfee` returns raw fee data so that customized logic can be implemented to analyze the data and calculate estimates. See [Fee Estimation Improvements](#fee-estimation-improvements) for full details on changes to the fee estimation logic and interface.
 - `getchaintxstats` returns statistics about the total number and rate of transactions
@@ -540,9 +711,6 @@ Version 2.16 introduces several new RPC methods:
 - `listwallets` lists wallets which are currently loaded. See the *Multi-wallet* section
   of these release notes for full details (See [Multi-wallet support](#multi-wallet-support)).
 - `uptime` returns the total runtime of the `groestlcoind` server since its last start (See [PR 10400](https://github.com/bitcoin/bitcoin/pull/10400)).
-
-Low-level RPC changes
----------------------
 
 - When using Groestlcoin Core in multi-wallet mode, RPC requests for wallet methods must specify
   the wallet that they're intended for. See [Multi-wallet support](#multi-wallet-support) for full details.
@@ -641,218 +809,27 @@ Low-level RPC changes
   - `bumpfee` now returns RPC_WALLET_ERROR if the change output is too small to bump the
   fee. Previously returned RPC_MISC_ERROR.
 
-Network fork safety enhancements
---------------------------------
-
-A number of changes to the way Groestlcoin Core deals with peer connections and invalid blocks
-have been made, as a safety precaution against blockchain forks and misbehaving peers.
-
-- Unrequested blocks with less work than the minimum-chain-work are now no longer processed even
-if they have more work than the tip (a potential issue during IBD where the tip may have low-work).
-This prevents peers wasting the resources of a node. 
-
-- Peers which provide a chain with less work than the minimum-chain-work during IBD will now be disconnected.
-
-- For a given outbound peer, we now check whether their best known block has at least as much work as our tip. If it
-doesn't, and if we still haven't heard about a block with sufficient work after a 20 minute timeout, then we send
-a single getheaders message, and wait 2 more minutes. If after two minutes their best known block has insufficient
-work, we disconnect that peer. We protect 4 of our outbound peers from being disconnected by this logic to prevent
-excessive network topology changes as a result of this algorithm, while still ensuring that we have a reasonable
-number of nodes not known to be on bogus chains.
-
-- Outbound (non-manual) peers that serve us block headers that are already known to be invalid (other than compact
-block announcements, because BIP 152 explicitly permits nodes to relay compact blocks before fully validating them)
-will now be disconnected.
-
-- If the chain tip has not been advanced for over 30 minutes, we now assume the tip may be stale and will try to connect
-to an additional outbound peer. A periodic check ensures that if this extra peer connection is in use, we will disconnect
-the peer that least recently announced a new block.
-
-- The set of all known invalid-themselves blocks (i.e. blocks which we attempted to connect but which were found to be
-invalid) are now tracked and used to check if new headers build on an invalid chain. This ensures that everything that
-descends from an invalid block is marked as such.
-
-
-Miner block size limiting deprecated
-------------------------------------
-
-Though blockmaxweight has been preferred for limiting the size of blocks returned by
-getblocktemplate since 2.13.3, blockmaxsize remained as an option for those who wished
-to limit their block size directly. Using this option resulted in a few UI issues as
-well as non-optimal fee selection and ever-so-slightly worse performance, and has thus
-now been deprecated. Further, the blockmaxsize option is now used only to calculate an
-implied blockmaxweight, instead of limiting block size directly. Any miners who wish
-to limit their blocks by size, instead of by weight, will have to do so manually by
-removing transactions from their block template directly.
-
-
-GUI settings backed up on reset
--------------------------------
-
-The GUI settings will now be written to `guisettings.ini.bak` in the data directory before wiping them when
-the `-resetguisettings` argument is used. This can be used to retroactively troubleshoot issues due to the
-GUI settings.
-
-Debug `-minimumchainwork` argument added
-----------------------------------------
-
-A hidden debug argument `-minimumchainwork` has been added to allow a custom minimum work value to be used
-when validating a chain.
-
-
-Low-level RPC changes
-----------------------
-
-- The "currentblocksize" value in getmininginfo has been removed.
-
-- `dumpwallet` no longer allows overwriting files. This is a security measure
-  as well as prevents dangerous user mistakes.
-
-- `backupwallet` will now fail when attempting to backup to source file, rather than
-  destroying the wallet.
-
-- `listsinceblock` will now throw an error if an unknown `blockhash` argument
-  value is passed, instead of returning a list of all wallet transactions since
-  the genesis block. The behaviour is unchanged when an empty string is provided.
-
-Wallet changes
----------------
-
-### Segwit Wallet
-
-Bitcoin Core 2.16.0 introduces full support for segwit in the wallet and user interfaces. A new `-addresstype` argument has been added, which supports `legacy`, `p2sh-segwit` (default), and `bech32` addresses. It controls what kind of addresses are produced by `getnewaddress`, `getaccountaddress`, and `createmultisigaddress`. A `-changetype` argument has also been added, with the same options, and by default equal to `-addresstype`, to control which kind of change is used.
-
-A new `address_type` parameter has been added to the `getnewaddress` and `addmultisigaddress` RPCs to specify which type of address to generate.
-A `change_type` argument has been added to the `fundrawtransaction` RPC to override the `-changetype` argument for specific transactions.
-
-- All segwit addresses created through `getnewaddress` or `*multisig` RPCs explicitly get their redeemscripts added to the wallet file. This means that downgrading after creating a segwit address will work, as long as the wallet file is up to date.
-- All segwit keys in the wallet get an implicit redeemscript added, without it being written to the file. This means recovery of an old backup will work, as long as you use new software.
-- All keypool keys that are seen used in transactions explicitly get their redeemscripts added to the wallet files. This means that downgrading after recovering from a backup that includes a segwit address will work
-
-Note that some RPCs do not yet support segwit addresses. Notably, `signmessage`/`verifymessage` doesn't support segwit addresses, nor does `importmulti` at this time. Support for segwit in those RPCs will continue to be added in future versions.
-
-P2WPKH change outputs are now used by default if any destination in the transaction is a P2WPKH or P2WSH output. This is done to ensure the change output is as indistinguishable from the other outputs as possible in either case.
-
-### BIP173 (Bech32) Address support ("grs1..." addresses)
-
-Full support for native segwit addresses (BIP173 / Bech32) has now been added.
-This includes the ability to send to BIP173 addresses (including non-v0 ones), and generating these
-addresses (including as default new addresses, see above).
-
-A checkbox has been added to the GUI to select whether a Bech32 address or P2SH-wrapped address should be generated when using segwit addresses. When launched with `-addresstype=bech32` it is checked by default. When launched with `-addresstype=legacy` it is unchecked and disabled.
-
-### HD-wallets by default
-
-Due to a backward-incompatible change in the wallet database, wallets created
-with version 2.16.0 will be rejected by previous versions. Also, version 2.16.0
-will only create hierarchical deterministic (HD) wallets. Note that this only applies
-to new wallets; wallets made with previous versions will not be upgraded to be HD.
-
-### Replace-By-Fee by default in GUI
-
-The send screen now uses BIP125 RBF by default, regardless of `-walletrbf`.
-There is a checkbox to mark the transaction as final.
-
-The RPC default remains unchanged: to use RBF, launch with `-walletrbf=1` or
-use the `replaceable` argument for individual transactions.
-
-### Wallets directory configuration (`-walletdir`)
-
-Groestlcoin Core now has more flexibility in where the wallets directory can be
-located. Previously wallet database files were stored at the top level of the
-groestlcoin data directory. The behavior is now:
-
-- For new installations (where the data directory doesn't already exist),
-  wallets will now be stored in a new `wallets/` subdirectory inside the data
-  directory by default.
-- For existing nodes (where the data directory already exists), wallets will be
-  stored in the data directory root by default. If a `wallets/` subdirectory
-  already exists in the data directory root, then wallets will be stored in the
-  `wallets/` subdirectory by default.
-- The location of the wallets directory can be overridden by specifying a
-  `-walletdir=<path>` option where `<path>` can be an absolute path to a
-  directory or directory symlink.
-
-Care should be taken when choosing the wallets directory location, as if it
-becomes unavailable during operation, funds may be lost.
-
-Build: Minimum GCC bumped to 4.8.x
-------------------------------------
-The minimum version of the GCC compiler required to compile Groestlcoin Core is now 4.8. No effort will be
-made to support older versions of GCC. See discussion in issue #11732 for more information.
-The minimum version for the Clang compiler is still 3.3. Other minimum dependency versions can be found in `doc/dependencies.md` in the repository.
-
-Support for signalling pruned nodes (BIP159)
----------------------------------------------
-Pruned nodes can now signal BIP159's NODE_NETWORK_LIMITED using service bits, in preparation for
-full BIP159 support in later versions. This would allow pruned nodes to serve the most recent blocks. However, the current change does not yet include support for connecting to these pruned peers.
-
-Performance: SHA256 assembly enabled by default
--------------------------------------------------
-The SHA256 hashing optimizations for architectures supporting SSE4, which lead to ~50% speedups in SHA256 on supported hardware (~5% faster synchronization and block validation), have now been enabled by default. In previous versions they were enabled using the `--enable-experimental-asm` flag when building, but are now the default and no longer deemed experimental.
-
-GUI changes
------------
-- Uses of "µGRS" in the GUI now also show the more colloquial term "bits", specified in BIP176.
-- The option to reuse a previous address has now been removed. This was justified by the need to "resend" an invoice, but now that we have the request history, that need should be gone.
-- Support for searching by TXID has been added, rather than just address and label.
-- A "Use available balance" option has been added to the send coins dialog, to add the remaining available wallet balance to a transaction output.
-- A toggle for unblinding the password fields on the password dialog has been added.
-
-RPC changes
-------------
-
-### New `rescanblockchain` RPC
-
-A new RPC `rescanblockchain` has been added to manually invoke a blockchain rescan.
-The RPC supports start and end-height arguments for the rescan, and can be used in a
-multiwallet environment to rescan the blockchain at runtime.
-
-### New `savemempool` RPC
-A new `savemempool` RPC has been added which allows the current mempool to be saved to
-disk at any time to avoid it being lost due to crashes / power loss.
-
-### Safe mode disabled by default
-
-Safe mode is now disabled by default and must be manually enabled (with `-disablesafemode=0`) if you wish to use it. Safe mode is a feature that disables a subset of RPC calls - mostly related to the wallet and sending - automatically in case certain problem conditions with the network are detected. However, developers have come to regard these checks as not reliable enough to act on automatically. Even with safe mode disabled, they will still cause warnings in the `warnings` field of the `getneworkinfo` RPC and launch the `-alertnotify` command.
-
-### Renamed script for creating JSON-RPC credentials
-
-The `share/rpcuser/rpcuser.py` script was renamed to `share/rpcauth/rpcauth.py`. This script can be
-used to create `rpcauth` credentials for a JSON-RPC user.
-
-### Validateaddress improvements
-
-The `validateaddress` RPC output has been extended with a few new fields, and support for segwit addresses (both P2SH and Bech32). Specifically:
-* A new field `iswitness` is True for P2WPKH and P2WSH addresses ("bc1..." addresses), but not for P2SH-wrapped segwit addresses (see below).
-* The existing field `isscript` will now also report True for P2WSH addresses.
-* A new field `embedded` is present for all script addresses where the script is known and matches something that can be interpreted as a known address. This is particularly true for P2SH-P2WPKH and P2SH-P2WSH addresses. The value for `embedded` includes much of the information `validateaddress` would report if invoked directly on the embedded address.
-* For multisig scripts a new `pubkeys` field was added that reports the full public keys involved in the script (if known). This is a replacement for the existing `addresses` field (which reports the same information but encoded as P2PKH addresses), represented in a more useful and less confusing way. The `addresses` field remains present for non-segwit addresses for backward compatibility.
-* For all single-key addresses with known key (even when wrapped in P2SH or P2WSH), the `pubkey` field will be present. In particular, this means that invoking `validateaddress` on the output of `getnewaddress` will always report the `pubkey`, even when the address type is P2SH-P2WPKH.
-
-### Low-level changes
-
-- The deprecated RPC `getinfo` was removed. It is recommended that the more specific RPCs are used:
-  * `getblockchaininfo`
-  * `getnetworkinfo`
-  * `getwalletinfo`
-  * `getmininginfo`
-- The wallet RPC `getreceivedbyaddress` will return an error if called with an address not in the wallet.
-- The wallet RPC `addwitnessaddress` was deprecated and will be removed in future version,
-  set the `address_type` argument of `getnewaddress`, or option `-addresstype=[bech32|p2sh-segwit]` instead.
-- `dumpwallet` now includes hex-encoded scripts from the wallet in the dumpfile, and
-  `importwallet` now imports these scripts, but corresponding addresses may not be added
-  correctly or a manual rescan may be required to find relevant transactions.
-- The RPC `getblockchaininfo` now includes an `errors` field.
-- A new `blockhash` parameter has been added to the `getrawtransaction` RPC which allows for a raw transaction to be fetched from a specific block if known, even without `-txindex` enabled.
-- The `decoderawtransaction` and `fundrawtransaction` RPCs now have optional `iswitness` parameters to override the
-  heuristic witness checks if necessary.
-- The `walletpassphrase` timeout is now clamped to 2^30 seconds.
-- Using addresses with the `createmultisig` RPC is now deprecated, and will be removed in a later version. Public keys should be used instead.
-- Blockchain rescans now no longer lock the wallet for the entire rescan process, so other RPCs can now be used at the same time (although results of balances / transactions may be incorrect or incomplete until the rescan is complete).
-- The `logging` RPC has now been made public rather than hidden.
-- An `initialblockdownload` boolean has been added to the `getblockchaininfo` RPC to indicate whether the node is currently in IBD or not.
-- `minrelaytxfee` is now included in the output of `getmempoolinfo`
+ - The deprecated RPC `getinfo` was removed. It is recommended that the more specific RPCs are used:
+   * `getblockchaininfo`
+   * `getnetworkinfo`
+   * `getwalletinfo`
+   * `getmininginfo`
+ - The wallet RPC `getreceivedbyaddress` will return an error if called with an address not in the wallet.
+ - The wallet RPC `addwitnessaddress` was deprecated and will be removed in future version,
+   set the `address_type` argument of `getnewaddress`, or option `-addresstype=[bech32|p2sh-segwit]` instead.
+ - `dumpwallet` now includes hex-encoded scripts from the wallet in the dumpfile, and
+   `importwallet` now imports these scripts, but corresponding addresses may not be added
+   correctly or a manual rescan may be required to find relevant transactions.
+ - The RPC `getblockchaininfo` now includes an `errors` field.
+ - A new `blockhash` parameter has been added to the `getrawtransaction` RPC which allows for a raw transaction to be fetched from a        specific block if known, even without `-txindex` enabled.
+ - The `decoderawtransaction` and `fundrawtransaction` RPCs now have optional `iswitness` parameters to override the
+   heuristic witness checks if necessary.
+ - The `walletpassphrase` timeout is now clamped to 2^30 seconds.
+ - Using addresses with the `createmultisig` RPC is now deprecated, and will be removed in a later version. Public keys should be used      instead.
+ - Blockchain rescans now no longer lock the wallet for the entire rescan process, so other RPCs can now be used at the same time          (although results of balances / transactions may be incorrect or incomplete until the rescan is complete).
+ - The `logging` RPC has now been made public rather than hidden.
+ - An `initialblockdownload` boolean has been added to the `getblockchaininfo` RPC to indicate whether the node is currently in IBD or      not.
+ - `minrelaytxfee` is now included in the output of `getmempoolinfo`
 
 Other changed command-line options
 ----------------------------------
