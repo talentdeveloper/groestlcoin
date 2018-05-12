@@ -112,8 +112,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);..\x86_libs</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>groestlcoin.lib</AdditionalDependencies>
-      <EntryPointSymbol>GroestlcoinTxEntry</EntryPointSymbol>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <ProjectReference />
@@ -138,8 +140,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);..\x64_libs</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>groestlcoin.lib</AdditionalDependencies>
-      <EntryPointSymbol>GroestlcoinTxEntry</EntryPointSymbol>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <ProjectReference />
@@ -165,8 +169,10 @@
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(OutDir);..\x86_libs</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>groestlcoin.lib</AdditionalDependencies>
-      <EntryPointSymbol>GroestlcoinTxEntry</EntryPointSymbol>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <ProjectReference />
@@ -203,14 +209,20 @@
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(OutDir);..\x64_libs</AdditionalLibraryDirectories>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalDependencies>groestlcoin.lib</AdditionalDependencies>
-      <EntryPointSymbol>GroestlcoinTxEntry</EntryPointSymbol>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <ProjectReference />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ResourceCompile Include="groestlcoin-tx-res.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="groestlcoin-tx.cpp" />
+    <ClCompile Include="win-libs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
