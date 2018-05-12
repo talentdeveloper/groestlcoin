@@ -67,7 +67,7 @@ improved, leading to much shorter sync and initial block download times.
 Manual Pruning
 --------------
 
-Bitcoin Core has supported automatically pruning the blockchain since 0.11. Pruning
+Groestlcoin Core has supported automatically pruning the blockchain since 2.11.0 Pruning
 the blockchain allows for significant storage space savings as the vast majority of
 the downloaded data can be discarded after processing so very little of it remains
 on the disk.
@@ -141,7 +141,7 @@ the same thing as the GUI icon. The command takes one boolean parameter,
 Out-of-sync Modal Info Layer
 ----------------------------
 
-When Bitcoin Core is out-of-sync on startup, a semi-transparent information
+When Groestlcoin Core is out-of-sync on startup, a semi-transparent information
 layer will be shown over top of the normal display. This layer contains
 details about the current sync progress and estimates the amount of time
 remaining to finish syncing. This layer can also be hidden and subsequently
@@ -150,19 +150,19 @@ unhidden by clicking on the progress bar at the bottom of the window.
 Support for JSON-RPC Named Arguments
 ------------------------------------
 
-Commands sent over the JSON-RPC interface and through the `bitcoin-cli` binary
+Commands sent over the JSON-RPC interface and through the `groestlcoin-cli` binary
 can now use named arguments. This follows the [JSON-RPC specification](http://www.jsonrpc.org/specification)
 for passing parameters by-name with an object.
 
-`bitcoin-cli` has been updated to support this by parsing `name=value` arguments
+`groestlcoin-cli` has been updated to support this by parsing `name=value` arguments
 when the `-named` option is given.
 
 Some examples:
 
-    src/bitcoin-cli -named help command="help"
-    src/bitcoin-cli -named getblockhash height=0
-    src/bitcoin-cli -named getblock blockhash=000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
-    src/bitcoin-cli -named sendtoaddress address="(snip)" amount="1.0" subtractfeefromamount=true
+    src/groestlcoin-cli -named help command="help"
+    src/groestlcoin-cli -named getblockhash height=0
+    src/groestlcoin-cli -named getblock blockhash=0000000000000036ae5aabb18a2d345d19d60ba1927f071af2aa8eec7a27d41d
+    src/groestlcoin-cli -named sendtoaddress address="(snip)" amount="1.0" subtractfeefromamount=true
 
 The order of arguments doesn't matter in this case. Named arguments are also
 useful to leave out arguments that should stay at their default value. The
@@ -197,15 +197,6 @@ to a `mempool.dat` file. This file preserves the mempool so that when the node
 restarts the mempool can be filled with transactions without waiting for new transactions
 to be created. This will also preserve any changes made to a transaction through
 commands such as `prioritisetransaction` so that those changes will not be lost.
-
-Final Alert
------------
-
-The Alert System was [disabled and deprecated](https://bitcoin.org/en/alert/2016-11-01-alert-retirement) in Bitcoin Core 0.12.1 and removed in 0.13.0. 
-The Alert System was retired with a maximum sequence final alert which causes any nodes
-supporting the Alert System to display a static hard-coded "Alert Key Compromised" message which also
-prevents any other alerts from overriding it. This final alert is hard-coded into this release
-so that all old nodes receive the final alert.
 
 GUI Changes
 -----------
@@ -253,7 +244,7 @@ Low-level RPC changes
    the mempool or if `txindex` is enabled.
 
  - A new RPC command `getmemoryinfo` has been added which will return information
-   about the memory usage of Bitcoin Core. This was added in conjunction with
+   about the memory usage of groestlcoin Core. This was added in conjunction with
    optimizations to memory management. See [Pull #8753](https://github.com/bitcoin/bitcoin/pull/8753)
    for more information.
 
@@ -273,17 +264,17 @@ HTTP REST Changes
 Minimum Fee Rate Policies
 -------------------------
 
-Since the changes in 0.12 to automatically limit the size of the mempool and improve the performance of block creation in mining code it has not been important for relay nodes or miners to set `-minrelaytxfee`. With this release the following concepts that were tied to this option have been separated out:
-- incremental relay fee used for calculating BIP 125 replacement and mempool limiting. (1000 satoshis/kB)
-- calculation of threshold for a dust output. (effectively 3 * 1000 satoshis/kB)
-- minimum fee rate of a package of transactions to be included in a block created by the mining code. If miners wish to set this minimum they can use the new `-blockmintxfee` option.  (defaults to 1000 satoshis/kB)
+Since the changes in 2.13.3 to automatically limit the size of the mempool and improve the performance of block creation in mining code it has not been important for relay nodes or miners to set `-minrelaytxfee`. With this release the following concepts that were tied to this option have been separated out:
+- incremental relay fee used for calculating BIP 125 replacement and mempool limiting. (1000 gros/kB)
+- calculation of threshold for a dust output. (effectively 3 * 1000 gros/kB)
+- minimum fee rate of a package of transactions to be included in a block created by the mining code. If miners wish to set this minimum they can use the new `-blockmintxfee` option.  (defaults to 1000 gros/kB)
 
 The `-minrelaytxfee` option continues to exist but is recommended to be left unset.
 
 Fee Estimation Changes
 ----------------------
 
-- Since 0.13.2 fee estimation for a confirmation target of 1 block has been
+- Since 2.13.2 fee estimation for a confirmation target of 1 block has been
   disabled. The fee slider will no longer be able to choose a target of 1 block.
   This is only a minor behavior change as there was often insufficient
   data for this target anyway. `estimatefee 1` will now always return -1 and
@@ -342,15 +333,15 @@ Introduction of assumed-valid blocks
 Fundrawtransaction change address reuse
 ----------------------------------------
 
-- Before 0.14, `fundrawtransaction` was by default wallet stateless. In
+- Before 2.16, `fundrawtransaction` was by default wallet stateless. In
   almost all cases `fundrawtransaction` does add a change-output to the
-  outputs of the funded transaction. Before 0.14, the used keypool key was
+  outputs of the funded transaction. Before 2.16, the used keypool key was
   never marked as change-address key and directly returned to the keypool
-  (leading to address reuse).  Before 0.14, calling `getnewaddress`
+  (leading to address reuse).  Before 2.16, calling `getnewaddress`
   directly after `fundrawtransaction` did generate the same address as
   the change-output address.
 
-- Since 0.14, fundrawtransaction does reserve the change-output-key from
+- Since 2.16, fundrawtransaction does reserve the change-output-key from
   the keypool by default (optional by setting  `reserveChangeKey`, default =
   `true`)
 
@@ -360,8 +351,8 @@ Fundrawtransaction change address reuse
 Unused mempool memory used by coincache
 ----------------------------------------
 
-- Before 0.14, memory reserved for mempool (using the `-maxmempool` option)
-  went unused during initial block download, or IBD. In 0.14, the UTXO DB cache
+- Before 2.16, memory reserved for mempool (using the `-maxmempool` option)
+  went unused during initial block download, or IBD. In 2.16, the UTXO DB cache
   (controlled with the `-dbcache` option) borrows memory from the mempool
   when there is extra memory available. This may result in an increase in
   memory usage during IBD for those previously relying on only the `-dbcache`
@@ -375,8 +366,8 @@ RPC changes
 
 - The argument of `disconnectnode` was renamed from `node` to `address`.
 
-These interface changes break compatibility with 0.14.0, when the named
-arguments functionality, introduced in 0.14.0, is used. Client software
+These interface changes break compatibility with 2.16.0, when the named
+arguments functionality, introduced in 2.16.0, is used. Client software
 using these calls with named arguments needs to be updated.
 
 Mining
@@ -424,7 +415,7 @@ other impact.
 
 This only affects users that have explicitly enabled UPnP through the GUI
 setting or through the `-upnp` option, as since the last UPnP vulnerability
-(in Bitcoin Core 0.10.3) it has been disabled by default.
+(in Groestlcoin Core 2.1.0.6) it has been disabled by default.
 
 If you use this option, it is recommended to upgrade to this version as soon as
 possible.
@@ -432,7 +423,7 @@ possible.
 Performance Improvements
 ------------------------
 
-Version 0.15 contains a number of significant performance improvements, which make
+Version 2.16 contains a number of significant performance improvements, which make
 Initial Block Download, startup, transaction and block validation much faster:
 
 - The chainstate database (which is used for tracking UTXOs) has been changed
@@ -453,7 +444,7 @@ Initial Block Download, startup, transaction and block validation much faster:
   the available cache (see `-dbcache`) is now actually used as cache. This reduces the flushing
   frequency by a factor 2 or more.
 - In previous versions, signature validation for transactions has been cached when the
-  transaction is accepted to the mempool. Version 0.15 extends this to cache the entire script
+  transaction is accepted to the mempool. Version 2.16 extends this to cache the entire script
   validity (See [PR 10192](https://github.com/bitcoin/bitcoin/pull/10192)). This means that if a transaction in a block has already been accepted to the
   mempool, the scriptSig does not need to be re-evaluated. Empirical tests show that
   this results in new block validation being 40-50% faster.
@@ -461,21 +452,21 @@ Initial Block Download, startup, transaction and block validation much faster:
   on architectures supporting SSE 4.2. As a result, synchronization and block validation are now faster.
 - SHA256 hashing has been optimized for architectures supporting SSE 4 (See [PR 10821](https://github.com/bitcoin/bitcoin/pull/10821)). SHA256 is around
   50% faster on supported hardware, which results in around 5% faster IBD and block
-  validation. In version 0.15, SHA256 hardware optimization is disabled in release builds by
+  validation. In version 2.16, SHA256 hardware optimization is disabled in release builds by
   default, but can be enabled by using `--enable-experimental-asm` when building.
 - Refill of the keypool no longer flushes the wallet between each key which resulted in a ~20x speedup in creating a new wallet. Part of this speedup was used to increase the default keypool to 1000 keys to make recovery more robust. (See [PR 10831](https://github.com/bitcoin/bitcoin/pull/10831)).
 
 Fee Estimation Improvements
 ---------------------------
 
-Fee estimation has been significantly improved in version 0.15, with more accurate fee estimates used by the wallet and a wider range of options for advanced users of the `estimatesmartfee` and `estimaterawfee` RPCs (See [PR 10199](https://github.com/bitcoin/bitcoin/pull/10199)).
+Fee estimation has been significantly improved in version 2.16, with more accurate fee estimates used by the wallet and a wider range of options for advanced users of the `estimatesmartfee` and `estimaterawfee` RPCs (See [PR 10199](https://github.com/bitcoin/bitcoin/pull/10199)).
 
 ### Changes to internal logic and wallet behavior
 
 - Internally, estimates are now tracked on 3 different time horizons. This allows for longer targets and means estimates adjust more quickly to changes in conditions.
 - Estimates can now be *conservative* or *economical*. *Conservative* estimates use longer time horizons to produce an estimate which is less susceptible to rapid changes in fee conditions. *Economical* estimates use shorter time horizons and will be more affected by short-term changes in fee conditions. Economical estimates may be considerably lower during periods of low transaction activity (for example over weekends), but may result in transactions being unconfirmed if prevailing fees increase rapidly.
 - By default, the wallet will use conservative fee estimates to increase the reliability of transactions being confirmed within the desired target. For transactions that are marked as replaceable, the wallet will use an economical estimate by default, since the fee can be 'bumped' if the fee conditions change rapidly (See [PR 10589](https://github.com/bitcoin/bitcoin/pull/10589)).
-- Estimates can now be made for confirmation targets up to 1008 blocks (one week).
+- Estimates can now be made for confirmation targets up to 1008 blocks (one day).
 - More data on historical fee rates is stored, leading to more precise fee estimates.
 - Transactions which leave the mempool due to eviction or other non-confirmed reasons are now taken into account by the fee estimation logic, leading to more accurate fee estimates.
 - The fee estimation logic will make sure enough data has been gathered to return a meaningful estimate. If there is insufficient data, a fallback default fee is used.
@@ -487,42 +478,40 @@ Fee estimation has been significantly improved in version 0.15, with more accura
     - The `nblocks` argument has been renamed to `conf_target` (to be consistent with other RPC methods).
     - An `estimate_mode` argument has been added. This argument takes one of the following strings: `CONSERVATIVE`, `ECONOMICAL` or `UNSET` (which defaults to `CONSERVATIVE`).
     - The RPC return object now contains an `errors` member, which returns errors encountered during processing.
-    - If Bitcoin Core has not been running for long enough and has not seen enough blocks or transactions to produce an accurate fee estimation, an error will be returned (previously a value of -1 was used to indicate an error, which could be confused for a feerate).
+    - If Groestlcoin Core has not been running for long enough and has not seen enough blocks or transactions to produce an accurate fee estimation, an error will be returned (previously a value of -1 was used to indicate an error, which could be confused for a feerate).
 - A new `estimaterawfee` RPC is added to provide raw fee data. External clients can query and use this data in their own fee estimation logic.
 
 Multi-wallet support
 --------------------
 
-Bitcoin Core now supports loading multiple, separate wallets (See [PR 8694](https://github.com/bitcoin/bitcoin/pull/8694), [PR 10849](https://github.com/bitcoin/bitcoin/pull/10849)). The wallets are completely separated, with individual balances, keys and received transactions.
+Groestkcoin Core now supports loading multiple, separate wallets (See [PR 8694](https://github.com/bitcoin/bitcoin/pull/8694), [PR 10849](https://github.com/bitcoin/bitcoin/pull/10849)). The wallets are completely separated, with individual balances, keys and received transactions.
 
-Multi-wallet is enabled by using more than one `-wallet` argument when starting Bitcoin, either on the command line or in the Bitcoin config file.
+Multi-wallet is enabled by using more than one `-wallet` argument when starting Groestlcoin, either on the command line or in the Groestlcoin config file.
 
-**In Bitcoin-Qt, only the first wallet will be displayed and accessible for creating and signing transactions.** GUI selectable multiple wallets will be supported in a future version. However, even in 0.15 other loaded wallets will remain synchronized to the node's current tip in the background. This can be useful if running a pruned node, since loading a wallet where the most recent sync is beyond the pruned height results in having to download and revalidate the whole blockchain. Continuing to synchronize all wallets in the background avoids this problem.
+**In Groestlcoin-Qt, only the first wallet will be displayed and accessible for creating and signing transactions.** GUI selectable multiple wallets will be supported in a future version. However, even in 2.16 other loaded wallets will remain synchronized to the node's current tip in the background. This can be useful if running a pruned node, since loading a wallet where the most recent sync is beyond the pruned height results in having to download and revalidate the whole blockchain. Continuing to synchronize all wallets in the background avoids this problem.
 
-Bitcoin Core 0.15.0 contains the following changes to the RPC interface and `bitcoin-cli` for multi-wallet:
+Groestlcoin Core 2.16.0 contains the following changes to the RPC interface and `groestlcoin-cli` for multi-wallet:
 
-* When running Bitcoin Core with a single wallet, there are **no** changes to the RPC interface or `bitcoin-cli`. All RPC calls and `bitcoin-cli` commands continue to work as before.
-* When running Bitcoin Core with multi-wallet, all *node-level* RPC methods continue to work as before. HTTP RPC requests should be send to the normal `<RPC IP address>:<RPC port>` endpoint, and `bitcoin-cli` commands should be run as before. A *node-level* RPC method is any method which does not require access to the wallet.
-* When running Bitcoin Core with multi-wallet, *wallet-level* RPC methods must specify the wallet for which they're intended in every request. HTTP RPC requests should be send to the `<RPC IP address>:<RPC port>/wallet/<wallet name>` endpoint, for example `127.0.0.1:8332/wallet/wallet1.dat`. `bitcoin-cli` commands should be run with a `-rpcwallet` option, for example `bitcoin-cli -rpcwallet=wallet1.dat getbalance`.
+* When running Groestlcoin Core with a single wallet, there are **no** changes to the RPC interface or `groestlcoin-cli`. All RPC calls and `groestlcoin-cli` commands continue to work as before.
+* When running Groestlcoin Core with multi-wallet, all *node-level* RPC methods continue to work as before. HTTP RPC requests should be send to the normal `<RPC IP address>:<RPC port>` endpoint, and `groestlcoin-cli` commands should be run as before. A *node-level* RPC method is any method which does not require access to the wallet.
+* When running Groestlcoin Core with multi-wallet, *wallet-level* RPC methods must specify the wallet for which they're intended in every request. HTTP RPC requests should be send to the `<RPC IP address>:<RPC port>/wallet/<wallet name>` endpoint, for example `127.0.0.1:1441/wallet/wallet1.dat`. `groestlcoin-cli` commands should be run with a `-rpcwallet` option, for example `groestlcoin-cli -rpcwallet=wallet1.dat getbalance`.
 * A new *node-level* `listwallets` RPC method is added to display which wallets are currently loaded. The names returned by this method are the same as those used in the HTTP endpoint and for the `rpcwallet` argument.
 
-Note that while multi-wallet is now fully supported, the RPC multi-wallet interface should be considered unstable for version 0.15.0, and there may backwards-incompatible changes in future versions.
+Note that while multi-wallet is now fully supported, the RPC multi-wallet interface should be considered unstable for version 2.16.0, and there may backwards-incompatible changes in future versions.
 
 Replace-by-fee control in the GUI
 ---------------------------------
 
-Bitcoin Core has supported creating opt-in replace-by-fee (RBF) transactions
-since version 0.12.0, and since version 0.14.0 has included a `bumpfee` RPC method to
-replace unconfirmed opt-in RBF transactions with a new transaction that pays
-a higher fee.
+Groestlcoin Core has supported creating opt-in replace-by-fee (RBF) transactions
+since version 2.13.3.
 
-In version 0.15, creating an opt-in RBF transaction and replacing the unconfirmed
+In version 2.16, creating an opt-in RBF transaction and replacing the unconfirmed
 transaction with a higher-fee transaction are both supported in the GUI (See [PR 9592](https://github.com/bitcoin/bitcoin/pull/9592)).
 
 Removal of Coin Age Priority
 ----------------------------
 
-In previous versions of Bitcoin Core, a portion of each block could be reserved for transactions based on the age and value of UTXOs they spent. This concept (Coin Age Priority) is a policy choice by miners, and there are no consensus rules around the inclusion of Coin Age Priority transactions in blocks. In practice, only a few miners continue to use Coin Age Priority for transaction selection in blocks. Bitcoin Core 0.15 removes all remaining support for Coin Age Priority (See [PR 9602](https://github.com/bitcoin/bitcoin/pull/9602)). This has the following implications:
+In previous versions of Groestlcoin Core, a portion of each block could be reserved for transactions based on the age and value of UTXOs they spent. This concept (Coin Age Priority) is a policy choice by miners, and there are no consensus rules around the inclusion of Coin Age Priority transactions in blocks. In practice, only a few miners continue to use Coin Age Priority for transaction selection in blocks. Groestlcoin Core 2.16 removes all remaining support for Coin Age Priority (See [PR 9602](https://github.com/bitcoin/bitcoin/pull/9602)). This has the following implications:
 
 - The concept of *free transactions* has been removed. High Coin Age Priority transactions would previously be allowed to be relayed even if they didn't attach a miner fee. This is no longer possible since there is no concept of Coin Age Priority. The `-limitfreerelay` and `-relaypriority` options which controlled relay of free transactions have therefore been removed.
 - The `-sendfreetransactions` option has been removed, since almost all miners do not include transactions which do not attach a transaction fee.
@@ -530,18 +519,18 @@ In previous versions of Bitcoin Core, a portion of each block could be reserved 
 - The `estimatepriority` and `estimatesmartpriority` RPCs have been removed.
 - The `getmempoolancestors`, `getmempooldescendants`, `getmempoolentry` and `getrawmempool` RPCs no longer return `startingpriority` and `currentpriority`.
 - The `prioritisetransaction` RPC no longer takes a `priority_delta` argument, which is replaced by a `dummy` argument for backwards compatibility with clients using positional arguments. The RPC is still used to change the apparent fee-rate of the transaction by using the `fee_delta` argument.
-- `-minrelaytxfee` can now be set to 0. If `minrelaytxfee` is set, then fees smaller than `minrelaytxfee` (per kB) are rejected from relaying, mining and transaction creation. This defaults to 1000 satoshi/kB.
+- `-minrelaytxfee` can now be set to 0. If `minrelaytxfee` is set, then fees smaller than `minrelaytxfee` (per kB) are rejected from relaying, mining and transaction creation. This defaults to 1000 gro/kB.
 - The `-printpriority` option has been updated to only output the fee rate and hash of transactions included in a block by the mining code.
 
 Mempool Persistence Across Restarts
 -----------------------------------
 
-Version 0.14 introduced mempool persistence across restarts (the mempool is saved to a `mempool.dat` file in the data directory prior to shutdown and restores the mempool when the node is restarted). Version 0.15 allows this feature to be switched on or off using the `-persistmempool` command-line option (See [PR 9966](https://github.com/bitcoin/bitcoin/pull/9966)). By default, the option is set to true, and the mempool is saved on shutdown and reloaded on startup. If set to false, the `mempool.dat` file will not be loaded on startup or saved on shutdown.
+Version 2.16 introduced mempool persistence across restarts (the mempool is saved to a `mempool.dat` file in the data directory prior to shutdown and restores the mempool when the node is restarted). Version 2.16 also allows this feature to be switched on or off using the `-persistmempool` command-line option (See [PR 9966](https://github.com/bitcoin/bitcoin/pull/9966)). By default, the option is set to true, and the mempool is saved on shutdown and reloaded on startup. If set to false, the `mempool.dat` file will not be loaded on startup or saved on shutdown.
 
 New RPC methods
 ---------------
 
-Version 0.15 introduces several new RPC methods:
+Version 2.16 introduces several new RPC methods:
 
 - `abortrescan` stops current wallet rescan, e.g. when triggered by an `importprivkey` call (See [PR 10208](https://github.com/bitcoin/bitcoin/pull/10208)).
 - `combinerawtransaction` accepts a JSON array of raw transactions and combines them into a single raw transaction (See [PR 10571](https://github.com/bitcoin/bitcoin/pull/10571)).
@@ -550,12 +539,12 @@ Version 0.15 introduces several new RPC methods:
   in the chain (See [PR 9733](https://github.com/bitcoin/bitcoin/pull/9733)).
 - `listwallets` lists wallets which are currently loaded. See the *Multi-wallet* section
   of these release notes for full details (See [Multi-wallet support](#multi-wallet-support)).
-- `uptime` returns the total runtime of the `bitcoind` server since its last start (See [PR 10400](https://github.com/bitcoin/bitcoin/pull/10400)).
+- `uptime` returns the total runtime of the `groestlcoind` server since its last start (See [PR 10400](https://github.com/bitcoin/bitcoin/pull/10400)).
 
 Low-level RPC changes
 ---------------------
 
-- When using Bitcoin Core in multi-wallet mode, RPC requests for wallet methods must specify
+- When using Groestlcoin Core in multi-wallet mode, RPC requests for wallet methods must specify
   the wallet that they're intended for. See [Multi-wallet support](#multi-wallet-support) for full details.
 
 - The new database model no longer stores information about transaction
@@ -597,7 +586,7 @@ Low-level RPC changes
 
 - The `disconnectnode` RPC can now disconnect a node specified by node ID (as well as by IP address/port). To disconnect a node based on node ID, call the RPC with the new `nodeid` argument (See [PR 10143](https://github.com/bitcoin/bitcoin/pull/10143)).
 
-- The second argument in `prioritisetransaction` has been renamed from `priority_delta` to `dummy` since Bitcoin Core no longer has a concept of coin age priority. The `dummy` argument has no functional effect, but is retained for positional argument compatibility. See [Removal of Coin Age Priority](#removal-of-coin-age-priority).
+- The second argument in `prioritisetransaction` has been renamed from `priority_delta` to `dummy` since Groestlcoin Core no longer has a concept of coin age priority. The `dummy` argument has no functional effect, but is retained for positional argument compatibility. See [Removal of Coin Age Priority](#removal-of-coin-age-priority).
 
 - The `resendwallettransactions` RPC throws an error if the `-walletbroadcast` option is set to false (See [PR 10995](https://github.com/bitcoin/bitcoin/pull/10995)).
 
@@ -655,7 +644,7 @@ Low-level RPC changes
 Network fork safety enhancements
 --------------------------------
 
-A number of changes to the way Bitcoin Core deals with peer connections and invalid blocks
+A number of changes to the way Groestlcoin Core deals with peer connections and invalid blocks
 have been made, as a safety precaution against blockchain forks and misbehaving peers.
 
 - Unrequested blocks with less work than the minimum-chain-work are now no longer processed even
@@ -688,7 +677,7 @@ Miner block size limiting deprecated
 ------------------------------------
 
 Though blockmaxweight has been preferred for limiting the size of blocks returned by
-getblocktemplate since 0.13.0, blockmaxsize remained as an option for those who wished
+getblocktemplate since 2.13.3, blockmaxsize remained as an option for those who wished
 to limit their block size directly. Using this option resulted in a few UI issues as
 well as non-optimal fee selection and ever-so-slightly worse performance, and has thus
 now been deprecated. Further, the blockmaxsize option is now used only to calculate an
@@ -703,14 +692,6 @@ GUI settings backed up on reset
 The GUI settings will now be written to `guisettings.ini.bak` in the data directory before wiping them when
 the `-resetguisettings` argument is used. This can be used to retroactively troubleshoot issues due to the
 GUI settings.
-
-
-Duplicate wallets disallowed
-----------------------------
-
-Previously, it was possible to open the same wallet twice by manually copying the wallet file, causing
-issues when both were opened simultaneously. It is no longer possible to open copies of the same wallet.
-
 
 Debug `-minimumchainwork` argument added
 ----------------------------------------
@@ -739,7 +720,7 @@ Wallet changes
 
 ### Segwit Wallet
 
-Bitcoin Core 0.16.0 introduces full support for segwit in the wallet and user interfaces. A new `-addresstype` argument has been added, which supports `legacy`, `p2sh-segwit` (default), and `bech32` addresses. It controls what kind of addresses are produced by `getnewaddress`, `getaccountaddress`, and `createmultisigaddress`. A `-changetype` argument has also been added, with the same options, and by default equal to `-addresstype`, to control which kind of change is used.
+Bitcoin Core 2.16.0 introduces full support for segwit in the wallet and user interfaces. A new `-addresstype` argument has been added, which supports `legacy`, `p2sh-segwit` (default), and `bech32` addresses. It controls what kind of addresses are produced by `getnewaddress`, `getaccountaddress`, and `createmultisigaddress`. A `-changetype` argument has also been added, with the same options, and by default equal to `-addresstype`, to control which kind of change is used.
 
 A new `address_type` parameter has been added to the `getnewaddress` and `addmultisigaddress` RPCs to specify which type of address to generate.
 A `change_type` argument has been added to the `fundrawtransaction` RPC to override the `-changetype` argument for specific transactions.
@@ -752,7 +733,7 @@ Note that some RPCs do not yet support segwit addresses. Notably, `signmessage`/
 
 P2WPKH change outputs are now used by default if any destination in the transaction is a P2WPKH or P2WSH output. This is done to ensure the change output is as indistinguishable from the other outputs as possible in either case.
 
-### BIP173 (Bech32) Address support ("bc1..." addresses)
+### BIP173 (Bech32) Address support ("grs1..." addresses)
 
 Full support for native segwit addresses (BIP173 / Bech32) has now been added.
 This includes the ability to send to BIP173 addresses (including non-v0 ones), and generating these
@@ -763,7 +744,7 @@ A checkbox has been added to the GUI to select whether a Bech32 address or P2SH-
 ### HD-wallets by default
 
 Due to a backward-incompatible change in the wallet database, wallets created
-with version 0.16.0 will be rejected by previous versions. Also, version 0.16.0
+with version 2.16.0 will be rejected by previous versions. Also, version 2.16.0
 will only create hierarchical deterministic (HD) wallets. Note that this only applies
 to new wallets; wallets made with previous versions will not be upgraded to be HD.
 
@@ -777,9 +758,9 @@ use the `replaceable` argument for individual transactions.
 
 ### Wallets directory configuration (`-walletdir`)
 
-Bitcoin Core now has more flexibility in where the wallets directory can be
+Groestlcoin Core now has more flexibility in where the wallets directory can be
 located. Previously wallet database files were stored at the top level of the
-bitcoin data directory. The behavior is now:
+groestlcoin data directory. The behavior is now:
 
 - For new installations (where the data directory doesn't already exist),
   wallets will now be stored in a new `wallets/` subdirectory inside the data
@@ -797,7 +778,7 @@ becomes unavailable during operation, funds may be lost.
 
 Build: Minimum GCC bumped to 4.8.x
 ------------------------------------
-The minimum version of the GCC compiler required to compile Bitcoin Core is now 4.8. No effort will be
+The minimum version of the GCC compiler required to compile Groestlcoin Core is now 4.8. No effort will be
 made to support older versions of GCC. See discussion in issue #11732 for more information.
 The minimum version for the Clang compiler is still 3.3. Other minimum dependency versions can be found in `doc/dependencies.md` in the repository.
 
@@ -812,7 +793,7 @@ The SHA256 hashing optimizations for architectures supporting SSE4, which lead t
 
 GUI changes
 -----------
-- Uses of "µBTC" in the GUI now also show the more colloquial term "bits", specified in BIP176.
+- Uses of "µGRS" in the GUI now also show the more colloquial term "bits", specified in BIP176.
 - The option to reuse a previous address has now been removed. This was justified by the need to "resend" an invoice, but now that we have the request history, that need should be gone.
 - Support for searching by TXID has been added, rather than just address and label.
 - A "Use available balance" option has been added to the send coins dialog, to add the remaining available wallet balance to a transaction output.
@@ -857,7 +838,7 @@ The `validateaddress` RPC output has been extended with a few new fields, and su
   * `getwalletinfo`
   * `getmininginfo`
 - The wallet RPC `getreceivedbyaddress` will return an error if called with an address not in the wallet.
-- The wallet RPC `addwitnessaddress` was deprecated and will be removed in version 0.17,
+- The wallet RPC `addwitnessaddress` was deprecated and will be removed in future version,
   set the `address_type` argument of `getnewaddress`, or option `-addresstype=[bech32|p2sh-segwit]` instead.
 - `dumpwallet` now includes hex-encoded scripts from the wallet in the dumpfile, and
   `importwallet` now imports these scripts, but corresponding addresses may not be added
@@ -876,11 +857,11 @@ The `validateaddress` RPC output has been extended with a few new fields, and su
 Other changed command-line options
 ----------------------------------
 - `-debuglogfile=<file>` can be used to specify an alternative debug logging file.
-- bitcoin-cli now has an `-stdinrpcpass` option to allow the RPC password to be read from standard input.
+- groestlcoin-cli now has an `-stdinrpcpass` option to allow the RPC password to be read from standard input.
 - The `-usehd` option has been removed.
-- bitcoin-cli now supports a new `-getinfo` flag which returns an output like that of the now-removed `getinfo` RPC.
+- groestlcoin-cli now supports a new `-getinfo` flag which returns an output like that of the now-removed `getinfo` RPC.
 
 Testing changes
 ----------------
-- The default regtest JSON-RPC port has been changed to 18443 to avoid conflict with testnet's default of 18332.
-- Segwit is now always active in regtest mode by default. Thus, if you upgrade a regtest node you will need to either -reindex or use the old rules by adding `vbparams=segwit:0:999999999999` to your regtest bitcoin.conf. Failure to do this will result in a CheckBlockIndex() assertion failure that will look like: Assertion `(pindexFirstNeverProcessed != nullptr) == (pindex->nChainTx == 0)' failed.
+- Regtest support has been enabled and the JSON-RPC port is 18888.
+- Segwit is always active in regtest mode by default. 
