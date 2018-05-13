@@ -24,15 +24,13 @@ If you want to build the disk image with `make deploy` (.dmg / optional), you ne
 
     brew install librsvg
 
-NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
-
 Berkeley DB
-It is recommended to use Berkeley DB 4.8. If you have to build it yourself,
-you can use [the installation script included in contrib/](/contrib/install_db4.sh)
+It is recommended to use Berkeley DB 5.3. If you have to build it yourself,
+you can use [the installation script included in contrib/](/contrib/install_db5.sh)
 like so
 
 ```shell
-./contrib/install_db4.sh .
+./contrib/install_db5.sh .
 ```
 
 from the root of the repository.
