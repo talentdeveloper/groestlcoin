@@ -40,7 +40,6 @@ from the root of the repository.
 **Note**: You only need Berkeley DB if the wallet is enabled (see the section *Disable-Wallet mode* below).
 
 Build Groestlcoin Core
->>>>>>> 2.16
 ------------------------
 
 1. Clone the groestlcoin source code and cd into `groestlcoin`
@@ -57,7 +56,7 @@ Build Groestlcoin Core
         ./autogen.sh
         ./configure
         make
-        
+
 3.  You can also create a .dmg that contains the .app bundle (optional):
 
         make deploy
@@ -69,7 +68,7 @@ Groestlcoin Core is now available at `./src/groestlcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=bitcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
+    echo -e "rpcuser=groestlcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
 
     chmod 600 "/Users/${USER}/Library/Application Support/Groestlcoin/groestlcoin.conf"
 

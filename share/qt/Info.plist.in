@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>GroestlCoin-Qt</string>
-  
+  <string>Groestlcoin-Qt</string>
+
   <key>CFBundleName</key>
-  <string>GroestlCoin-Qt</string>
+  <string>Groestlcoin-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.groestlcoin.GroestlCoin-Qt</string>
+  <string>org.groestlcoin.Groestlcoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.groestlcoin.GroestlCoinPayment</string>
+      <string>org.groestlcoin.GroestlcoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>groestlcoin</string>
@@ -60,7 +60,7 @@
       <key>UTTypeIdentifier</key>
       <string>org.groestlcoin.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>GroestlCoin payment request</string>
+      <string>Groestlcoin payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -99,7 +99,7 @@
 
   <key>LSAppNapIsDisabled</key>
     <string>True</string>
-  
+
   <key>LSApplicationCategoryType</key>
     <string>public.app-category.finance</string>
 </dict>

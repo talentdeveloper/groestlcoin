@@ -71,6 +71,7 @@
 	<Component Id='CMP_GrsDaemon' Guid='32b21315-0f58-4af8-8f14-156645ecfad6' Directory='DAEMON' >
 		<File  Source="$(var.OUTDIR)\groestlcoind.exe"  KeyPath='yes'       />
 		<File  Source="$(var.OUTDIR)\groestlcoin-cli.exe"           />
+		<File  Source="$(var.OUTDIR)\groestlcoin-tx.exe"           />
 	</Component>
 
 	<DirectoryRef Id="ApplicationProgramsFolder">

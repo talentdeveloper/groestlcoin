@@ -85,9 +85,11 @@ struct TranslationTable {
 static std::vector<TranslationTable> g_translationTable = {
 	{    L"Bitcoin"		, L"Groestlcoin"
 	}, { L"bitcoin"		, L"groestlcoin"
+	}, { L"Bitcion"         , L"Groestlcoin"
 	}, { L"satoshi"		, L"gro"
 	}, { L"sat "		, L"gro "
 	}, { L"BITCOIN"		, L"GROESTLCOIN"
+        }, { L"BITCOINS"	, L"GROESTLCOINS"		
 	}, { L"БИТКОИНЫ"	, L"ГРЁСТЛКОИНЫ"		// ru
 	}, { L"биткоины"	, L"грёстлкоины"		// ru
 	}, { L"біткойни"	, L"гростлкойни"		// ua
@@ -95,10 +97,11 @@ static std::vector<TranslationTable> g_translationTable = {
 	}, { L"Биткоин"		, L"Грoстлкоин"			// bg
 	}, { L"Биткойн"		, L"Грoстлкоин"			// bg
 	}, { L"биткойн"		, L"грoстлкоин"			// bg
-	}, { L"ビット"		, L"グルシュル"			// jp
-	}, { L"비트"			, L"그로에셀"			// ko
-	}, { L"复述"			, L"闪电"				// cn
-	}, { L"غرسلكوي"		, L"غرسلكوين"			// ar
+	}, { L"ビット"	      , L"グルシュル"	         // jp
+	}, { L"비트"	       , L"그로에셀"		   // ko
+	}, { L"复述"	       , L"闪电"			     // cn
+	}, { L"بيتكوين"		, L"غرسلكوين"		       // ar
+	}, { L"بتكوين"          , L"غرسلكوين"		       // ar
 	}
 };
 
