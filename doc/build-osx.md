@@ -25,15 +25,12 @@ If you want to build the disk image with `make deploy` (.dmg / optional), you ne
     brew install librsvg
 
 Berkeley DB
-It is recommended to use Berkeley DB 5.3. If you have to build it yourself,
-you can use [the installation script included in contrib/](/contrib/install_db5.sh)
-like so
+It is recommended to use Berkeley DB 5.3
 
 ```shell
-./contrib/install_db5.sh .
+brew tap zeroc-ice/tap
+brew install zeroc-ice/tap/berkeley-db@5.3
 ```
-
-from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see the section *Disable-Wallet mode* below).
 
@@ -52,7 +49,7 @@ Build Groestlcoin Core
     You can disable the GUI build by passing `--without-gui` to configure.
 
         ./autogen.sh
-        ./configure
+        ./configure LDFLAGS=-L/usr/local/opt/berkeley-db@5.3/lib CPPFLAGS=-I/usr/local/opt/berkeley-db@5.3/include
         make
 
 3.  You can also create a .dmg that contains the .app bundle (optional):
