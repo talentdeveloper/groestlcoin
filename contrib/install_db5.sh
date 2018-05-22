@@ -65,7 +65,7 @@ cd "${BDB_PREFIX}/${BDB_VERSION}/"
 
 # Apply a patch necessary when building with clang and c++11 (see https://community.oracle.com/thread/3952592)
 CLANG_CXX11_PATCH_URL='https://www.groestlcoin.org/clang.patch'
-CLANG_CXX11_PATCH_HASH='e5fbe2ded7ea10979db1e684447e29f3e84440beb2140fb335d413fefe1047fa'
+CLANG_CXX11_PATCH_HASH='3957e33935cf4283974cf96729144153373195da1b07a850b7afe749d20d8790'
 http_get "${CLANG_CXX11_PATCH_URL}" clang.patch "${CLANG_CXX11_PATCH_HASH}"
 patch -p2 < clang.patch
 
