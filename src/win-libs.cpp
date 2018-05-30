@@ -1,4 +1,4 @@
-#pragma comment(lib, "Mincore")
+//#pragma comment(lib, "Mincore")
 #pragma comment(lib, "user32")
 #pragma comment(lib, "advapi32")
 #pragma comment(lib, "shlwapi")

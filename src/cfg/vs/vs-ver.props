@@ -3,14 +3,10 @@
         <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     </PropertyGroup>
     <PropertyGroup>
-        <PlatformToolset Condition="'$(PlatformToolset)' == '' AND '$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
-        <PlatformToolset Condition="'$(PlatformToolset)' == '' AND Exists('$(VCTargetsPath)\Platforms\Win32\PlatformToolsets\v141') ">v141</PlatformToolset>
-        <PlatformToolset Condition="'$(PlatformToolset)' == '' AND Exists('$(VCTargetsPath)\..\V140') ">v140</PlatformToolset>
-        <PlatformToolset Condition="'$(PlatformToolset)' == '' AND Exists('$(VCTargetsPath)\..\V120') ">v120</PlatformToolset>
-        <PlatformToolset Condition="'$(PlatformToolset)' == '' AND Exists('$(VCTargetsPath)\..\V110') ">v110</PlatformToolset>
+        <PlatformToolset>v141</PlatformToolset>
 
-        <WindowsTargetPlatformVersion Condition="'$(PlatformToolset)' == 'v140'">10.0.10240.0</WindowsTargetPlatformVersion>
-        <WindowsTargetPlatformVersion Condition="'$(PlatformToolset)' == 'v141'">10.0.16299.0</WindowsTargetPlatformVersion>
+        <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+        <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
 
         <YasmPath>$(MSBuildThisFileDirectory)..\..\..\tools\</YasmPath>
   </PropertyGroup>
