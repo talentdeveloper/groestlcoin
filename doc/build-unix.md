@@ -42,7 +42,7 @@ Optional dependencies:
  Library     | Purpose          | Description
  ------------|------------------|----------------------
  miniupnpc   | UPnP Support     | Firewall-jumping support
- libdb4.8    | Berkeley DB      | Wallet storage (only needed when wallet enabled)
+ libdb5.3    | Berkeley DB      | Wallet storage (only needed when wallet enabled)
  qt          | GUI              | GUI toolkit (only needed when GUI enabled)
  protobuf    | Payments in GUI  | Data interchange format used for payment protocol (only needed when GUI enabled)
  libqrencode | QR codes in GUI  | Optional for generating QR codes (only needed when GUI enabled)
@@ -79,22 +79,11 @@ install necessary parts of boost:
 
         sudo apt-get install libboost-all-dev
 
-BerkeleyDB is required for the wallet.
+BerkeleyDB is required for the wallet:
 
-**For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
-You can add the repository and install using the following commands:
+    sudo apt-get install libdb5.3 libdb5.3-dev libdb5.3++-dev
 
-    sudo apt-get install software-properties-common
-    sudo add-apt-repository ppa:bitcoin/bitcoin
-    sudo apt-get update
-    sudo apt-get install libdb4.8-dev libdb4.8++-dev
-
-Ubuntu and Debian have their own libdb-dev and libdb++-dev packages, but these will install
-BerkeleyDB 5.1 or later, which break binary wallet compatibility with the distributed executables which
-are based on BerkeleyDB 4.8. If you do not care about wallet compatibility,
-pass `--with-incompatible-bdb` to configure.
-
-See the section "Disable-wallet mode" to build Bitcoin Core without wallet.
+See the section "Disable-wallet mode" to build Groestlcoin Core without wallet.
 
 Optional (see --with-miniupnpc and --enable-upnp-default):
 
@@ -107,7 +96,7 @@ ZMQ dependencies (provides ZMQ API 4.x):
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
-If you want to build Bitcoin-Qt, make sure that the required packages for Qt development
+If you want to build Groestlcoin-Qt, make sure that the required packages for Qt development
 are installed. Either Qt 5 or Qt 4 are necessary to build the GUI.
 If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt4` to configure to choose Qt4.
 To build without GUI pass `--without-gui`.
@@ -165,12 +154,12 @@ turned off by default.  See the configure options for upnp behavior desired:
 
 Berkeley DB
 -----------
-It is recommended to use Berkeley DB 4.8. If you have to build it yourself,
-you can use [the installation script included in contrib/](/contrib/install_db4.sh)
+It is recommended to use Berkeley DB 5.3. If you have to build it yourself,
+you can use [the installation script included in contrib/](/contrib/install_db5.sh)
 like so
 
 ```shell
-./contrib/install_db4.sh `pwd`
+./contrib/install_db5.sh `pwd`
 ```
 
 from the root of the repository.
@@ -242,7 +231,7 @@ disable-wallet mode with:
 
     ./configure --disable-wallet
 
-In this case there is no dependency on Berkeley DB 4.8.
+In this case there is no dependency on Berkeley DB 5.3.
 
 Mining is also possible in disable-wallet mode, but only using the `getblocktemplate` RPC
 call not `getwork`.
@@ -266,11 +255,8 @@ This example lists the steps necessary to setup and build a command line only, n
     make check
 
 Note:
-Enabling wallet support requires either compiling against a Berkeley DB newer than 4.8 (package `db`) using `--with-incompatible-bdb`,
-or building and depending on a local version of Berkeley DB 4.8. The readily available Arch Linux packages are currently built using
-`--with-incompatible-bdb` according to the [PKGBUILD](https://projects.archlinux.org/svntogit/community.git/tree/bitcoin/trunk/PKGBUILD).
-As mentioned above, when maintaining portability of the wallet between the standard Bitcoin Core distributions and independently built
-node software is desired, Berkeley DB 4.8 must be used.
+Enabling wallet support requires either compiling against a Berkeley DB newer than 5.3 (package `db`) or building and depending on a local version of Berkeley DB 5.3. 
+As mentioned above, when maintaining portability of the wallet between the standard Groestlcoin Core distributions and independently built node software is desired, Berkeley DB 5.3 must be used.
 
 
 ARM Cross-compilation
@@ -312,8 +298,8 @@ You need to use GNU make (`gmake`) instead of `make`.
 
 For the wallet (optional):
 
-    ./contrib/install_db4.sh `pwd`
-    setenv BDB_PREFIX $PWD/db4
+    ./contrib/install_db5.sh `pwd`
+    setenv BDB_PREFIX $PWD/db5
 
 Then build using:
 
