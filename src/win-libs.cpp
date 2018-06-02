@@ -1,4 +1,4 @@
-#pragma comment(lib, "Mincore")
+//#pragma comment(lib, "Mincore")
 #pragma comment(lib, "user32")
 #pragma comment(lib, "advapi32")
 #pragma comment(lib, "shlwapi")
@@ -8,6 +8,7 @@
 #pragma comment(lib, "iphlpapi")
 #pragma comment(lib, "Uxtheme")
 #pragma comment(lib, "Dwmapi")
+#pragma comment(lib, "Version")
 
 #pragma comment(lib, "bdb")
 #pragma comment(lib, "leveldb")
