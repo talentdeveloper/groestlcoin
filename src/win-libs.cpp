@@ -8,6 +8,7 @@
 #pragma comment(lib, "iphlpapi")
 #pragma comment(lib, "Uxtheme")
 #pragma comment(lib, "Dwmapi")
+#pragma comment(lib, "Version")
 
 #pragma comment(lib, "bdb")
 #pragma comment(lib, "leveldb")
