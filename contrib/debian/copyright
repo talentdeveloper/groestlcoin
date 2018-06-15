@@ -76,13 +76,13 @@ Files: src/qt/res/icons/groestlcoin.png, src/qt/res/icons/toolbar.png
 Copyright: No copyright holder, these files are put in public domain
 License: public-domain
 Comment: The author, Utopian, declares the source code to be
- put in the public domain.
+ put in the public domain
 
 Files:  scripts/img/reload.xcf, src/qt/res/movies/*.png
-Copyright: Everaldo (Everaldo Coelho)
-License: GPL-3+
-Comment: Icon Pack: Kids
-         Site: http://findicons.com/icon/17102/reload?id=17102
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a
