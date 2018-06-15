@@ -49,36 +49,40 @@ Files: src/qt/res/icons/add.png
        src/qt/res/icons/transaction*.png
        src/qt/res/icons/tx_output.png
        src/qt/res/icons/warning.png
-Copyright: Utopian
-License: PUB-DOM
-Comment: Marketing manager of Groestlciin
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/connect*.png
        src/qt/res/src/connect-*.svg
        src/qt/res/icons/network_disabled.png
        src/qt/res/src/network_disabled.svg
-Copyright: Utopian
-License: PUB-DOM
-Comment: Marketing manager of Groestlcoin
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/configure.png, src/qt/res/icons/quit.png,
       src/qt/res/icons/editcopy.png, src/qt/res/icons/editpaste.png,
       src/qt/res/icons/add.png, src/qt/res/icons/edit.png,
       src/qt/res/icons/remove.png
-Copyright: Utopian
-License: PUB-DOM
-Comment: Marketing Manager of Groestlcoin
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/groestlcoin.png, src/qt/res/icons/toolbar.png
-Copyright: Utopian
-License: PUB-DOM
-Comment: Marketing manager of Groestlcoin
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files:  scripts/img/reload.xcf, src/qt/res/movies/*.png
-Copyright: Everaldo (Everaldo Coelho)
-License: GPL-3+
-Comment: Icon Pack: Kids
-         Site: http://findicons.com/icon/17102/reload?id=17102
+Copyright: No copyright holder, these files are put in public domain
+License: public-domain
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a
