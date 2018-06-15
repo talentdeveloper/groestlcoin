@@ -49,26 +49,34 @@ Files: src/qt/res/icons/add.png
        src/qt/res/icons/transaction*.png
        src/qt/res/icons/tx_output.png
        src/qt/res/icons/warning.png
+Copyright: No copyright holder, these files are put in public domain
 License: public-domain
-Comment: Groestlcoin Developers
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/connect*.png
        src/qt/res/src/connect-*.svg
        src/qt/res/icons/network_disabled.png
        src/qt/res/src/network_disabled.svg
+Copyright: No copyright holder, these files are put in public domain
 License: public-domain
-Comment: Groestlcoin Developers
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/configure.png, src/qt/res/icons/quit.png,
       src/qt/res/icons/editcopy.png, src/qt/res/icons/editpaste.png,
       src/qt/res/icons/add.png, src/qt/res/icons/edit.png,
       src/qt/res/icons/remove.png
+Copyright: No copyright holder, these files are put in public domain
 License: public-domain
-Comment: Groestlcoin Developers
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain
 
 Files: src/qt/res/icons/groestlcoin.png, src/qt/res/icons/toolbar.png
+Copyright: No copyright holder, these files are put in public domain
 License: public-domain
-Comment: Groestlcoin Developers
+Comment: The author, Utopian, declares the source code to be
+ put in the public domain.
 
 Files:  scripts/img/reload.xcf, src/qt/res/movies/*.png
 Copyright: Everaldo (Everaldo Coelho)
