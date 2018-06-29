@@ -425,8 +425,8 @@ caching. A sample config for apache2 could look like:
     SSLCertificateKeyFile /etc/apache2/ssl/server.key
 
     <Location /groestlcoinrpc>
-        ProxyPass http://127.0.0.1:1331/
-        ProxyPassReverse http://127.0.0.1:1331/
+        ProxyPass http://127.0.0.1:5332/
+        ProxyPassReverse http://127.0.0.1:5332/
         # optional enable digest auth
         # AuthType Digest
         # ...

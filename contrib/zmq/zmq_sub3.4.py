@@ -8,10 +8,10 @@
 
     Groestlcoin should be started with the command line arguments:
         groestlcoind -testnet -daemon \
-                -zmqpubrawtx=tcp://127.0.0.1:21441 \
-                -zmqpubrawblock=tcp://127.0.0.1:21441 \
-                -zmqpubhashtx=tcp://127.0.0.1:21441 \
-                -zmqpubhashblock=tcp://127.0.0.1:21441
+                -zmqpubrawtx=tcp://127.0.0.1:25442 \
+                -zmqpubrawblock=tcp://127.0.0.1:25442 \
+                -zmqpubhashtx=tcp://127.0.0.1:25442 \
+                -zmqpubhashblock=tcp://127.0.0.1:25442
 
     We use the asyncio library here.  `self.handle()` installs itself as a
     future at the end of the function.  Since it never returns with the event
@@ -38,7 +38,7 @@ if not (sys.version_info.major >= 3 and sys.version_info.minor >= 4):
     print("This example only works with Python 3.4 and greater")
     sys.exit(1)
 
-port = 21441
+port = 25442
 
 class ZMQHandler():
     def __init__(self):

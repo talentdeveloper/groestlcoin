@@ -228,7 +228,7 @@ Threads
 
 - ThreadMapPort : Universal plug-and-play startup/shutdown
 
-- ThreadSocketHandler : Sends/Receives data from peers on port 1331.
+- ThreadSocketHandler : Sends/Receives data from peers on port 5332.
 
 - ThreadOpenAddedConnections : Opens network connections to added nodes.
 
@@ -240,7 +240,7 @@ Threads
 
 - ThreadFlushWalletDB : Close the wallet.dat file if it hasn't been used in 500ms.
 
-- ThreadRPCServer : Remote procedure call handler, listens on port 1441 for connections and services them.
+- ThreadRPCServer : Remote procedure call handler, listens on port 5442 for connections and services them.
 
 - GroestlcoinMiner : Generates groestlcoins (if wallet is enabled).
 

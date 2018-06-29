@@ -234,7 +234,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
             total += subtotal;
         }
         else
-        {   // User-entered Groestlcoin address / amount:
+        {   // User-entered Soferoxcoin address / amount:
             if(!validateAddress(rcp.address))
             {
                 return InvalidAddress;

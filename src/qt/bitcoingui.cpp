@@ -900,7 +900,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
             break;
         }
     }
-    // Append title to "Groestlcoin - "
+    // Append title to "Soferoxcoin - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 

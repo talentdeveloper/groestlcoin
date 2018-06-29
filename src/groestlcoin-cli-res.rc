@@ -17,8 +17,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Groestlcoin"
-            VALUE "FileDescription",    "groestlcoin-cli (JSON-RPC client for Groestlcoin Core)"
+            VALUE "CompanyName",        "Soferox"
+            VALUE "FileDescription",    "groestlcoin-cli (JSON-RPC client for Soferox Core)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "groestlcoin-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR

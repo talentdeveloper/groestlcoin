@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2014-2015 The Groestlcoin developers
+// Copyright (c) 2014-2015 The Soferox developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -383,7 +383,7 @@ public:
         pchMessageStart[2] = 0xb4;
         pchMessageStart[3] = 0xd4;
 
-		nDefaultPort = 1331;
+		nDefaultPort = 5332;
         nPruneAfterHeight = 10000000;
 
 
@@ -502,7 +502,7 @@ public:
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
 
-        nDefaultPort = 17777;
+        nDefaultPort = 16644;
         nPruneAfterHeight = 1000000;
 
 /*!!!R		for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {

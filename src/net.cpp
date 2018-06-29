@@ -1522,7 +1522,7 @@ void ThreadMapPort()
             }
         }
 
-        std::string strDesc = "Groestlcoin " + FormatFullVersion();
+        std::string strDesc = "Soferox " + FormatFullVersion();
 
         try {
             while (true) {

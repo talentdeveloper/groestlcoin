@@ -42,11 +42,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
     HiddenServiceDir /var/lib/tor/groestlcoin-service/
-    HiddenServicePort 1331 127.0.0.1:1331
-    HiddenServicePort 17777 127.0.0.1:17777
+    HiddenServicePort 5332 127.0.0.1:5332
+    HiddenServicePort 16644 127.0.0.1:16644
 
 The directory can be different of course, but (both) port numbers should be equal to
-your groestlcoind's P2P listen port (1331 by default).
+your groestlcoind's P2P listen port (5332 by default).
 
     -externalip=X   You can tell groestlcoin about its publicly reachable address using
                     this option, and this can be a .onion address. Given the above
@@ -81,7 +81,7 @@ as well, use `discover` instead:
 
     ./groestlcoind ... -discover
 
-and open port 1331 on your firewall (or use -upnp).
+and open port 5332 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
