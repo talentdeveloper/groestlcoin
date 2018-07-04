@@ -4,7 +4,7 @@
 
 #define UCFG_GRS_FAST 1	//!!!T
 
-#define PACKAGE_NAME "Soferoxcoin Core"
+#define PACKAGE_NAME "Soferox Core"
 
 #define CLIENT_VERSION_MAJOR 2
 #define CLIENT_VERSION_MINOR 16

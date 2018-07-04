@@ -48,9 +48,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Soferoxcoin"
+#define QAPP_ORG_NAME "Soferox"
 #define QAPP_ORG_DOMAIN "groestlcoin.org"
-#define QAPP_APP_NAME_DEFAULT "Soferoxcoin-Qt"
-#define QAPP_APP_NAME_TESTNET "Soferoxcoin-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "Soferox-Qt"
+#define QAPP_APP_NAME_TESTNET "Soferox-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

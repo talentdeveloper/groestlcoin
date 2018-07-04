@@ -60,9 +60,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case SFX: return QString("Soferoxcoins");
-    case mSFX: return QString("Milli-Soferoxcoins (1 / 1" THIN_SP_UTF8 "000)");
-    case uSFX: return QString("Micro-Soferoxcoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case SFX: return QString("Soferoxs");
+    case mSFX: return QString("Milli-Soferoxs (1 / 1" THIN_SP_UTF8 "000)");
+    case uSFX: return QString("Micro-Soferoxs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }

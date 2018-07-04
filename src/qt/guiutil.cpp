@@ -618,7 +618,7 @@ fs::path static StartupShortcutPath()
         return GetSpecialFolderPath(CSIDL_STARTUP) / "Groestlcoin.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
         return GetSpecialFolderPath(CSIDL_STARTUP) / "Groestlcoin (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Soferoxcoin (%s).lnk", chain);
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Soferox (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()

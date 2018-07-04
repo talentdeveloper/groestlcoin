@@ -310,7 +310,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 *   vMerkleTree: 4a5e1e
 */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward) {
-	const char* pszTimestamp = "Pressure must be put on Vladimir Putin over Crimea";
+	const char* pszTimestamp = "We always make good coin and future";
 	const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
 	return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -386,8 +386,23 @@ public:
 		nDefaultPort = 5332;
         nPruneAfterHeight = 10000000;
 
+		// for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {
+		// 	genesis = CreateGenesisBlock(1530728779, nonce, 0x1e0fffff, 112, 0);
+		// 	consensus.hashGenesisBlock = genesis.GetHash();
+		// 	if (UintToArith256(consensus.hashGenesisBlock) < UintToArith256(consensus.powLimit)) {
+		// 		printf("Wonderfull__mainnet_genesis.merklroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		// 		printf("Wonderfull__mainnet_genesis.nonce = %d\n", genesis.nNonce);	
+		// 		printf("Wonderfull__mainnet_genesis.version = %d\n", genesis.nVersion);
+		// 		printf("Wonderfull__mainnet_genesis.bits = %x\n", genesis.nBits);
+		// 		printf("Wonderfull__mainnet_genesis.time = %d\n", genesis.nTime);
+		// 		printf("Wonderfull__mainnet_genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+		// 		break;
+		// 	}
 
-		genesis = CreateGenesisBlock(1395342829, 220035, 0x1e0fffff, 112, 0);
+		// }
+
+
+		genesis = CreateGenesisBlock(1530728779, 1069206, 0x1e0fffff, 112, 0);
 
         /**
          * Build the genesis block. Note that the output of its generation
@@ -410,14 +425,16 @@ public:
 		*/
 
         consensus.hashGenesisBlock = genesis.GetHash();
-		assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
-		assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
+		// printf("main_genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+        // printf("main_genesis.merklroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		assert(consensus.hashGenesisBlock == uint256S("0x000001b75fb6cfc7ee94f1552595c1e95ba4b149cbbb1d94bd05f23f2d432dce"));
+		assert(genesis.hashMerkleRoot == uint256S("0x414d960e0ee8546bd482abc7d409c6d6f984ff7569b64750468386b70a0da1e5"));
 
-        vSeeds.push_back("groestlcoin.org");
-		vSeeds.push_back("electrum1.groestlcoin.org");
-		vSeeds.push_back("electrum2.groestlcoin.org");
-		vSeeds.push_back("jswallet.groestlcoin.org");
-		vSeeds.push_back("groestlsight.groestlcoin.org");
+        // vSeeds.push_back("groestlcoin.org");
+		// vSeeds.push_back("electrum1.groestlcoin.org");
+		// vSeeds.push_back("electrum2.groestlcoin.org");
+		// vSeeds.push_back("jswallet.groestlcoin.org");
+		// vSeeds.push_back("groestlsight.groestlcoin.org");
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -440,11 +457,12 @@ public:
 		checkpointData = (CCheckpointData) {
 #endif
 			{
-				{28888, uint256S("0x00000000000228ce19f55cf0c45e04c7aa5a6a873ed23902b3654c3c49884502")},
-				{58888, uint256S("0x0000000000dd85f4d5471febeb174a3f3f1598ab0af6616e9f266b56272274ef")},
-				{111111, uint256S("0x00000000013de206275ee83f93bee57622335e422acbf126a37020484c6e113c")},
-				{1000000, uint256S("0x000000000df8560f2612d5f28b52ed1cf81b0f87ac0c9c7242cbcf721ca6854a")},
-				{2000000, uint256S("0x00000000000434d5b8d1c3308df7b6e3fd773657dfb28f5dd2f70854ef94cc66")},
+				{0		, uint256S("0x000001b75fb6cfc7ee94f1552595c1e95ba4b149cbbb1d94bd05f23f2d432dce")},
+				// {28888, uint256S("0x00000000000228ce19f55cf0c45e04c7aa5a6a873ed23902b3654c3c49884502")},
+				// {58888, uint256S("0x0000000000dd85f4d5471febeb174a3f3f1598ab0af6616e9f266b56272274ef")},
+				// {111111, uint256S("0x00000000013de206275ee83f93bee57622335e422acbf126a37020484c6e113c")},
+				// {1000000, uint256S("0x000000000df8560f2612d5f28b52ed1cf81b0f87ac0c9c7242cbcf721ca6854a")},
+				// {2000000, uint256S("0x00000000000434d5b8d1c3308df7b6e3fd773657dfb28f5dd2f70854ef94cc66")},
 			}
 		};
 
@@ -514,16 +532,32 @@ public:
 		*/
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-		genesis = CreateGenesisBlock(1440000002, 6556309, 0x1e00ffff, 3, 0);
+
+		// for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {
+		// 	genesis = CreateGenesisBlock(1530728750, nonce, 0x1e00ffff, 3, 0);
+		// 	consensus.hashGenesisBlock = genesis.GetHash();
+		// 	if (UintToArith256(consensus.hashGenesisBlock) < UintToArith256(consensus.powLimit)) {
+		// 		printf("Wonderfull__testnet_genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());	
+		// 		printf("Wonderfull__testnet_genesis.merklroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());	
+		// 		printf("Wonderfull__testnet_genesis.nonce = %d\n", genesis.nNonce);	
+		// 		break;
+		// 	}
+	
+		// }
+
+		genesis = CreateGenesisBlock(1530728750, 10742868, 0x1e00ffff, 3, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36"));
+		// printf("testnet_genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+        // printf("testnet_genesis.merklroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+		// printf("testnet_nNounce = %d\n", genesis.nNonce);
+        assert(consensus.hashGenesisBlock == uint256S("0x000000cf9bf4a0d7bc29ebdd9051fb68d3caa3e950b8be1dfbf35fea32a99fb7"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
-		vSeeds.push_back("testnet1.groestlcoin.org");
-		vSeeds.push_back("testnet2.groestlcoin.org");
-		vSeeds.push_back("testp2pool.groestlcoin.org");
-		vSeeds.push_back("testp2pool2.groestlcoin.org");
+		// vSeeds.push_back("testnet1.groestlcoin.org");
+		// vSeeds.push_back("testnet2.groestlcoin.org");
+		// vSeeds.push_back("testp2pool.groestlcoin.org");
+		// vSeeds.push_back("testp2pool2.groestlcoin.org");
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -547,8 +581,8 @@ public:
 		checkpointData = (CCheckpointData) {
 #endif
 			{
-				{0		, uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")},
-				{ 50000 , uint256S("0x00000081951486bb535f8cffec8ac0641bd24b814f89641f6cc2cad737f18950") },
+				 //{0		, uint256S("0xbef0b3124119637ecd010cf263a47192eca747e9ef9c4d4f43eacb8fc2266644")},
+				// { 50000 , uint256S("0x00000081951486bb535f8cffec8ac0641bd24b814f89641f6cc2cad737f18950") },
 			}
 		};
 
@@ -616,7 +650,7 @@ public:
 		checkpointData = (CCheckpointData) {
 #endif
 			{
-				{0, uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")},
+				// {0, uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36")},
 			}
 		};
 
